@@ -55,6 +55,28 @@ def norm_api(api):
     return a.rstrip("/")
 
 
+# 只保留真正的影视仓标准接口，剔除明显无用的非标准源：
+#   - 必须是 http(s) 真实地址（csp_ / spider 等自定义路由无配套脚本即空壳）
+#   - 必须含标准苹果CMS接口 api.php/provide/vod
+#   - 剔除内网/本地调试泄漏、以及把 GitHub 代理/raw 当 api 源的无效项
+_GITHUB_PROXY_SUBSTR = ("githubusercontent.com", "ghproxy.com", "ghp.ci",
+                        "ghfast.top", "jsdelivr.net", "raw.github",
+                        "cdn.jsdelivr", "fastly.jsdelivr")
+
+
+def is_usable_api(api):
+    a = (api or "").strip().lower()
+    if not a.startswith(("http://", "https://")):
+        return False
+    if "api.php/provide/vod" not in a:
+        return False
+    if any(x in a for x in ("127.0.0.1", "localhost", "0.0.0.0")):
+        return False
+    if any(x in a for x in _GITHUB_PROXY_SUBSTR):
+        return False
+    return True
+
+
 def normalize_luna(obj):
     out = []
     api_site = obj.get("api_site") or {}
@@ -181,11 +203,15 @@ def do_probe(sites):
 
 def add_entries(entries, seen, got, force_adult):
     added = 0
+    filtered = 0
     for e in got:
         api = norm_api(e["api"])
         if not api:
             continue
         if any(b in api.lower() for b in BAD_API_SUBSTR):
+            continue
+        if not is_usable_api(api):
+            filtered += 1
             continue
         if api in seen:
             continue
@@ -193,7 +219,7 @@ def add_entries(entries, seen, got, force_adult):
         e["_adult"] = force_adult or is_adult(e["name"], e.get("is_adult", False))
         entries.append(e)
         added += 1
-    return added
+    return added, filtered
 
 
 def load_and_normalize(url):
@@ -220,6 +246,7 @@ def load_and_normalize(url):
 def main():
     entries = []
     seen = set()
+    filtered_total = 0
 
     # ① yingshicang 的成品（已是影视仓 sites 结构，含上游老源 + 探测去重 + 分类）
     print("=== ① 抓取 yingshicang 成品（先于 quanwangjiansuo）===")
@@ -230,7 +257,8 @@ def main():
         except Exception as e:
             print(f"[skip] {url}\n        -> {e}")
             continue
-        n = add_entries(entries, seen, got, fa)
+        n, f = add_entries(entries, seen, got, fa)
+        filtered_total += f
         if n:
             print(f"[ok]   {url.split('/')[-1][:30]:<30} +{n}  (累计 {len(entries)})")
 
@@ -243,7 +271,8 @@ def main():
         except Exception as e:
             print(f"[skip] {url}\n        -> {e}")
             continue
-        n = add_entries(entries, seen, got, fa)
+        n, f = add_entries(entries, seen, got, fa)
+        filtered_total += f
         if n:
             print(f"[ok]   {url.split('/')[-1][:30]:<30} +{n}  (累计 {len(entries)})")
 
@@ -262,7 +291,8 @@ def main():
                 if err is not None:
                     print(f"[skip] {url}\n        -> {err}")
                     continue
-                n = add_entries(entries, seen, got, fa)
+                n, f = add_entries(entries, seen, got, fa)
+                filtered_total += f
                 if n:
                     print(f"[ok]   {url.split('/')[-1][:30]:<30} +{n}  (累计 {len(entries)})")
     else:
@@ -290,9 +320,11 @@ def main():
                   ensure_ascii=False, indent=2)
 
     print(f"\n完成： 累计采集 {len(entries)} 唯一源 -> normal={len(normal)}  adult={len(adult)}")
+    print(f"[filter] 本次剔除非标准/无效接口共 {filtered_total} 个")
     print("  normal:", "https://raw.githubusercontent.com/dearloyal/CS/main/tvbox-normal.json")
     print("  adult :", "https://raw.githubusercontent.com/dearloyal/CS/main/tvbox-adult.json")
 
 
 if __name__ == "__main__":
     main()
+
