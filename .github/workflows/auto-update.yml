@@ -1,0 +1,71 @@
+name: TVBox ceshi 终极兜底聚合（每日更新）
+
+# 这是"杀手锏"：当 yingshicang / quanwangjiansuo 都不可用时的最后保险。
+# 每天自动：先抓上游老源 -> 抓 quanwangjiansuo -> 自己再搜 -> 去重 -> 合并分类 -> 推送。
+#
+# 任务时间安排（已完善）：
+#   - quanwangjiansuo 每天北京时间 02:00（UTC 18:00）先跑，产出最新自搜结果；
+#   - 本任务安排在 quanwangjiansuo 之后，北京时间 03:00（UTC 19:00），
+#     确保能吃到它当天的新鲜结果；即便它失败，本任务仍会自己再搜一遍兜底。
+on:
+  schedule:
+    - cron: "0 19 * * *"      # UTC 19:00 = 北京时间次日 03:00
+  workflow_dispatch: {}       # 也可在 Actions 页手动 "Run workflow"
+
+# 串行锁：避免重复运行（定时 + 手动）同时提交导致互相 rejection
+concurrency:
+  group: ceshi-auto-update
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: ① 自己再搜一遍（全网内容搜索，发现新配置）
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/discover.py --base discovered.txt > discovered_new.txt || true
+          # 合并存量 + 新发现，写入 discovered.txt 供聚合器消费，并回写仓库
+          cat discovered.txt 2>/dev/null discovered_new.txt 2>/dev/null | sort -u > discovered.tmp
+          mv discovered.tmp discovered.txt
+          echo "--- 本次发现配置总数 ---"
+          wc -l < discovered.txt || echo 0
+
+      - name: ② 聚合：上游老源 + quanwangjiansuo + 自主搜索 → 去重 → 分类 → ③ 保守探测
+        env:
+          PROBE: "1"
+          DISCOVERED_FILE: discovered.txt
+        run: |
+          python3 scripts/aggregate.py
+
+      - name: ④ 提交并推送结果
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add tvbox-normal.json tvbox-adult.json discovered.txt
+          if git diff --cached --quiet; then
+            echo "无变化，跳过提交"
+          else
+            git commit -m "auto: 终极兜底聚合更新 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            # 安全变基兜底：极端并发被抢先提交时，先拉再推，不丢本次结果
+            for i in 1 2 3; do
+              if git push origin HEAD:main 2>&1 | tail -3; then
+                echo PUSH_OK; break
+              fi
+              git pull --rebase origin main 2>&1 | tail -2 || true
+              echo "retry $i"; sleep 5
+            done
+          fi
