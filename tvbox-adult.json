@@ -52,16 +52,6 @@
       "detail": "https://apilsbzy1.com"
     },
     {
-      "key": "hsckzy.xyz",
-      "name": "🔞黄色仓库",
-      "api": "https://hsckzy.xyz/api.php/provide/vod",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": "https://hsckzy.xyz"
-    },
-    {
       "key": "apidanaizi.com",
       "name": "🔞-大奶子-",
       "api": "https://apidanaizi.com/api.php/provide/vod",
@@ -240,6 +230,16 @@
       "quickSearch": 1,
       "filterable": 1,
       "detail": "https://aosikazy.com"
+    },
+    {
+      "key": "lovedan.net",
+      "name": "🎬艾旦影视",
+      "api": "https://lovedan.net/api.php/provide/vod",
+      "type": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "detail": "https://lovedan.net"
     },
     {
       "key": "www.yyzywcj.com",

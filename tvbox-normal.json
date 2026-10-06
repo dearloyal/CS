@@ -352,16 +352,6 @@
       "detail": "https://jinyingzy.com"
     },
     {
-      "key": "lovedan.net",
-      "name": "🎬艾旦影视",
-      "api": "https://lovedan.net/api.php/provide/vod",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": "https://lovedan.net"
-    },
-    {
       "key": "zy.sh0o.cn",
       "name": "🎬山海资源",
       "api": "https://zy.sh0o.cn/api.php/provide/vod",
@@ -1265,6 +1255,16 @@
       "key": "天涯影视资源网采集接口",
       "name": "天涯影视资源网采集接口",
       "api": "https://tyyszyapi.com/api.php/provide/vod/at/xml/",
+      "type": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "detail": ""
+    },
+    {
+      "key": "爱奇艺资源站采集接口",
+      "name": "爱奇艺资源站采集接口",
+      "api": "https://www.iqiyizyapi.com/api.php/provide/vod/at/xml/",
       "type": 1,
       "searchable": 1,
       "quickSearch": 1,
@@ -2295,16 +2295,6 @@
       "key": "91md",
       "name": "91md ",
       "api": "http://bt4.cc/api.php/provide/vod/from/mdm3u8/at/xml",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": ""
-    },
-    {
-      "key": "芒果资源",
-      "name": "芒果资源 ",
-      "api": "https://mgzyz1.com/api.php/provide/vod/at/xml",
       "type": 1,
       "searchable": 1,
       "quickSearch": 1,
