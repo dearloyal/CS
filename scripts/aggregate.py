@@ -25,19 +25,13 @@ FETCH_TIMEOUT = 15
 PROBE_TIMEOUT = 8
 MAX_WORKERS = 16
 
-# ── ① 先抓取之前那几个上游老源（yingshicang 曾经的源）──────────────
-UPSTREAM_SOURCES = [
-    # LunaTV api_site 格式（hafrey1 / zyunling / netput-web 三个原始上游）
-    ("https://raw.githubusercontent.com/hafrey1/LunaTV-config/main/LunaTV-config.json", "luna", False),
-    ("https://raw.githubusercontent.com/zyunling/LunaTV-config/main/luna-tv-config.json", "luna", False),
-    ("https://raw.githubusercontent.com/netput-web/LunaTV-config/main/LunaTV-config.json", "luna", False),
-    # TVBox sites 格式
-    ("https://raw.githubusercontent.com/huawuhen/tvbox_config/main/my_tvbox_config.json", "tvbox", False),
-    ("https://raw.githubusercontent.com/huawuhen/tvbox_config/main/tvbox_config_18.json", "tvbox", True),
-    ("https://raw.githubusercontent.com/TVboxorg/TVbox/main/dist/official.json", "tvbox", False),
+# ── ① 先抓取 yingshicang 的成品（它已含上游老源 + 探测去重 + 分类）──
+YINGSHICANG = [
+    ("https://raw.githubusercontent.com/dearloyal/yingshicang/main/tvbox-normal.json", False),
+    ("https://raw.githubusercontent.com/dearloyal/yingshicang/main/tvbox-adult.json", True),
 ]
 
-# ── ② 抓取 quanwangjiansuo 的自搜结果（直接并入）───────────────────
+# ── ② 再抓取 quanwangjiansuo 的自搜结果（直接并入）─────────────────
 QUANWANGJIANSUO = [
     ("https://raw.githubusercontent.com/dearloyal/quanwangjiansuo/main/tvbox-normal.json", False),
     ("https://raw.githubusercontent.com/dearloyal/quanwangjiansuo/main/tvbox-adult.json", True),
@@ -227,17 +221,18 @@ def main():
     entries = []
     seen = set()
 
-    # ① 上游老源
-    print("=== ① 抓取之前那几个上游老源 ===")
-    tasks = [(u, k, fa) for (u, k, fa) in UPSTREAM_SOURCES]
-    with ThreadPoolExecutor(max_workers=8) as ex:
-        for url, _, fa, got, err in ex.map(load_and_normalize, [t[0] for t in tasks]):
-            if err is not None:
-                print(f"[skip] {url}\n        -> {err}")
-                continue
-            n = add_entries(entries, seen, got, fa)
-            if n:
-                print(f"[ok]   {url.split('/')[-1][:30]:<30} +{n}  (累计 {len(entries)})")
+    # ① yingshicang 的成品（已是影视仓 sites 结构，含上游老源 + 探测去重 + 分类）
+    print("=== ① 抓取 yingshicang 成品（先于 quanwangjiansuo）===")
+    for url, fa in YINGSHICANG:
+        try:
+            obj = json.loads(fetch(url))
+            got = obj.get("sites", []) if isinstance(obj, dict) else []
+        except Exception as e:
+            print(f"[skip] {url}\n        -> {e}")
+            continue
+        n = add_entries(entries, seen, got, fa)
+        if n:
+            print(f"[ok]   {url.split('/')[-1][:30]:<30} +{n}  (累计 {len(entries)})")
 
     # ② quanwangjiansuo 的自搜结果（已是影视仓 sites 结构）
     print("=== ② 抓取 quanwangjiansuo 自搜结果 ===")
@@ -271,7 +266,7 @@ def main():
                 if n:
                     print(f"[ok]   {url.split('/')[-1][:30]:<30} +{n}  (累计 {len(entries)})")
     else:
-        print("[warn] 未发现 discovered.txt，跳过自主搜索（已含上游 + quanwangjiansuo）")
+        print("[warn] 未发现 discovered.txt，跳过自主搜索（已含 yingshicang + quanwangjiansuo）")
 
     # ④ 分类（不含成人 / 纯成人）
     used = set()
