@@ -2,6 +2,16 @@
   "cache_time": 7200,
   "sites": [
     {
+      "key": "iqiyizyapi.com",
+      "name": "🎬-爱奇艺-",
+      "api": "https://iqiyizyapi.com/api.php/provide/vod",
+      "type": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "detail": "https://iqiyizyapi.com"
+    },
+    {
       "key": "dbzy.tv",
       "name": "🎬豆瓣资源",
       "api": "https://caiji.dbzy5.com/api.php/provide/vod",
@@ -1632,16 +1642,6 @@
       "detail": ""
     },
     {
-      "key": "tv_back-023_csp_非凡资源",
-      "name": "🥗┃非凡┃资源·ok线路1",
-      "api": "http://ffzy1.tv/api.php/provide/vod/",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": ""
-    },
-    {
       "key": "tv_back-023_量子资源",
       "name": "🥑┃量子┃资源·ok线路1",
       "api": "https://lzizy1.com/api.php/provide/vod/",
@@ -2655,6 +2655,16 @@
       "key": "xml_轻简",
       "name": "轻简☆采集",
       "api": "http://1.ahailove.cn:23456/cj/api.php/provide/vod/",
+      "type": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "detail": ""
+    },
+    {
+      "key": "xml_猫放",
+      "name": "猫放☆采集",
+      "api": "https://www.mervod.com/api.php/provide/vod/",
       "type": 1,
       "searchable": 1,
       "quickSearch": 1,
@@ -7692,16 +7702,6 @@
       "detail": ""
     },
     {
-      "key": "ffzy.tv",
-      "name": "非凡2",
-      "api": "https://ffzy.tv/api.php/provide/vod/",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": ""
-    },
-    {
       "key": "bt4.cc",
       "name": "★91麻豆②(直连)",
       "api": "http://bt4.cc/api.php/provide/vod/from/mdm3u8/",
@@ -8432,16 +8432,6 @@
       "detail": ""
     },
     {
-      "key": "非凡_3",
-      "name": "影视 | 非凡[直连]",
-      "api": "http://ffzy.tv/api.php/provide/vod/",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": ""
-    },
-    {
       "key": "黑木耳资源_1",
       "name": "木耳🥑蓝光",
       "api": "https://json.heimuer.tv/api.php/provide/vod/?ac=list",
@@ -8855,16 +8845,6 @@
       "key": "sc1080_open",
       "name": "圣城影视(Cat)",
       "api": "https://ghproxy.net/https://raw.githubusercontent.com/13998394872/TVBox/main/Cat/sc1080_open.js",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": ""
-    },
-    {
-      "key": "4kys_open",
-      "name": "4K影视(Cat)",
-      "api": "https://ghproxy.net/https://raw.githubusercontent.com/13998394872/TVBox/main/Cat/4kys_open.js",
       "type": 1,
       "searchable": 1,
       "quickSearch": 1,
@@ -9645,6 +9625,16 @@
       "key": "drpy_js_刺桐[V2]",
       "name": "刺桐[V2](js)",
       "api": "https://ghproxy.com/https://ghproxy.net/https://raw.githubusercontent.com/13998394872/TVBox/main/lib/drpy2.min.js",
+      "type": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "detail": ""
+    },
+    {
+      "key": "4kys_open",
+      "name": "4K影视(Cat)",
+      "api": "https://ghproxy.net/https://raw.githubusercontent.com/13998394872/TVBox/main/Cat/4kys_open.js",
       "type": 1,
       "searchable": 1,
       "quickSearch": 1,
@@ -11432,6 +11422,16 @@
       "detail": ""
     },
     {
+      "key": "爱奇艺资源站采集接口",
+      "name": "爱奇艺资源站采集接口",
+      "api": "https://www.iqiyizyapi.com/api.php/provide/vod/at/xml/",
+      "type": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "detail": ""
+    },
+    {
       "key": "730acd683fc317fa1a584e5613e727f0",
       "name": "2-非凡",
       "api": "http://cj.ffzyapi.com//api.php/provide/vod/",
@@ -11455,16 +11455,6 @@
       "key": "ad1116ca9a9b3057570066086c9c9698",
       "name": "7-非凡",
       "api": "http://ffzy4.tv/api.php/provide/vod/",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": ""
-    },
-    {
-      "key": "a794df941b177a5eb1e4e991fb5eaccb",
-      "name": "9-非凡",
-      "api": "http://www.ffzy.tv/api.php/provide/vod/",
       "type": 1,
       "searchable": 1,
       "quickSearch": 1,
@@ -11875,16 +11865,6 @@
       "key": "极光",
       "name": "极光采集",
       "api": "https://www.jiguang008.com/api.php/provide/vod/",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": ""
-    },
-    {
-      "key": "xml_猫放",
-      "name": "猫放采集",
-      "api": "https://www.mervod.com/api.php/provide/vod/",
       "type": 1,
       "searchable": 1,
       "quickSearch": 1,
@@ -12865,6 +12845,16 @@
       "key": "qysp",
       "name": "奇艺视频",
       "api": "http://www.meowtv.cn/js/drpy2.min.js",
+      "type": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "detail": ""
+    },
+    {
+      "key": "js_六月听书",
+      "name": "📚️听书🌷六月",
+      "api": "https://raw.gitcode.com/mfkdxk/qgdc/raw/js/drpy2.min.js",
       "type": 1,
       "searchable": 1,
       "quickSearch": 1,

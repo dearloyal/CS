@@ -1482,16 +1482,6 @@
       "detail": ""
     },
     {
-      "key": "*010爱资源",
-      "name": "*010爱资源🔞",
-      "api": "http://www.010aizy.com/API/macs.php",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": ""
-    },
-    {
       "key": "WWRR",
       "name": "🔞 我为人人 | 珍惜",
       "api": "csp_WWRR",
