@@ -302,28 +302,8 @@
       "detail": "https://aosikazy.com"
     },
     {
-      "key": "bwzy2",
-      "name": "AV-百万资源",
-      "api": "https://api.bwzyz.com/api.php/provide/vod",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": "https://api.bwzym3u8.com"
-    },
-    {
-      "key": "souavzy",
-      "name": "AV-souavZY",
-      "api": "https://api.souavzy.vip/api.php/provide/vod",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": "https://api.souavzy.vip"
-    },
-    {
-      "key": "yyzy",
-      "name": "AV-优优资源",
+      "key": "www.yyzywcj.com",
+      "name": "🔞优优资源",
       "api": "https://www.yyzywcj.com/api.php/provide/vod",
       "type": 1,
       "searchable": 1,
@@ -332,68 +312,18 @@
       "detail": "https://www.yyzywcj.com"
     },
     {
-      "key": "xbzy",
-      "name": "AV-杏吧资源",
-      "api": "https://xingba111.com/api.php/provide/vod",
+      "key": "api.bwzym3u8.com",
+      "name": "🔞百万资源",
+      "api": "https://api.bwzyz.com/api.php/provide/vod",
       "type": 1,
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "detail": "https://xingba111.com"
+      "detail": "https://api.bwzym3u8.com"
     },
     {
-      "key": "api.sexnguon",
-      "name": "AV-色南国",
-      "api": "https://api.sexnguon.com/api.php/provide/vod",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": "https://api.sexnguon.com"
-    },
-    {
-      "key": "semaozy",
-      "name": "AV-色猫资源",
-      "api": "https://caiji.semaozy.net/inc/apijson_vod.php",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": "https://semaozy1.com/"
-    },
-    {
-      "key": "xzybb21",
-      "name": "AV-幸资源",
-      "api": "https://xzybb2.com/api.php/provide/vod",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": "https://xzytv.com"
-    },
-    {
-      "key": "dadiapi",
-      "name": "AV-大地资源",
-      "api": "https://dadiapi.com/feifei2",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": "https://dadizy11.com"
-    },
-    {
-      "key": "zuiseapi",
-      "name": "AV-最色资源",
-      "api": "https://api.zuiseapi.com/api.php/provide/vod",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": "https://zuisezy.com"
-    },
-    {
-      "key": "swzy",
-      "name": "AV-丝袜资源",
+      "key": "siwazyw.tv",
+      "name": "🔞丝袜资源",
       "api": "https://siwazyw.tv/api.php/provide/vod",
       "type": 1,
       "searchable": 1,
@@ -402,14 +332,14 @@
       "detail": "https://siwazyw.tv"
     },
     {
-      "key": "91jpzyw.com",
-      "name": "🔞91-精品-",
-      "api": "https://91jpzyw.com/api.php/provide/vod",
+      "key": "iqiyizyapi.com_1",
+      "name": "🎬-爱奇艺-",
+      "api": "https://tvrss.huawuhen.store/?url=https://iqiyizyapi.com/api.php/provide/vod&ac=list",
       "type": 1,
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "detail": "https://91jpzyw.com"
+      "detail": ""
     },
     {
       "key": "hav ",
@@ -675,6 +605,16 @@
       "key": "siwazyw.cc",
       "name": "成人32",
       "api": "https://siwazyw.cc/api.php/provide/vod/",
+      "type": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "detail": ""
+    },
+    {
+      "key": "api.sexnguon.com",
+      "name": "成人34",
+      "api": "https://api.sexnguon.com/api.php/provide/vod/",
       "type": 1,
       "searchable": 1,
       "quickSearch": 1,
@@ -1132,7 +1072,37 @@
       "detail": ""
     },
     {
-      "key": "swzy_1",
+      "key": "xzytv.com_1",
+      "name": "🔞-幸资源-",
+      "api": "https://xzybb2.com/api.php/provide/vod",
+      "type": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "detail": "https://xzytv.com"
+    },
+    {
+      "key": "dadiapi",
+      "name": "🔞大地资源",
+      "api": "https://dadiapi.com/feifei2",
+      "type": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "detail": "https://dadizy11.com"
+    },
+    {
+      "key": "zuiseapi",
+      "name": "🔞最色资源",
+      "api": "https://api.zuiseapi.com/api.php/provide/vod",
+      "type": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "detail": "https://zuisezy.com"
+    },
+    {
+      "key": "swzy",
       "name": "🔞丝袜资源",
       "api": "https://siwazyw.tv/api.php/provide/vod/at/json",
       "type": 1,
@@ -1505,6 +1475,16 @@
       "key": "秀色采集",
       "name": "秀色🔞",
       "api": "https://api.xiuseapi.com/api.php/provide/vod/from/xiuse/at/xml/",
+      "type": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "detail": ""
+    },
+    {
+      "key": "*010爱资源",
+      "name": "*010爱资源🔞",
+      "api": "http://www.010aizy.com/API/macs.php",
       "type": 1,
       "searchable": 1,
       "quickSearch": 1,
