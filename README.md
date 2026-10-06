@@ -6,8 +6,8 @@
 
 | 步骤 | 内容 |
 |---|---|
-| ① 先抓上游老源 | 抓取之前 `yingshicang` 用的那几个上游：hafrey1 / zyunling / netput-web / huawuhen / TVboxorg |
-| ② 抓 quanwangjiansuo | 直接并入 `quanwangjiansuo` 的自搜结果（normal / adult 两份） |
+| ① 先抓 yingshicang | 直接拉 `yingshicang` 的成品（normal / adult 两份，已含上游老源 + 探测去重 + 分类） |
+| ② 再抓 quanwangjiansuo | 直接并入 `quanwangjiansuo` 的自搜结果（normal / adult 两份） |
 | ③ 自己再搜一遍 | 用 GitHub 内容搜索（`"api.php/provide/vod"` 等特征）自主发现新发布的配置 |
 | ④ 去重 | 全部按接口地址（api）去重，重叠只留一份 |
 | ⑤ 合并分类 | 按 `is_adult` / `🔞` / 关键词 分为**不含成人**和**纯成人**两份 |
