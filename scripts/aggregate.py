@@ -6,14 +6,13 @@ TVBox / 影视仓 —— ceshi 终极兜底聚合器（杀手锏）
 用途：当 yingshicang / quanwangjiansuo 都不可用时，这是最后一道保险。
      力求"最大覆盖 + 去重 + 分类"，每天自动刷新。
 
-采集顺序（对应需求：先抓之前那几个 -> 抓 quanwangjiansuo -> 自己抓取 -> 去重 -> 合并分类）：
-  1. 先抓取上游老源（之前 yingshicang 用的那几个：hafrey1 / zyunling / netput-web / huawuhen / TVboxorg）
-  2. 抓取 quanwangjiansuo 的自搜结果（normal / adult 两份，直接并入）
-  3. 自己用 GitHub 内容搜索再发现一批新配置（discover.py 输出 discovered.txt）
-  4. 全部按 api 地址去重
-  5. 按 is_adult / 🔞 / 关键词 分类为 normal（不含成人）/ adult（纯成人）
-  6. 保守探测：仅剔除"确定失效"(DNS失败/404/5xx)；超时一律保留；
-     一次性剔除比例 > 30% 触发安全阀，保留全部。
+采集顺序（CS 只做"去重合并"，不做自主搜索；全网自主搜索由 QWJS 负责）：
+  1. 先抓取 yingshicang 成品（YSC 已含上游老源 + 探测去重 + 分类）
+  2. 再抓取 quanwangjiansuo 自搜结果（normal / adult 两份，直接并入）
+  3. 全部按 api 地址去重合并
+  4. 分类为 normal（不含成人）/ adult（纯成人）
+  5. 保守探测：仅剔除"确定失效"(DNS失败/拒连/404/5xx)；超时一律保留；
+     超时比例 > 30% 触发安全阀，保留全部。
 
 输出：tvbox-normal.json / tvbox-adult.json（影视仓最小正确结构）。
 """
@@ -287,42 +286,21 @@ def main():
         if n:
             print(f"[ok]   {url.split('/')[-1][:30]:<30} +{n}  (累计 {len(entries)})")
 
-    # ③ 自己再搜一遍（discover.py 输出的 discovered.txt）
-    print("=== ③ 自己再搜一遍（全网内容搜索）===")
-    disc = os.environ.get("DISCOVERED_FILE")
-    if disc and os.path.exists(disc):
-        urls = []
-        with open(disc, encoding="utf-8") as f:
-            for line in f:
-                line = line.strip()
-                if line.startswith("http"):
-                    urls.append(line)
-        with ThreadPoolExecutor(max_workers=8) as ex:
-            for url, _, fa, got, err in ex.map(load_and_normalize, urls):
-                if err is not None:
-                    print(f"[skip] {url}\n        -> {err}")
-                    continue
-                n, f = add_entries(entries, seen, got, fa)
-                filtered_total += f
-                if n:
-                    print(f"[ok]   {url.split('/')[-1][:30]:<30} +{n}  (累计 {len(entries)})")
-    else:
-        print("[warn] 未发现 discovered.txt，跳过自主搜索（已含 yingshicang + quanwangjiansuo）")
-
-    # ④ 分类（不含成人 / 纯成人）
+    # ③ 分类（CS 只合并 YSC + QWJS，不再自己搜；全网自主搜索由 QWJS 负责）
+    # 分类（不含成人 / 纯成人）
     used = set()
     normal, adult = [], []
     for e in entries:
         site = to_site(e, used)
         (adult if e["_adult"] else normal).append(site)
 
-    # ⑤ 保守探测
+    # ④ 保守探测
     if os.environ.get("PROBE", "0") == "1":
         print("[probe] 开始保守探测...")
         normal = do_probe(normal)
         adult = do_probe(adult)
 
-    # ⑥ 输出
+    # ⑤ 输出
     with open("tvbox-normal.json", "w", encoding="utf-8") as f:
         json.dump({"cache_time": 7200, "sites": normal}, f,
                   ensure_ascii=False, indent=2)
