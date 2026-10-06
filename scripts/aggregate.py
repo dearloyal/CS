@@ -36,7 +36,7 @@ QUANWANGJIANSUO = [
     ("https://raw.githubusercontent.com/dearloyal/QWJS/main/tvbox-adult.json", True),
 ]
 
-ADULT_KEYWORDS = ["成人", "福利", "18禁", "🔞", "黄", "涩情", "萝莉", "裸",
+ADULT_KEYWORDS = ["成人", "福利", "18禁", "🔞", "黄", "涩情", "萝莉", "裸", "艾旦",
                   "sex", "porn", "adult", "18+", "18禁"]
 BAD_API_SUBSTR = ["dinggetv"]
 
