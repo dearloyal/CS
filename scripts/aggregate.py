@@ -27,14 +27,14 @@ MAX_WORKERS = 16
 
 # ── ① 先抓取 yingshicang 的成品（它已含上游老源 + 探测去重 + 分类）──
 YINGSHICANG = [
-    ("https://raw.githubusercontent.com/dearloyal/yingshicang/main/tvbox-normal.json", False),
-    ("https://raw.githubusercontent.com/dearloyal/yingshicang/main/tvbox-adult.json", True),
+    ("https://raw.githubusercontent.com/dearloyal/YSC/main/tvbox-normal.json", False),
+    ("https://raw.githubusercontent.com/dearloyal/YSC/main/tvbox-adult.json", True),
 ]
 
 # ── ② 再抓取 quanwangjiansuo 的自搜结果（直接并入）─────────────────
 QUANWANGJIANSUO = [
-    ("https://raw.githubusercontent.com/dearloyal/quanwangjiansuo/main/tvbox-normal.json", False),
-    ("https://raw.githubusercontent.com/dearloyal/quanwangjiansuo/main/tvbox-adult.json", True),
+    ("https://raw.githubusercontent.com/dearloyal/QWJS/main/tvbox-normal.json", False),
+    ("https://raw.githubusercontent.com/dearloyal/QWJS/main/tvbox-adult.json", True),
 ]
 
 ADULT_KEYWORDS = ["成人", "福利", "18禁", "🔞", "黄", "涩情", "萝莉", "裸",
@@ -290,8 +290,8 @@ def main():
                   ensure_ascii=False, indent=2)
 
     print(f"\n完成： 累计采集 {len(entries)} 唯一源 -> normal={len(normal)}  adult={len(adult)}")
-    print("  normal:", "https://raw.githubusercontent.com/dearloyal/ceshi/main/tvbox-normal.json")
-    print("  adult :", "https://raw.githubusercontent.com/dearloyal/ceshi/main/tvbox-adult.json")
+    print("  normal:", "https://raw.githubusercontent.com/dearloyal/CS/main/tvbox-normal.json")
+    print("  adult :", "https://raw.githubusercontent.com/dearloyal/CS/main/tvbox-adult.json")
 
 
 if __name__ == "__main__":
