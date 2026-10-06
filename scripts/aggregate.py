@@ -177,8 +177,16 @@ def probe_api(api):
         if e.code >= 400:
             return False, f"http{e.code}"
         return True, "ok"
+    except urllib.error.URLError as e:
+        # 区分"确定失效"与"测不准"：DNS 解析失败/拒连=源已死；超时/重置=网络问题保留
+        reason = str(getattr(e, "reason", e))
+        if ("Name or service not known" in reason or "getaddrinfo" in reason
+                or "nodename" in reason or "Connection refused" in reason
+                or "No route" in reason):
+            return False, "域名失效/拒连"
+        return None, "超时/重置"
     except Exception as e:
-        return None, str(e)
+        return None, str(e)[:40]
 
 
 def do_probe(sites):
@@ -191,13 +199,16 @@ def do_probe(sites):
             st, msg = fu.result()
             status[a] = (st, msg)
     dead = {a for a, (st, _) in status.items() if st is False}
-    ratio = len(dead) / max(1, len(apis))
-    print(f"[probe] 确定失效 {len(dead)}/{len(apis)}  比例 {ratio:.2f}")
-    if ratio > 0.30:
-        print("[probe] ⚠ 安全阀触发：单次剔除过多，保留全部源")
+    unknown = {a for a, (st, _) in status.items() if st is None}
+    ok = {a for a, (st, _) in status.items() if st is True}
+    unk_ratio = len(unknown) / max(1, len(apis))
+    # 安全阀：仅当"测不准(超时)比例过高"或"全部连不上"时，才怀疑 Runner 网络异常、保留全部；
+    # 否则 DNS 失败/拒连/4xx/5xx 一律视为确定失效并剔除（这些是真死，不会被误删好源）。
+    if unk_ratio > 0.30 or len(ok) == 0:
+        print(f"[probe] ⚠ 超时比例 {unk_ratio:.2f} 或全不可达，疑似 Runner 网络异常，保留全部源")
         return sites
     kept = [s for s in sites if s["api"] not in dead]
-    print(f"[probe] 剔除 {len(sites) - len(kept)} 个确定失效源")
+    print(f"[probe] 确定失效 {len(dead)}/{len(apis)}（DNS/拒连/4xx/5xx），剔除 {len(sites) - len(kept)} 个")
     return kept
 
 
