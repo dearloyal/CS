@@ -500,36 +500,6 @@
       "quickSearch": 1,
       "filterable": 1,
       "detail": ""
-    },
-    {
-      "key": "大地资源",
-      "name": "大地资源🔞",
-      "api": "https://dadiapi.com/api.php/provide/vod/at/xml",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": ""
-    },
-    {
-      "key": "91md_1",
-      "name": "91md🔞",
-      "api": "https://91md.me/api.php/provide/vod/from/mdm3u8/",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": ""
-    },
-    {
-      "key": "酷豆",
-      "name": "酷豆2🔞",
-      "api": "https://api.kdapi.info/api.php/provide/vod/",
-      "type": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "detail": ""
     }
   ]
 }
