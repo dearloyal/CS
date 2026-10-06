@@ -35,7 +35,7 @@ jobs:
 
       - name: ① 自己再搜一遍（全网内容搜索，发现新配置）
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
         run: |
           python3 scripts/discover.py --base discovered.txt > discovered_new.txt || true
           # 合并存量 + 新发现，写入 discovered.txt 供聚合器消费，并回写仓库
