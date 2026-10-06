@@ -1,13 +1,14 @@
 name: TVBox ceshi 终极兜底聚合（每日更新）
 
 # 这是"杀手锏"：当 yingshicang / quanwangjiansuo 都不可用时的最后保险。
-# 每天自动：先抓上游老源 -> 抓 quanwangjiansuo -> 自己再搜 -> 去重 -> 合并分类 -> 推送。
+# 每天自动：拉 yingshicang 成品 -> 拉 quanwangjiansuo 自搜结果 -> 去重合并 -> 分类 -> 探测 -> 推送。
+# CS 本身不做自主搜索；全网自主搜索由 quanwangjiansuo（QWJS）负责。
 #
 # 任务时间安排（已完善，形成清晰级联）：
 #   - yingshicang   每天北京时间 01:00（UTC 17:00）先跑，产出上游老源成品；
 #   - quanwangjiansuo 每天北京时间 02:00（UTC 18:00）再跑，产出自搜结果；
-#   - 本任务(ceshi) 排在最后，北京时间 03:00（UTC 19:00）合并两者 + 自己再搜一遍；
-#     即便上游某天失败，本任务仍会自己再搜兜底，保证最后这道保险始终有数据。
+#   - 本任务(ceshi) 排在最后，北京时间 03:00（UTC 19:00）只做两者去重合并；
+#     上游任一天失败，本任务直接从另一个仍有数据的仓库合并，保证最后这道保险始终有数据。
 on:
   schedule:
     - cron: "0 19 * * *"      # UTC 19:00 = 北京时间次日 03:00
@@ -34,21 +35,9 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: ① 自己再搜一遍（全网内容搜索，发现新配置）
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
-        run: |
-          python3 scripts/discover.py --base discovered.txt > discovered_new.txt || true
-          # 合并存量 + 新发现，写入 discovered.txt 供聚合器消费，并回写仓库
-          cat discovered.txt 2>/dev/null discovered_new.txt 2>/dev/null | sort -u > discovered.tmp
-          mv discovered.tmp discovered.txt
-          echo "--- 本次发现配置总数 ---"
-          wc -l < discovered.txt || echo 0
-
-      - name: ② 聚合：上游老源 + quanwangjiansuo + 自主搜索 → 去重 → 分类 → ③ 保守探测
+      - name: ② 聚合：yingshicang 成品 + quanwangjiansuo 自搜结果 → 去重合并 → 分类 → 保守探测
         env:
           PROBE: "1"
-          DISCOVERED_FILE: discovered.txt
         run: |
           python3 scripts/aggregate.py
 
@@ -56,7 +45,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add tvbox-normal.json tvbox-adult.json discovered.txt
+          git add tvbox-normal.json tvbox-adult.json
           if git diff --cached --quiet; then
             echo "无变化，跳过提交"
           else
