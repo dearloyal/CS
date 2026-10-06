@@ -402,6 +402,16 @@
       "detail": ""
     },
     {
+      "key": "tv_back-023_csp_非凡资源",
+      "name": "🥗┃非凡┃资源·ok线路1",
+      "api": "http://ffzy1.tv/api.php/provide/vod/",
+      "type": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "detail": ""
+    },
+    {
       "key": "tv_back-023_量子资源",
       "name": "🥑┃量子┃资源·ok线路1",
       "api": "https://lzizy1.com/api.php/provide/vod/",
@@ -2132,6 +2142,16 @@
       "detail": ""
     },
     {
+      "key": "ffzy.tv",
+      "name": "非凡2",
+      "api": "https://ffzy.tv/api.php/provide/vod/",
+      "type": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "detail": ""
+    },
+    {
       "key": "bt4.cc",
       "name": "★91麻豆②(直连)",
       "api": "http://bt4.cc/api.php/provide/vod/from/mdm3u8/",
@@ -2335,6 +2355,16 @@
       "key": "jkunzyapi",
       "name": "【9kg】jkun资源",
       "api": "https://www.jkunzyapi.com/api.php/provide/vod/at/seaxml/",
+      "type": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "detail": ""
+    },
+    {
+      "key": "非凡_2",
+      "name": "影视 | 非凡[直连]",
+      "api": "http://ffzy.tv/api.php/provide/vod/",
       "type": 1,
       "searchable": 1,
       "quickSearch": 1,
@@ -2715,6 +2745,16 @@
       "key": "ad1116ca9a9b3057570066086c9c9698",
       "name": "7-非凡",
       "api": "http://ffzy4.tv/api.php/provide/vod/",
+      "type": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "detail": ""
+    },
+    {
+      "key": "a794df941b177a5eb1e4e991fb5eaccb",
+      "name": "9-非凡",
+      "api": "http://www.ffzy.tv/api.php/provide/vod/",
       "type": 1,
       "searchable": 1,
       "quickSearch": 1,
