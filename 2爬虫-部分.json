@@ -5,7 +5,7 @@
   "subset_meaning": "部分 = 成人接口",
   "adult": true,
   "source": "dearloyal/YSC",
-  "count": 41,
+  "count": 50,
   "sites": [
     {
       "key": "视界",
@@ -338,6 +338,111 @@
       "_adult": true,
       "_crawler": true,
       "_line": "哈吉米",
+      "_src": "网页线路"
+    },
+    {
+      "key": "次元城",
+      "name": "次元城",
+      "type": 3,
+      "api": "csp_Cycdm",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "http://app.95189371.cn/ciyuancheng.php/v6/",
+      "jar": "https://jihulab.com/zhulr7765/tvbox/-/raw/main/jar/spider.jar",
+      "_adult": true,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "柠檬",
+      "name": "☀柠檬🔹视频",
+      "type": 3,
+      "api": "csp_Nmvod",
+      "playerType": 2,
+      "jar": "https://ncstatic.clewm.net/rsrc/2025/0915/15/e210975c2c794cbc8bb1839b54ac213e.png;md5;939FFBC2941A28CA533F2653FA4B449E",
+      "ext": "7lj763gg402i7942503g839jg74h8h88highi40799jh6i6k454419l0l5184k0g549h0kg2i01i838i2h42g891lgg1",
+      "_adult": true,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "drpy_js_豆瓣",
+      "name": "导航|万事顺遂",
+      "type": 3,
+      "api": "csp_DoubanCAT",
+      "ext": "http://43.248.128.118:25252/仅供测试/lib/douban.json",
+      "_adult": true,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "静月",
+      "name": "养生|京城",
+      "type": 3,
+      "api": "http://43.248.128.118:25252/仅供测试/lib/drpy2.min.js",
+      "ext": "http://43.248.128.118:25252/仅供测试/lib/养生.js",
+      "_adult": true,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "tenteng",
+      "name": "落日|自定",
+      "type": 3,
+      "api": "http://43.248.128.118:25252/仅供测试/lib/drpy2.min.js",
+      "ext": "http://43.248.128.118:25252/仅供测试/lib/腾腾.js",
+      "_adult": true,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "youyou",
+      "name": "日出|自定",
+      "type": 3,
+      "api": "http://43.248.128.118:25252/仅供测试/lib/drpy2.min.js",
+      "ext": "http://43.248.128.118:25252/仅供测试/lib/优优.js",
+      "_adult": true,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "qiqi",
+      "name": "晚霞|自定",
+      "type": 3,
+      "api": "http://43.248.128.118:25252/仅供测试/lib/drpy2.min.js",
+      "ext": "http://43.248.128.118:25252/仅供测试/lib/奇奇.js",
+      "_adult": true,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "mangmang",
+      "name": "朝阳|自定",
+      "type": 3,
+      "api": "http://43.248.128.118:25252/仅供测试/lib/drpy2.min.js",
+      "ext": "http://43.248.128.118:25252/仅供测试/lib/茫茫.js",
+      "_adult": true,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "4Kav",
+      "name": "4Kav|弹幕",
+      "type": 3,
+      "api": "csp_HB4kavCAT",
+      "playerType": 2,
+      "_adult": true,
+      "_crawler": true,
+      "_line": "小虎斑",
       "_src": "网页线路"
     },
     {

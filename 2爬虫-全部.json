@@ -5,7 +5,7 @@
   "subset_meaning": "全部 = 正常可用接口",
   "adult": false,
   "source": "dearloyal/YSC",
-  "count": 1308,
+  "count": 1417,
   "sites": [
     {
       "key": "点我切源",
@@ -7189,6 +7189,1296 @@
       "_src": "网页线路"
     },
     {
+      "key": "58动漫网",
+      "name": "58┃动漫",
+      "type": 3,
+      "api": "./js/drpy2.min.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "changeable": 1,
+      "ext": "./js/58动漫.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "NyaFun",
+      "name": "NyaFun",
+      "type": 3,
+      "api": "./js/drpy.min.js",
+      "ext": "./js/NyaFun.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "AGE动漫",
+      "name": "AGE动漫",
+      "type": 3,
+      "api": "./js/drpy.min.js",
+      "ext": "./js/AGE动漫.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "NT动漫",
+      "name": "NT┃动漫",
+      "type": 3,
+      "api": "./js/drpy2.min.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "changeable": 1,
+      "ext": "./js/NT动漫.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "csp_Anime1",
+      "name": "动漫┃系列",
+      "type": 3,
+      "api": "csp_Anime1",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "妮可动漫",
+      "name": "妮可动漫",
+      "type": 3,
+      "api": "./js/drpy.min.js",
+      "ext": "./js/妮可动漫.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "drpy_js_动漫岛",
+      "name": "动漫岛",
+      "type": 3,
+      "api": "./js/drpy2.min.js",
+      "ext": "./js/动漫岛.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "drpy_js_路漫漫",
+      "name": "路漫漫",
+      "type": 3,
+      "api": "./js/drpy2.min.js",
+      "ext": "./js/路漫漫.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "csp_Ysj",
+      "name": "异界动漫",
+      "type": 3,
+      "api": "csp_Ysj",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "csp_Ying",
+      "name": "樱花动漫",
+      "type": 3,
+      "api": "csp_Ying",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "风车动漫",
+      "name": "风车动漫",
+      "type": 3,
+      "api": "./js/drpy.min.js",
+      "ext": "./js/风车动漫.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "去看吧",
+      "name": "去看吧",
+      "type": 3,
+      "api": "./js/drpy.min.js",
+      "ext": "./js/去看吧.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "drpy_js_NyaFun",
+      "name": "动漫 | NyaFun[js]",
+      "type": 3,
+      "api": "./js/drpy2.min.js",
+      "ext": "./js/NyaFun.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "drpy_js_爱弹幕",
+      "name": "动漫 | 爱弹幕[js]",
+      "type": 3,
+      "api": "./js/drpy2.min.js",
+      "ext": "./js/爱弹幕.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "nt动漫",
+      "name": "拿铁动漫",
+      "type": 3,
+      "api": "./js/drpy2.min.js",
+      "ext": "./js/ntdm.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "妮可",
+      "name": "妮可动漫",
+      "type": 3,
+      "api": "./js/drpy2.min.js",
+      "ext": "./js/妮可动漫.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "anfuns",
+      "name": "ANF动漫",
+      "type": 3,
+      "api": "./js/drpy2.min.js",
+      "ext": "./js/anfuns.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "怡萱动漫",
+      "name": "怡萱动漫",
+      "type": 3,
+      "api": "./js/drpy2.min.js",
+      "ext": "./js/怡萱.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "drpy_js_奇米动漫",
+      "name": "动漫 | 奇米动漫[js]",
+      "type": 3,
+      "api": "./js/drpy2.min.js",
+      "ext": "./js/奇米动漫.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "drpy_js_曲奇动漫",
+      "name": "动漫 | 曲奇动漫[js]",
+      "type": 3,
+      "api": "./js/drpy2.min.js",
+      "ext": "./js/曲奇动漫.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "异世界",
+      "name": "异世界",
+      "type": 3,
+      "api": "./js/drpy.min.js",
+      "ext": "./js/异世界.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "动漫",
+      "_src": "网页线路"
+    },
+    {
+      "key": "路漫漫",
+      "name": "🌈路漫漫｜动漫导航",
+      "type": 3,
+      "api": "./lib/drpy2.min.js",
+      "ext": "./lib/路漫漫.png",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "藤藤",
+      "name": "❤藤藤｜4K测试",
+      "type": 3,
+      "api": "./lib/drpy2.min.js",
+      "ext": "./lib/藤藤.png",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "bl",
+      "name": "❤小哩｜4K测试",
+      "type": 3,
+      "api": "./lib/bl.py",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "剧下饭",
+      "name": "♨️下饭｜4K线路",
+      "type": 3,
+      "api": "./lib/jxf.py",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "高清点播",
+      "name": "♨️高清｜4K线路",
+      "type": 3,
+      "api": "./lib/gq.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "妙看",
+      "name": "🌀妙看｜1920",
+      "type": 3,
+      "api": "./lib/4kvms.py",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "个影",
+      "name": "🌀个影｜1920",
+      "type": 3,
+      "api": "./lib/gy.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "多多",
+      "name": "🌀多多｜1920",
+      "type": 3,
+      "api": "./lib/dd.py",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "华数",
+      "name": "🌀华数｜1920",
+      "type": 3,
+      "api": "./lib/华数.py",
+      "changeable": 1,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "茫茫",
+      "name": "🌀茫茫｜1920",
+      "type": 3,
+      "api": "./lib/drpy2.min.js",
+      "ext": "./lib/茫茫.png",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "小优",
+      "name": "🌀小优｜1280",
+      "type": 3,
+      "api": "./lib/drpy2.min.js",
+      "ext": "./lib/小优.png",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "小爱",
+      "name": "🌀小爱｜1280",
+      "type": 3,
+      "api": "./lib/drpy2.min.js",
+      "ext": "./lib/小爱.png",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "小哩",
+      "name": "🌀小哩｜1280",
+      "type": 3,
+      "api": "./lib/drpy2.min.js",
+      "ext": "./lib/小哩.png",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "七星短剧",
+      "name": "🎬七星丨短剧",
+      "type": 3,
+      "api": "./lib/qxdj.py",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "百度短剧",
+      "name": "🎬百度丨短剧",
+      "type": 3,
+      "api": "./lib/bddj.js",
+      "searchable": 1,
+      "quickSearch": 0,
+      "filterable": 1,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "聚合短剧",
+      "name": "🎬聚合丨短剧",
+      "type": 3,
+      "api": "./lib/jhdj.js",
+      "searchable": 1,
+      "quickSearch": 0,
+      "filterable": 1,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "红果短剧",
+      "name": "🎬红果｜短剧",
+      "type": 3,
+      "api": "./lib/hgdj.py",
+      "genre": "shortdrama",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "去看吧",
+      "name": "🌈去看｜动漫",
+      "type": 3,
+      "api": "./lib/drpy2.min.js",
+      "ext": "./lib/去看吧.png",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "爱听音乐",
+      "name": "📻爱听｜音乐",
+      "type": 3,
+      "searchable": 0,
+      "quickSearch": 0,
+      "changeable": 0,
+      "api": "./lib/爱听音乐.py",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "听了么",
+      "name": "📻听歌｜音乐",
+      "type": 3,
+      "api": "./lib/tlm.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "凤凰FM",
+      "name": "📻凤凰┃FM",
+      "type": 3,
+      "api": "./lib/drpy2.min.js",
+      "ext": "./lib/凤凰FM.png",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "随身评书",
+      "name": "📻随身┃评书",
+      "type": 3,
+      "api": "./lib/drpy2.min.js",
+      "ext": "./lib/随身评书.png",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "哔哩直播",
+      "name": "📺哔哩｜点播",
+      "type": 3,
+      "api": "./lib/哔哩直播.py",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "天神",
+      "_src": "网页线路"
+    },
+    {
+      "key": "央库云",
+      "name": "🥇央视🔹大全",
+      "type": 3,
+      "api": "./py/央库云.py",
+      "searchable": 1,
+      "changeable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "playerType": 2,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "央视影视",
+      "name": "🥇央视🔹栏目",
+      "type": 3,
+      "api": "./py/央视影视.py",
+      "searchable": 1,
+      "changeable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "playerType": 2,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "cat_荐片app",
+      "name": "☀荐片🔹蓝光",
+      "type": 3,
+      "api": "./js/cat_荐片app.js",
+      "ext": {
+        "host": "https://api.ztcgi.com",
+        "catesSet": "电影&电视剧&综艺&动漫&纪录片",
+        "tabsSet": "极速蓝光"
+      },
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "Cat_荐片",
+      "name": "☀鉴片🔹极速",
+      "type": 3,
+      "api": "./js/jianpian_open.js",
+      "searchable": 1,
+      "quickSearch": 0,
+      "filterable": 1,
+      "类型": "影视",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "好好看",
+      "name": "☀好看🔹秒播",
+      "type": 3,
+      "api": "./js/pack.js",
+      "ext": {
+        "appid": "hkan",
+        "channelid": "c300000",
+        "versionName": "3.3.9",
+        "host": "https://vcache.shkjbd.com",
+        "package": "com.hkanC300000V250930.T120445",
+        "sort": "dujia1,dujia",
+        "lineCount": 1
+      },
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "cat_旺旺网",
+      "name": "☀旺旺🔹视频",
+      "type": 3,
+      "api": "./js/旺旺.js",
+      "style": {
+        "type": "rect",
+        "ratio": 1
+      },
+      "changeable": 1,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "cat_优夏网",
+      "name": "☀游侠🔹视频",
+      "type": 3,
+      "api": "./js/优夏.js",
+      "style": {
+        "type": "rect",
+        "ratio": 1
+      },
+      "changeable": 1,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "cat_非凡网",
+      "name": "☀非凡🔹影視",
+      "type": 3,
+      "api": "./js/非凡.js",
+      "style": {
+        "type": "rect",
+        "ratio": 1
+      },
+      "changeable": 1,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "cat_剧迷网",
+      "name": "☀剧迷🔹视频",
+      "type": 3,
+      "api": "./js/高清剧迷.js",
+      "style": {
+        "type": "rect",
+        "ratio": 1
+      },
+      "changeable": 1,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "py_6v",
+      "name": "☀六微🔹视频",
+      "type": 3,
+      "api": "./py/6v.py",
+      "searchable": 1,
+      "changeable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "playerType": 2,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "py_周六影库",
+      "name": "☀周六🔹颖院",
+      "type": 3,
+      "api": "./py/周六影库.py",
+      "searchable": 1,
+      "changeable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "playerType": 2,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "cat_骚火",
+      "name": "☀骚火🔹视频",
+      "type": 3,
+      "api": "./js/cat_骚火.js",
+      "style": {
+        "type": "rect",
+        "ratio": 1
+      },
+      "changeable": 1,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "py_华数",
+      "name": "☀华数🔹视频",
+      "type": 3,
+      "api": "./py/华数.py",
+      "searchable": 1,
+      "changeable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "playerType": 2,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "cat_永乐网",
+      "name": "☀永乐🔹视频",
+      "type": 3,
+      "api": "./js/永乐视频.js",
+      "style": {
+        "type": "rect",
+        "ratio": 1
+      },
+      "changeable": 1,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "腾腾",
+      "name": "☀腾翼🔹天翔",
+      "type": 3,
+      "jar": "./lib/jp.png",
+      "api": "./js/drpy2.min.js",
+      "ext": "./js/腾腾.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "奇奇",
+      "name": "☀爱在🔹心意",
+      "type": 3,
+      "jar": "./lib/jp.png",
+      "api": "./js/drpy2.min.js",
+      "ext": "./js/奇奇.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "果果",
+      "name": "☀茫茫🔹人海",
+      "type": 3,
+      "jar": "./lib/jp.png",
+      "api": "./js/drpy2.min.js",
+      "ext": "./js/果果.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "酷酷",
+      "name": "☀悠悠🔹岁月",
+      "type": 3,
+      "jar": "./lib/jp.png",
+      "api": "./js/drpy2.min.js",
+      "ext": "./js/酷酷.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "P123",
+      "name": "💿木偶🔹盘4k",
+      "type": 3,
+      "jar": "./js/js.jpg",
+      "playerType": 2,
+      "api": "csp_Mogg",
+      "ext": {
+        "site": "http://123.666291.xyz/"
+      },
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "Cat_聚合短剧",
+      "name": "🎦聚合🔹短剧",
+      "type": 3,
+      "api": "./js/duanju_juhe.js",
+      "searchable": 1,
+      "quickSearch": 0,
+      "filterable": 1,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "Cat_百度短剧",
+      "name": "🎦百度🔹短剧",
+      "type": 3,
+      "api": "./js/baidu_dj.js",
+      "searchable": 1,
+      "quickSearch": 0,
+      "filterable": 1,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "cat体育聚合",
+      "name": "⚽聚合🔹球赛",
+      "type": 3,
+      "api": "./js/体育聚合.js",
+      "style": {
+        "type": "rect",
+        "ratio": 1
+      },
+      "changeable": 1,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "py_咖啡直播",
+      "name": "⚽咖啡🔹球赛",
+      "type": 3,
+      "api": "./py/咖啡直播.py",
+      "style": {
+        "type": "list"
+      },
+      "quickSearch": 0,
+      "searchable": 1,
+      "changeable": 0,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "cat蜘蛛体育",
+      "name": "⚽蜘蛛🔹球赛",
+      "type": 3,
+      "api": "./js/蜘蛛体育.js",
+      "style": {
+        "type": "rect",
+        "ratio": 1
+      },
+      "changeable": 1,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "星微Vip",
+      "_src": "网页线路"
+    },
+    {
+      "key": "提醒",
+      "api": "csp_Douban2",
+      "name": "仅用作学习交流使用，请于24小时之内进行清除",
+      "type": 3,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "测试",
+      "name": "应用|更新",
+      "type": 3,
+      "api": "csp_MarketCAT",
+      "ext": "aHR0cHM6Ly94aWFvaHViYW4uY24tbmIxLnJhaW5zMy5jb20vbWFyay5qc29u",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "设置",
+      "name": "网弹|设置",
+      "type": 3,
+      "api": "csp_ConfigCAT",
+      "searchable": 0,
+      "changeable": 0,
+      "indexs": 0,
+      "style": {
+        "type": "rect",
+        "ratio": 1.618
+      },
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "我的网盘",
+      "name": "我的|网盘",
+      "type": 3,
+      "api": "csp_MyCloudCAT",
+      "style": {
+        "type": "list"
+      },
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "luoxue",
+      "api": "csp_HBLuoXueCAT",
+      "name": "落雪|弹幕",
+      "type": 3,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "HBJuDao",
+      "api": "csp_HBJuDaoCAT",
+      "name": "东厂|弹幕",
+      "type": 3,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "HBFiveDm",
+      "api": "csp_HBFiveDmCAT",
+      "name": "五漫|弹幕",
+      "type": 3,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "HBBaoHuo",
+      "api": "csp_HBBaoHuoCAT",
+      "name": "火火|弹幕",
+      "type": 3,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "HBYiQi",
+      "api": "csp_HBYiQiCAT",
+      "name": "一起|弹幕",
+      "type": 3,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "落雨",
+      "name": "落雨|弹幕",
+      "type": 3,
+      "api": "csp_HBXueluoCAT",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "HBMaiTian",
+      "api": "csp_HBMaiTianCAT",
+      "name": "美美|弹幕",
+      "type": 3,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "HBDYYZ",
+      "api": "csp_HBDYYZCAT",
+      "name": "驿站|弹幕",
+      "type": 3,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "独播",
+      "name": "独播|弹幕",
+      "type": 3,
+      "api": "csp_DubokuCAT",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "HBGuaZi",
+      "name": "瓜子|弹幕",
+      "type": 3,
+      "api": "csp_HBGuaZiCAT",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "HBPianKu8",
+      "name": "片库|弹幕",
+      "type": 3,
+      "api": "csp_HBPianKu8CAT",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "HBXingKong4K",
+      "name": "糖豆|舞蹈",
+      "type": 3,
+      "api": "csp_HBTangDouCAT",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "巴士",
+      "name": "巴士|弹幕",
+      "type": 3,
+      "api": "csp_Dm84CAT",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "B站直播",
+      "name": "B站|直播",
+      "type": 3,
+      "api": "csp_BilibiliLiveCAT",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "网盘虎斑",
+      "name": "虎斑|4k网盘",
+      "type": 3,
+      "playerType": 2,
+      "api": "csp_MoggCAT",
+      "ext": {
+        "tyitoken": "http://127.0.0.1:9978/file/TVBox/tyitoken.txt",
+        "dutoken": "http://127.0.0.1:9978/file/TVBox/dutoken.txt",
+        "p123token": "http://127.0.0.1:9978/file/TVBox/p123token.txt",
+        "token": "http://127.0.0.1:9978/file/TVBox/Altoken.txt",
+        "cookie": "http://127.0.0.1:9978/file/TVBox/qkcookie.txt",
+        "uccookie": "http://127.0.0.1:9978/file/TVBox/uccookie.txt",
+        "tuctoken": "http://127.0.0.1:9978/file/TVBox/tuctoken.txt",
+        "site": "http://38.76.197.172:16969/"
+      },
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "玩偶哥哥",
+      "name": "玩偶|4k网盘",
+      "type": 3,
+      "playerType": 2,
+      "api": "csp_WoggCAT",
+      "ext": {
+        "site": "https://wogg.xxooo.cf/"
+      },
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "盼盼",
+      "name": "海棉|盘搜",
+      "type": 3,
+      "playerType": 2,
+      "api": "csp_HBhaiMCAT",
+      "ext": {
+        "hmianck": "",
+        "site": "https://www.haimianxz.com"
+      },
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "雷静",
+      "name": "雷静|盘搜",
+      "type": 3,
+      "playerType": 2,
+      "api": "csp_HBleiJingCAT",
+      "ext": {
+        "tyitoken": "http://127.0.0.1:9978/file/HBTV/tyitoken.txt",
+        "leijck": ""
+      },
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "灵虎",
+      "name": "灵虎|弹幕",
+      "type": 3,
+      "searchable": 1,
+      "changeable": 1,
+      "api": "csp_HBgetappCAT",
+      "ext": {
+        "host": "https://bind.315999.xyz/89.txt",
+        "appkey": "#getapp@TMD@2025",
+        "appiv": "#getapp@TMD@2025"
+      },
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "小猫",
+      "name": "小猫|自定",
+      "type": 3,
+      "api": "csp_HBcms10CAT",
+      "ext": "https://vs.okcdn100.top/api.php/provide/vod/",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "馆源",
+      "name": "馆源|自定",
+      "type": 3,
+      "api": "csp_HB360CAT",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "d'd",
+      "name": "修罗|弹幕",
+      "type": 3,
+      "api": "csp_HBPQCAT",
+      "ext": {
+        "数组": "card card-sm card-link&&</div>",
+        "图片": "src=\"&&\"",
+        "标题": "mb-0 card-title text-truncate\">&&<",
+        "副标题": "start-0 text-red-fg\">&&</span>",
+        "链接": "href=\"&&\"",
+        "简介": "剧情简介：&&\"",
+        "线路标题": "磁力+>&&<",
+        "播放数组": "download-list&&</tbody>",
+        "播放列表": "<tr&&</tr>",
+        "播放标题": "text-muted\">&&</td>[不包含:网盘下载]",
+        "跳转播放链接": "href=\"&&\"",
+        "分类url": "https://v.xlys.ltd.ua/s/all/{catePg}?type={cateId};;d0",
+        "分类": "电影$0#电视剧$1"
+      },
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "天天",
+      "name": "天天|弹幕",
+      "type": 3,
+      "api": "csp_HBtiantianv3CAT",
+      "ext": "http://v.rbotv.cn",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "jianpian",
+      "name": "荐片|弹幕",
+      "type": 3,
+      "api": "csp_JianpianCAT",
+      "ext": "https://zxfmj.com/",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "磁力",
+      "name": "6V|弹幕",
+      "type": 3,
+      "api": "csp_Xb6vCAT",
+      "ext": "0",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "旺旺",
+      "name": "旺旺|弹幕",
+      "type": 3,
+      "api": "csp_HBwwggCAT",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "酷浪",
+      "name": "酷浪|弹幕",
+      "type": 3,
+      "api": "csp_HBtiantianCAT",
+      "ext": "http://v.lkuys.cn/",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "jarcai",
+      "name": "文才|弹幕",
+      "type": 3,
+      "api": "csp_WcaiCAT",
+      "ext": "https://www.jxshdzs.com/",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "风铃",
+      "name": "风铃|动漫",
+      "type": 3,
+      "api": "csp_HBflingCAT",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "土豆",
+      "name": "土豆|搜索",
+      "type": 3,
+      "api": "csp_HBtdouCAT",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "dmmiku",
+      "name": "异世界|动漫",
+      "type": 3,
+      "api": "csp_YsjCAT",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "体育",
+      "name": "体育|实时",
+      "type": 3,
+      "api": "csp_KanqiuCAT",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "push_agent",
+      "name": "手机｜推送",
+      "type": 3,
+      "api": "csp_PushCAT",
+      "searchable": 0,
+      "filterable": 0,
+      "changeable": 0,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "专用",
+      "name": "测试|专用",
+      "type": 3,
+      "api": "csp_HBxLei8CAT",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
       "key": "drpy_js_310直播",
       "name": "🏀┃体育┃直播",
       "type": 3,
@@ -7280,6 +8570,151 @@
       "_adult": false,
       "_crawler": true,
       "_line": "幸福年年",
+      "_src": "网页线路"
+    },
+    {
+      "key": "瓜子影视",
+      "name": "瓜子｜影视",
+      "type": 3,
+      "api": "./js/瓜子.py",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "夏夏影视",
+      "_src": "网页线路"
+    },
+    {
+      "key": "腾讯弹幕",
+      "name": "讯讯｜星源",
+      "type": 3,
+      "jar": "./nm/nm.jar",
+      "api": "https://gitee.com/xiayede/drpy/raw/master/drpy2.min.js",
+      "ext": "./js/腾讯弹幕.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "夏夏影视",
+      "_src": "网页线路"
+    },
+    {
+      "key": "芒果弹幕",
+      "name": "果果｜星源",
+      "type": 3,
+      "api": "https://gitee.com/xiayede/drpy/raw/master/drpy2.min.js",
+      "ext": "./js/芒果弹幕.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "夏夏影视",
+      "_src": "网页线路"
+    },
+    {
+      "key": "哔哩",
+      "name": "小哩｜星源",
+      "type": 3,
+      "api": "https://gitee.com/xiayede/drpy/raw/master/drpy2.min.js",
+      "ext": "./js/哔哩视频.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "夏夏影视",
+      "_src": "网页线路"
+    },
+    {
+      "key": "bilibili",
+      "name": "B站｜星源",
+      "type": 3,
+      "api": "./js/哔哩合集.py",
+      "searchable": 1,
+      "changeable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "playerType": 2,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "夏夏影视",
+      "_src": "网页线路"
+    },
+    {
+      "key": "华数",
+      "name": "星华｜星源",
+      "type": 3,
+      "api": "./js/华数TV.py",
+      "searchable": 1,
+      "changeable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "playerType": 2,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "夏夏影视",
+      "_src": "网页线路"
+    },
+    {
+      "key": "爱奇艺弹幕",
+      "name": "小艺｜星源",
+      "type": 3,
+      "api": "https://gitee.com/xiayede/drpy/raw/master/drpy2.min.js",
+      "ext": "./js/爱奇艺弹幕.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "夏夏影视",
+      "_src": "网页线路"
+    },
+    {
+      "key": "优酷弹幕",
+      "name": "小酷｜星源",
+      "type": 3,
+      "api": "https://gitee.com/xiayede/drpy/raw/master/drpy2.min.js",
+      "ext": "./js/优酷弹幕.js",
+      "_adult": false,
+      "_crawler": true,
+      "_line": "夏夏影视",
+      "_src": "网页线路"
+    },
+    {
+      "key": "趣盘",
+      "name": "趣盘｜4K",
+      "type": 3,
+      "api": "csp_PanWebQu",
+      "jar": "https://gitee.com/xiayede/tvbox/raw/master/spider.jar",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "changeable": 1,
+      "style": {
+        "type": "list",
+        "ratio": 1.433
+      },
+      "ext": {
+        "url": "https://www.qupanshe.com"
+      },
+      "_adult": false,
+      "_crawler": true,
+      "_line": "夏夏影视",
+      "_src": "网页线路"
+    },
+    {
+      "key": "移动",
+      "name": "盘他｜4k",
+      "type": 3,
+      "api": "csp_YD",
+      "jar": "https://gitee.com/xiayede/tvbox/raw/master/spider.jar",
+      "searchable": 1,
+      "quickSearch": 1,
+      "_adult": false,
+      "_crawler": true,
+      "_line": "夏夏影视",
+      "_src": "网页线路"
+    },
+    {
+      "key": "人人电影网",
+      "name": "人人｜4K",
+      "type": 3,
+      "api": "https://gitee.com/xiayede/drpy/raw/master/drpy2.min.js",
+      "ext": "./js/人人电影网.js",
+      "style": {
+        "type": "list"
+      },
+      "_adult": false,
+      "_crawler": true,
+      "_line": "夏夏影视",
       "_src": "网页线路"
     },
     {
@@ -8117,17 +9552,6 @@
       "_src": "网页线路"
     },
     {
-      "key": "csp_Anime1",
-      "name": "💕动漫",
-      "type": 3,
-      "api": "csp_Anime1",
-      "searchable": 1,
-      "_adult": false,
-      "_crawler": true,
-      "_line": "健康家用",
-      "_src": "网页线路"
-    },
-    {
       "key": "csp_BTPiaoHua",
       "name": "💕新飘花电影网(磁力)",
       "type": 3,
@@ -8539,34 +9963,10 @@
       "_src": "网页线路"
     },
     {
-      "key": "櫻花",
-      "name": "櫻花",
-      "type": 3,
-      "api": "csp_Ying",
-      "searchable": 1,
-      "changeable": 1,
-      "_adult": false,
-      "_crawler": true,
-      "_line": "FongMI线路",
-      "_src": "网页线路"
-    },
-    {
       "key": "巴士",
       "name": "巴士",
       "type": 3,
       "api": "csp_Dm84",
-      "searchable": 1,
-      "changeable": 1,
-      "_adult": false,
-      "_crawler": true,
-      "_line": "FongMI线路",
-      "_src": "网页线路"
-    },
-    {
-      "key": "異界",
-      "name": "異界",
-      "type": 3,
-      "api": "csp_Ysj",
       "searchable": 1,
       "changeable": 1,
       "_adult": false,
@@ -13000,21 +14400,6 @@
       "_src": "网页线路"
     },
     {
-      "key": "央视影视",
-      "name": "央视｜APP",
-      "type": 3,
-      "api": "./py/央视影视.py",
-      "searchable": 1,
-      "changeable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "playerType": 2,
-      "_adult": false,
-      "_crawler": true,
-      "_line": "时光",
-      "_src": "网页线路"
-    },
-    {
       "key": "五八PY",
       "name": "伍捌｜APP",
       "type": 3,
@@ -13054,18 +14439,6 @@
       "filterable": 1,
       "order_num": 0,
       "ext": "./js/布雷.js",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "时光",
-      "_src": "网页线路"
-    },
-    {
-      "key": "移动",
-      "name": "移动｜影视",
-      "type": 3,
-      "api": "csp_YD",
-      "searchable": 1,
-      "quickSearch": 1,
       "_adult": false,
       "_crawler": true,
       "_line": "时光",
@@ -13257,17 +14630,6 @@
       "type": 3,
       "api": "./js/drpy2.min.js",
       "ext": "./js/56动漫.js",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "时光",
-      "_src": "网页线路"
-    },
-    {
-      "key": "NT动漫",
-      "name": "NT｜动漫",
-      "type": 3,
-      "api": "./js/drpy2.min.js",
-      "ext": "./js/NT动漫.js",
       "_adult": false,
       "_crawler": true,
       "_line": "时光",
@@ -16007,21 +17369,6 @@
       "_src": "网页线路"
     },
     {
-      "key": "央库云",
-      "name": "央视｜云聚",
-      "type": 3,
-      "api": "./py/央库云.py",
-      "searchable": 1,
-      "changeable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "playerType": 2,
-      "_adult": false,
-      "_crawler": true,
-      "_line": "软件小哥",
-      "_src": "网页线路"
-    },
-    {
       "key": "存档emby",
       "name": "拾光┃EMBY",
       "type": 3,
@@ -16538,27 +17885,6 @@
         "ratio": 1.433
       },
       "ext": "https://ygbh.site/max/json/kf.json",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "月光宝盒",
-      "_src": "网页线路"
-    },
-    {
-      "key": "趣盘",
-      "name": "趣盘┃4K弹幕",
-      "type": 3,
-      "api": "csp_PanWebQu",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 1,
-      "style": {
-        "type": "list",
-        "ratio": 1.433
-      },
-      "ext": {
-        "url": "https://www.qupanshe.com"
-      },
       "_adult": false,
       "_crawler": true,
       "_line": "月光宝盒",
