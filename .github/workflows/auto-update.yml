@@ -1,61 +1,33 @@
-name: TVBox ceshi 终极兜底聚合（每日更新）
+name: CS 终极出链（影视仓）
 
-# 这是"杀手锏"：当 yingshicang / quanwangjiansuo 都不可用时的最后保险。
-# 每天自动：拉 yingshicang 成品 -> 拉 quanwangjiansuo 自搜结果 -> 去重合并 -> 分类 -> 探测 -> 推送。
-# CS 本身不做自主搜索；全网自主搜索由 quanwangjiansuo（QWJS）负责。
-#
-# 任务时间安排（已完善，形成清晰级联）：
-#   - yingshicang   每天北京时间 01:00（UTC 17:00）先跑，产出上游老源成品；
-#   - quanwangjiansuo 每天北京时间 02:00（UTC 18:00）再跑，产出自搜结果；
-#   - 本任务(ceshi) 排在最后，北京时间 03:00（UTC 19:00）只做两者去重合并；
-#     上游任一天失败，本任务直接从另一个仍有数据的仓库合并，保证最后这道保险始终有数据。
 on:
   schedule:
-    - cron: "0 19 * * 0"      # 每周一 北京时间 03:00 自动跑（UTC 周日 19:00）
-  workflow_dispatch: {}       # 也可在 Actions 页手动 "Run workflow"
-
-# 串行锁：避免重复运行（定时 + 手动）同时提交导致互相 rejection
-concurrency:
-  group: ceshi-auto-update
-  cancel-in-progress: false
+    - cron: '0 19 * * 0'        # 每周一 北京时间 03:00（UTC 周日 19:00）
+  workflow_dispatch: {}
 
 permissions:
   contents: write
 
 jobs:
-  update:
+  build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 20
     steps:
-      - name: 检出仓库
-        uses: actions/checkout@v4
-
-      - name: 设置 Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
-      - name: ② 聚合：yingshicang 成品 + quanwangjiansuo 自搜结果 → 去重合并 → 分类 → 保守探测
-        env:
-          PROBE: "1"
-        run: |
-          python3 scripts/aggregate.py
-
-      - name: ④ 提交并推送结果
+      - name: 拉 QWJS 分类 + YSC 合集，生成 5 个订阅链接
+        run: python3 scripts/build.py
+      - name: 提交并推送
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add tvbox-普通.json tvbox-部分.json
+          git rm -f --ignore-unmatch tvbox-普通.json tvbox-部分.json direct_sources.json crawler_sources.json || true
+          git add 1直连-全部.json 1直连-部分.json 2爬虫-全部.json 2爬虫-部分.json 接口合集.json README.md
           if git diff --cached --quiet; then
             echo "无变化，跳过提交"
           else
-            git commit -m "auto: 终极兜底聚合更新 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            # 安全变基兜底：极端并发被抢先提交时，先拉再推，不丢本次结果
-            for i in 1 2 3; do
-              if git push origin HEAD:main 2>&1 | tail -3; then
-                echo PUSH_OK; break
-              fi
-              git pull --rebase origin main 2>&1 | tail -2 || true
-              echo "retry $i"; sleep 5
-            done
+            git commit -m "auto: CS 出链更新 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push
           fi
