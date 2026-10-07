@@ -46,13 +46,25 @@ def fetch_json(url, timeout=40):
     return None, str(last)
 
 
+def load_item(local, base, remote):
+    """优先读同仓库本地文件（合并管线），否则回退 raw 拉取（多仓链路）。"""
+    if os.path.exists(local):
+        try:
+            with open(local, encoding="utf-8") as f:
+                print(f"  · 读取本地 {local}")
+                return json.load(f), None
+        except Exception as e:
+            return None, f"本地读取失败: {e}"
+    return fetch_json(base + remote)
+
+
 def main():
     t0 = time.time()
     landed = []
     for local, base, remote in ITEMS:
-        d, err = fetch_json(base + remote)
+        d, err = load_item(local, base, remote)
         if d is None:
-            print(f"  ✗ 拉取 {remote} 失败: {err}")
+            print(f"  ✗ 获取 {remote} 失败: {err}")
             continue
         d = dict(d)
         d["_from"] = base + remote
@@ -62,10 +74,9 @@ def main():
         landed.append((local, n))
         print(f"  ✓ 落地 {local} (items={n})")
 
-    # 生成 README（5 个订阅链接，对外只用全部/部分命名，不写分组含义）
-    readme = build_readme(landed)
-    with open("README.md", "w", encoding="utf-8") as f:
-        f.write(readme)
+    # README 由部署脚本（deploy.py）单独维护为「模糊描述 + 声明」版本。
+    # 此处刻意不写入 README —— 历史踩坑：流水线每次运行都会把对外说明冲掉，
+    # 重新生成成带用途说明和链接的版本，等于白改。故停用 build_readme()。
     print(f"[CS] 完成，落地 {len(landed)}/5 个文件，用时 {(time.time()-t0):.1f}s")
 
 
