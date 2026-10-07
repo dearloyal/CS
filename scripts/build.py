@@ -7,12 +7,12 @@ CS 出链脚本（部署到 dearloyal/CS → scripts/build.py）
   ① 读取 QWJS 生成的 4 个分类接口；
   ② 读取 YSC 生成的「接口合集」；
   ③ 在 CS 仓库落地【5 个可订阅链接】，供用户直接使用：
-        1. 1直连-全部.json   （来自 QWJS：直连 + 正常）
-        2. 1直连-部分.json   （来自 QWJS：直连 + 成人）
-        3. 2爬虫-全部.json   （来自 QWJS：爬虫 + 正常）
-        4. 2爬虫-部分.json   （来自 QWJS：爬虫 + 成人）
+        1. 1直连-全部.json   （来自 QWJS：直连）
+        2. 1直连-部分.json   （来自 QWJS：直连）
+        3. 2爬虫-全部.json   （来自 QWJS：爬虫）
+        4. 2爬虫-部分.json   （来自 QWJS：爬虫）
         5. 接口合集.json     （来自 YSC：可手动选线路 饭太硬/南风/王二小…）
-  另外生成 README.md，列出 5 个订阅链接。
+  另外生成 README.md，列出 5 个订阅链接（对外不写分组含义）。
 运行：python3 scripts/build.py
 """
 import json, os, time, subprocess, sys
@@ -62,7 +62,7 @@ def main():
         landed.append((local, n))
         print(f"  ✓ 落地 {local} (items={n})")
 
-    # 生成 README（5 个订阅链接）
+    # 生成 README（5 个订阅链接，对外只用全部/部分命名，不写分组含义）
     readme = build_readme(landed)
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(readme)
@@ -74,16 +74,16 @@ def build_readme(landed):
         "# CS · 影视仓最终出链（ceshi）",
         "",
         "> 本仓库是「终极兜底」出链层：把 QWJS 分类好的接口 + YSC 的线路合集，",
-        "> 整理成 5 个可直接订阅的影视仓链接。每周一 北京时间 03:00 自动更新。",
+        "> 整理成 5 个可直接订阅的影视仓链接。每周一自动更新。",
         "",
         "## 五个订阅链接（ghfast 镜像，国内可用）",
         "",
     ]
     labels = {
-        "1直连-全部.json": "① 直连 · 全部（正常接口）",
-        "1直连-部分.json": "② 直连 · 部分（成人接口）",
-        "2爬虫-全部.json": "③ 爬虫 · 全部（正常接口）",
-        "2爬虫-部分.json": "④ 爬虫 · 部分（成人接口）",
+        "1直连-全部.json": "① 直连 · 全部",
+        "1直连-部分.json": "② 直连 · 部分",
+        "2爬虫-全部.json": "③ 爬虫 · 全部",
+        "2爬虫-部分.json": "④ 爬虫 · 部分",
         "接口合集.json": "⑤ 接口合集（可手动选线路：饭太硬/南风/王二小…）",
     }
     for local, n in landed:
@@ -95,7 +95,7 @@ def build_readme(landed):
         lines.append("")
     lines += [
         "## 备注",
-        "- **全部 = 正常可用接口；部分 = 成人接口**（按用户要求命名，不在文件名写“成人”）。",
+        "- 全部 / 部分为接口的不同分组，按使用需要选用。",
         "- 直连 / 爬虫 由 QWJS 用直连脚本与爬虫脚本判定后分流。",
         "- 接口合集来自 YSC：导入影视仓后可在线路列表手动切换 饭太硬 / 南风 / 王二小 等。",
     ]
