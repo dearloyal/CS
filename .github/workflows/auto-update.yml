@@ -45,7 +45,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add tvbox-normal.json tvbox-adult.json
+          git add tvbox-普通.json tvbox-部分.json
           if git diff --cached --quiet; then
             echo "无变化，跳过提交"
           else
