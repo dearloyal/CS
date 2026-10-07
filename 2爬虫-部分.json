@@ -148,26 +148,6 @@
       "_src": "网页线路"
     },
     {
-      "key": "马猴影视",
-      "name": "马猴 • APP",
-      "type": 3,
-      "api": "csp_App3Q",
-      "ext": {
-        "host": "https://45.150.167.18:8000",
-        "finger": "SF-A962FEC75DA28D7514F2A16580334272A78AC0A8429F10C94F47C1BAFC876E3F",
-        "updateId": "43c1ef69-3748-aaeb-317f-c621c77653ee",
-        "deviceBrand": "vivo",
-        "deviceModel": "V2309A",
-        "pkg": "com.damahou.tv",
-        "sk": "SK-woniu-thanks",
-        "ver": "1"
-      },
-      "_adult": true,
-      "_crawler": true,
-      "_line": "潇洒",
-      "_src": "网页线路"
-    },
-    {
       "key": "油管jar",
       "name": "油管jar",
       "type": 3,
@@ -188,6 +168,25 @@
       "_adult": true,
       "_crawler": true,
       "_line": "老张",
+      "_src": "网页线路"
+    },
+    {
+      "key": "秒看",
+      "name": "秒看",
+      "type": 3,
+      "quickSearch": 1,
+      "jar": "https://xiuxiu-pro.meitudata.com/posters/5199d8f8bcbe3c6d6938ded33cb90596.png",
+      "api": "csp_AppGet",
+      "ext": {
+        "site": "https://mk1080.top/get.txt",
+        "dataKey": "c60d88b2eep53za8",
+        "dataIv": "c60d88b2eep53za8",
+        "token": "06caee3952a4c97d1ad4c766c875a99d3fa83aa68f46188823600d59ebba4469",
+        "ua": "okhttp/3.10.0"
+      },
+      "_adult": true,
+      "_crawler": true,
+      "_line": "小马",
       "_src": "网页线路"
     },
     {
