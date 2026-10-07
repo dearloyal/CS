@@ -1,0 +1,82 @@
+name: pipeline
+
+on:
+  schedule:
+    - cron: '0 17 * * 0'        # 每周一 北京时间 01:00（UTC 周日 17:00）—— 唯一入口
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: 阶段1 抓取与解密
+        run: python3 scripts/ysc_build.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stage1
+          path: |
+            网站接口数据.json
+            接口合集.json
+
+  classify:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          name: stage1
+      - name: 阶段2 分类
+        run: python3 scripts/qwjs_classify.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stage2
+          path: |
+            1直连-全部.json
+            1直连-部分.json
+            2爬虫-全部.json
+            2爬虫-部分.json
+
+  output:
+    needs: classify
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          name: stage1
+          path: .
+      - uses: actions/download-artifact@v4
+        with:
+          name: stage2
+          path: .
+      - name: 阶段3 出链
+        run: python3 scripts/cs_build.py
+      - name: 提交并推送
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add 1直连-全部.json 1直连-部分.json 2爬虫-全部.json 2爬虫-部分.json 接口合集.json
+          if git diff --cached --quiet; then
+            echo "无变化，跳过提交"
+          else
+            git commit -m "auto: 更新 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git pull --rebase origin main || true
+            git push
+          fi
