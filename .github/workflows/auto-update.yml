@@ -1,9 +1,7 @@
 name: CS 终极出链（影视仓）
 
 on:
-  schedule:
-    - cron: '0 19 * * 0'        # 每周一 北京时间 03:00（UTC 周日 19:00）
-  workflow_dispatch: {}
+  workflow_dispatch: {}        # 无独立 cron，仅在被 QWJS 链式触发或手动触发时运行
 
 permissions:
   contents: write
