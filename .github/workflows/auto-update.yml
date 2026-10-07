@@ -25,8 +25,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git rm -f --ignore-unmatch tvbox-普通.json tvbox-部分.json direct_sources.json crawler_sources.json || true
-          git add 1直连-全部.json 1直连-部分.json 2爬虫-全部.json 2爬虫-部分.json 接口合集.json README.md
+          git add -A
           if git diff --cached --quiet; then
             echo "无变化，跳过提交"
           else
