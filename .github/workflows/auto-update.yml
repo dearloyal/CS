@@ -11,7 +11,7 @@ name: TVBox ceshi 终极兜底聚合（每日更新）
 #     上游任一天失败，本任务直接从另一个仍有数据的仓库合并，保证最后这道保险始终有数据。
 on:
   schedule:
-    - cron: "0 19 * * *"      # UTC 19:00 = 北京时间次日 03:00
+    - cron: "0 19 * * 0"      # 每周一 北京时间 03:00 自动跑（UTC 周日 19:00）
   workflow_dispatch: {}       # 也可在 Actions 页手动 "Run workflow"
 
 # 串行锁：避免重复运行（定时 + 手动）同时提交导致互相 rejection
