@@ -5,7 +5,7 @@
   "subset_meaning": "部分 = 成人接口",
   "adult": true,
   "source": "dearloyal/YSC",
-  "count": 85,
+  "count": 92,
   "sites": [
     {
       "key": "视界",
@@ -148,26 +148,6 @@
       "_src": "网页线路"
     },
     {
-      "key": "马猴影视",
-      "name": "马猴 • APP",
-      "type": 3,
-      "api": "csp_App3Q",
-      "ext": {
-        "host": "https://45.150.167.18:8000",
-        "finger": "SF-A962FEC75DA28D7514F2A16580334272A78AC0A8429F10C94F47C1BAFC876E3F",
-        "updateId": "43c1ef69-3748-aaeb-317f-c621c77653ee",
-        "deviceBrand": "vivo",
-        "deviceModel": "V2309A",
-        "pkg": "com.damahou.tv",
-        "sk": "SK-woniu-thanks",
-        "ver": "1"
-      },
-      "_adult": true,
-      "_crawler": true,
-      "_line": "潇洒",
-      "_src": "网页线路"
-    },
-    {
       "key": "油管jar",
       "name": "油管jar",
       "type": 3,
@@ -188,6 +168,25 @@
       "_adult": true,
       "_crawler": true,
       "_line": "老张",
+      "_src": "网页线路"
+    },
+    {
+      "key": "秒看",
+      "name": "秒看",
+      "type": 3,
+      "quickSearch": 1,
+      "jar": "https://xiuxiu-pro.meitudata.com/posters/5199d8f8bcbe3c6d6938ded33cb90596.png",
+      "api": "csp_AppGet",
+      "ext": {
+        "site": "https://mk1080.top/get.txt",
+        "dataKey": "c60d88b2eep53za8",
+        "dataIv": "c60d88b2eep53za8",
+        "token": "06caee3952a4c97d1ad4c766c875a99d3fa83aa68f46188823600d59ebba4469",
+        "ua": "okhttp/3.10.0"
+      },
+      "_adult": true,
+      "_crawler": true,
+      "_line": "小马",
       "_src": "网页线路"
     },
     {
@@ -369,6 +368,83 @@
       "_src": "网页线路"
     },
     {
+      "key": "drpy_js_豆瓣",
+      "name": "导航|万事顺遂",
+      "type": 3,
+      "api": "csp_DoubanCAT",
+      "ext": "http://43.248.128.118:25252/仅供测试/lib/douban.json",
+      "_adult": true,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "静月",
+      "name": "养生|京城",
+      "type": 3,
+      "api": "http://43.248.128.118:25252/仅供测试/lib/drpy2.min.js",
+      "ext": "http://43.248.128.118:25252/仅供测试/lib/养生.js",
+      "_adult": true,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "tenteng",
+      "name": "落日|自定",
+      "type": 3,
+      "api": "http://43.248.128.118:25252/仅供测试/lib/drpy2.min.js",
+      "ext": "http://43.248.128.118:25252/仅供测试/lib/腾腾.js",
+      "_adult": true,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "youyou",
+      "name": "日出|自定",
+      "type": 3,
+      "api": "http://43.248.128.118:25252/仅供测试/lib/drpy2.min.js",
+      "ext": "http://43.248.128.118:25252/仅供测试/lib/优优.js",
+      "_adult": true,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "qiqi",
+      "name": "晚霞|自定",
+      "type": 3,
+      "api": "http://43.248.128.118:25252/仅供测试/lib/drpy2.min.js",
+      "ext": "http://43.248.128.118:25252/仅供测试/lib/奇奇.js",
+      "_adult": true,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "mangmang",
+      "name": "朝阳|自定",
+      "type": 3,
+      "api": "http://43.248.128.118:25252/仅供测试/lib/drpy2.min.js",
+      "ext": "http://43.248.128.118:25252/仅供测试/lib/茫茫.js",
+      "_adult": true,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
+      "key": "4Kav",
+      "name": "4Kav|弹幕",
+      "type": 3,
+      "api": "csp_HB4kavCAT",
+      "playerType": 2,
+      "_adult": true,
+      "_crawler": true,
+      "_line": "小虎斑",
+      "_src": "网页线路"
+    },
+    {
       "key": "4k-av",
       "name": "💓‍4k-av",
       "type": 3,
@@ -437,30 +513,6 @@
       "_adult": true,
       "_crawler": true,
       "_line": "高天流云js",
-      "_src": "网页线路"
-    },
-    {
-      "key": "集多聚合",
-      "name": "直播┃聚合",
-      "type": 3,
-      "api": "csp_LiveLm",
-      "jar": "./jar/jd.jar",
-      "searchable": 1,
-      "quickSearch": 1,
-      "changeable": 1,
-      "filterable": 1,
-      "timeout": 60,
-      "style": {
-        "type": "rect",
-        "ratio": 1.309
-      },
-      "ext": {
-        "siteUrl": "https://lemonlive.pages.dev",
-        "msg": "124421jh8lk39646pgruC6dATnyTtf6ewyst71opcsJfticyXxWGbU5x4zxzEQ5LWhshM7QSmwiAgf0H4RN8rjjuUPQPPsiTj8Yz48I27L5SoL/Lbg70J558Qnv6Dtdt9BeeyWciQnnqApDLzxuKF+nEHryocRY26k1efEO43zCfP69tVyTyWvQ/MT7q/J7KDiOdwg0CGUc0cPhVc3AiwU6ZXIapEVCaeJ1OkLO2LzfrGsCulTGV9LrN4N8omBYpohl4BgdDhg8SQwEh9MoFXC1M2AqzePjz+itosXK3VQ3Ch4ba88bCsZSAs56JWl570OQ5t3yuPDslC75Y1p4Y9x9OOnztqiDqRbgpaXR5KWKYWfjU9T1H2SXW3uAmq9Z2GQKDrAQT7gB35NJeagOshSRZScjiS3Ss7lf/6iMfs9NInk9DfLj/H/9HCcIDRr1AG/ZGgLLtB/doGr0l/oENwrHwu+kLjzqWcmiAPcaLdbeeK18hxlYJBvXIlfjoWgopvFnm7338rR8k7EwtnU39fRJph5WcuPdvL5ZivGdWO+EYQ47zLhX038Vcju8iF3omFTj5W6D9FEOXryKIMCBgi8G5t+I73iaFCGGzTA=="
-      },
-      "_adult": true,
-      "_crawler": true,
-      "_line": "时光",
       "_src": "网页线路"
     },
     {
@@ -563,6 +615,30 @@
       "_adult": true,
       "_crawler": true,
       "_line": "真六",
+      "_src": "网页线路"
+    },
+    {
+      "key": "集多聚合",
+      "name": "直播┃聚合",
+      "type": 3,
+      "api": "csp_LiveLm",
+      "jar": "./jar/jd.jar",
+      "searchable": 1,
+      "quickSearch": 1,
+      "changeable": 1,
+      "filterable": 1,
+      "timeout": 60,
+      "style": {
+        "type": "rect",
+        "ratio": 1.309
+      },
+      "ext": {
+        "siteUrl": "https://lemonlive.pages.dev",
+        "msg": "124421jh8lk39646pgruC6dATnyTtf6ewyst71opcsJfticyXxWGbU5x4zxzEQ5LWhshM7QSmwiAgf0H4RN8rjjuUPQPPsiTj8Yz48I27L5SoL/Lbg70J558Qnv6Dtdt9BeeyWciQnnqApDLzxuKF+nEHryocRY26k1efEO43zCfP69tVyTyWvQ/MT7q/J7KDiOdwg0CGUc0cPhVc3AiwU6ZXIapEVCaeJ1OkLO2LzfrGsCulTGV9LrN4N8omBYpohl4BgdDhg8SQwEh9MoFXC1M2AqzePjz+itosXK3VQ3Ch4ba88bCsZSAs56JWl570OQ5t3yuPDslC75Y1p4Y9x9OOnztqiDqRbgpaXR5KWKYWfjU9T1H2SXW3uAmq9Z2GQKDrAQT7gB35NJeagOshSRZScjiS3Ss7lf/6iMfs9NInk9DfLj/H/9HCcIDRr1AG/ZGgLLtB/doGr0l/oENwrHwu+kLjzqWcmiAPcaLdbeeK18hxlYJBvXIlfjoWgopvFnm7338rR8k7EwtnU39fRJph5WcuPdvL5ZivGdWO+EYQ47zLhX038Vcju8iF3omFTj5W6D9FEOXryKIMCBgi8G5t+I73iaFCGGzTA=="
+      },
+      "_adult": true,
+      "_crawler": true,
+      "_line": "时光2线",
       "_src": "网页线路"
     },
     {
