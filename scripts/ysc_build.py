@@ -135,40 +135,104 @@ def load_cdz_lines():
     return rows
 
 
+# ── 宽松 JSON 解析 ────────────────────────────────────────────────
+# jiemi.php 返回的是"伪 JSON"：带 // 注释头、BOM、尾逗号、块注释、
+# 对象之后还有残留文本。旧版只做 first{ .. last} 切片 + 去整行 //，
+# 会把大量本可解析的线路误判为 no-json（实测 84 条因此丢掉 5~13 条）。
+# 这里改为：去注释 → 括号配对取第一个完整对象 → 尾逗号/控制字符兜底。
+_TRAIL_COMMA = re.compile(r",(\s*[}\]])")
+
+
+def _strip_comments(t, hashes=False):
+    """去 BOM、整行 // 注释、块注释 /* */；hashes=True 时再去 # 注释行。
+    不动 URL 里的 // 与 #；# 行只在前面都失败时才兜底去除，避免误删
+    字符串内部以 # 开头的内容。"""
+    t = t.replace("\ufeff", "").replace("﻿", "")
+    t = re.sub(r"/\*.*?\*/", "", t, flags=re.S)
+    bad = ("//", "#") if hashes else ("//",)
+    return "\n".join(l for l in t.splitlines()
+                     if not l.strip().startswith(bad))
+
+
+def _scan_object(t, start):
+    """从 start 的 '{' 起做括号配对（跳过字符串与转义），返回匹配的 '}' 下标。"""
+    depth = in_str = esc = 0
+    for i in range(start, len(t)):
+        c = t[i]
+        if in_str:
+            if esc:
+                esc = 0
+            elif c == "\\":
+                esc = 1
+            elif c == '"':
+                in_str = 0
+            continue
+        if c == '"':
+            in_str = 1
+        elif c == "{":
+            depth += 1
+        elif c == "}":
+            depth -= 1
+            if depth == 0:
+                return i
+    return -1
+
+
+def _objects(t, limit=3):
+    """取 t 中前 limit 个括号配对的完整对象片段。"""
+    out = []
+    p = t.find("{")
+    while p != -1 and len(out) < limit:
+        e = _scan_object(t, p)
+        if e == -1:
+            break
+        out.append(t[p:e + 1])
+        p = t.find("{", p + 1)
+    return out
+
+
 def strip_json(text):
-    s = text.find("{"); e = text.rfind("}")
-    if s == -1 or e == -1 or e <= s:
+    """尽力从脏文本中取出第一个完整 JSON 对象，失败返回 None。
+    候选顺序由保守到激进：原文 → 去 // → 去 //# → 各叠加去尾逗号。"""
+    if not text:
         return None
-    frag = text[s:e + 1]
-    try:
-        return json.loads(frag)
-    except Exception:
-        cleaned = "\n".join(l for l in frag.splitlines() if not l.strip().startswith("//"))
-        try:
-            return json.loads(cleaned)
-        except Exception:
-            return None
+    bases = [text]
+    for h in (False, True):
+        b = _strip_comments(text, h)
+        if b not in bases:
+            bases.append(b)
+    for base in bases:
+        for frag in _objects(base):
+            cleaned = _TRAIL_COMMA.sub(r"\1", frag)
+            for cand in (frag, cleaned):
+                for strict in (True, False):
+                    try:
+                        return json.loads(cand, strict=strict)
+                    except Exception:
+                        pass
+    return None
 
 
-def decrypt(url, attempts=3):
+def decrypt(url, attempts=4):
     """经饭太硬 jiemi.php 解密一个配置 URL，返回 (dict, err)。"""
     last = ""
-    for _ in range(attempts):
+    for i in range(attempts):
         try:
             out = subprocess.run(
-                ["curl", "-s", "-G", "--max-time", "45", "-A", UA, DEC,
+                ["curl", "-s", "-G", "--max-time", "50", "-A", UA, DEC,
                  "--data-urlencode", f"url={url}"],
-                capture_output=True, text=True, timeout=60)
+                capture_output=True, text=True, timeout=65)
             text = out.stdout
         except Exception as e:
-            last = f"exc:{e}"; time.sleep(1.5); continue
+            last = f"exc:{e}"; time.sleep(1.5 + i); continue
         if not text or "无接口输入" in text:
             return None, "empty/无接口输入"
         if "解密失败" in text or "请检查" in text:
-            last = "解密失败(可能超时)"; time.sleep(2.0); continue
+            # 端点明确报"URL 有误"，属源已失效，重试无意义
+            return None, "解密失败/源已失效"
         data = strip_json(text)
         if not data:
-            last = "no-json"; time.sleep(1.0); continue
+            last = "no-json"; time.sleep(1.5 * (i + 1)); continue
         return data, ""
     return None, last
 
@@ -234,6 +298,9 @@ def main():
         if isinstance(sites, list):
             for s in sites:
                 add_site(s, name, "网页线路")
+        elif isinstance(d, dict) and d.get("api"):
+            # 少数线路解密后是"单站点对象"而非容器（如 传说 / 肥猫），直接收录
+            add_site(d, name, "网页线路")
 
     print(f"[4] 聚合去重 sites: {len(master)} | 直连 {sum(1 for s in master if not s['_crawler'])} "
           f"/ 爬虫 {sum(1 for s in master if s['_crawler'])} | 部分(成人) {sum(1 for s in master if s['_adult'])}")
