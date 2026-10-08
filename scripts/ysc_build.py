@@ -245,6 +245,58 @@ def tag(site):
     return site
 
 
+DISCOVER_FILE = os.environ.get("DISCOVER_FILE", "discovered.txt")
+
+
+def _keep(api):
+    api = str(api or "").strip()
+    return bool(api) and not any(x in api for x in EXCLUDE_API)
+
+
+def _parse_config(txt):
+    """把任意一份公开配置文本归一化成 sites 列表（复用宽松解析器）。"""
+    d = strip_json(txt)
+    if not isinstance(d, dict):
+        return []
+    if isinstance(d.get("sites"), list):
+        return [s for s in d["sites"] if isinstance(s, dict) and _keep(s.get("api"))]
+    if isinstance(d.get("api_site"), dict):
+        out = []
+        for k, v in d["api_site"].items():
+            if isinstance(v, dict):
+                api = v.get("api", "")
+                if not _keep(api):
+                    continue
+                out.append({"key": k, "name": v.get("name", k), "api": api,
+                            "type": 1, "searchable": 1, "quickSearch": 1,
+                            "filterable": 1, "detail": v.get("detail", "")})
+            elif isinstance(v, str) and _keep(v):
+                out.append({"key": k, "name": k, "api": v, "type": 1,
+                            "searchable": 1, "quickSearch": 1, "filterable": 1})
+        return out
+    if _keep(d.get("api")):
+        return [d]
+    return []
+
+
+def load_discovered():
+    """读取 discover.py 产出的 discovered.txt（全网发现的公开配置），逐个拉取归一化。
+
+    这些配置是 GitHub 上的明文 JSON，不需要也没法走饭太硬解密端点。
+    """
+    if not os.path.exists(DISCOVER_FILE):
+        return []
+    with open(DISCOVER_FILE, encoding="utf-8") as f:
+        urls = [l.strip() for l in f if l.strip().startswith("http")]
+    if not urls:
+        return []
+    out = []
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        for got in ex.map(lambda u: _parse_config(run_curl(u, timeout=20)), urls):
+            out.extend(got)
+    return out
+
+
 def main():
     t0 = time.time()
     # 1) 老三源
@@ -302,7 +354,13 @@ def main():
             # 少数线路解密后是"单站点对象"而非容器（如 传说 / 肥猫），直接收录
             add_site(d, name, "网页线路")
 
-    print(f"[4] 聚合去重 sites: {len(master)} | 直连 {sum(1 for s in master if not s['_crawler'])} "
+    # 5) 全网发现（discover.py 产出，优先级最低，靠去重兜底）
+    disc = load_discovered()
+    for s in disc:
+        add_site(s, "全网发现", "全网发现")
+    print(f"[5] 全网发现原始 {len(disc)} 条，去重后累计 sites: {len(master)}")
+
+    print(f"[6] 聚合去重 sites: {len(master)} | 直连 {sum(1 for s in master if not s['_crawler'])} "
           f"/ 爬虫 {sum(1 for s in master if s['_crawler'])} | 部分(成人) {sum(1 for s in master if s['_adult'])}")
 
     # 写 网站接口数据.json（数据层，QWJS 读取）

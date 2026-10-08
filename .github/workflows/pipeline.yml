@@ -9,7 +9,36 @@ permissions:
   contents: write
 
 jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: 阶段0 全网发现（GitHub 代码搜索）
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/discover.py --base discovered.txt > discovered.new.txt
+          mv discovered.new.txt discovered.txt
+          wc -l discovered.txt
+      - name: 提交发现结果
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add discovered.txt
+          if git diff --cached --quiet; then
+            echo "无新增发现，跳过提交"
+          else
+            git commit -m "discover: 更新 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git pull --rebase origin main || true
+            git push
+          fi
+
   build:
+    needs: discover
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
