@@ -5,7 +5,7 @@
   "subset_meaning": "部分 = 成人接口",
   "adult": true,
   "source": "dearloyal/YSC",
-  "count": 43,
+  "count": 41,
   "sites": [
     {
       "key": "视界",
@@ -356,19 +356,6 @@
       "_src": "网页线路"
     },
     {
-      "key": "柠檬",
-      "name": "☀柠檬🔹视频",
-      "type": 3,
-      "api": "csp_Nmvod",
-      "playerType": 2,
-      "jar": "https://ncstatic.clewm.net/rsrc/2025/0915/15/e210975c2c794cbc8bb1839b54ac213e.png;md5;939FFBC2941A28CA533F2653FA4B449E",
-      "ext": "7lj763gg402i7942503g839jg74h8h88highi40799jh6i6k454419l0l5184k0g549h0kg2i01i838i2h42g891lgg1",
-      "_adult": true,
-      "_crawler": true,
-      "_line": "星微Vip",
-      "_src": "网页线路"
-    },
-    {
       "key": "drpy_js_豆瓣",
       "name": "导航|万事顺遂",
       "type": 3,
@@ -541,32 +528,6 @@
       "_src": "网页线路"
     },
     {
-      "key": "短剧┃搜索1",
-      "name": "🏠短剧┃搜1",
-      "type": 3,
-      "indexs": 1,
-      "searchable": 0,
-      "quickSearch": 0,
-      "api": "https://mpimg.cn/down.php/7e246e896fa4cf52866921b818d7e8cb.py",
-      "_adult": true,
-      "_crawler": true,
-      "_line": "X4菠菜pro",
-      "_src": "网页线路"
-    },
-    {
-      "key": "短剧搜索",
-      "name": "🏠短剧┃搜2",
-      "type": 3,
-      "searchable": 0,
-      "quickSearch": 0,
-      "indexs": 1,
-      "api": "https://mpimg.cn/down.php/18b8bebbf7b64d39a1e3a90c83a86642.py",
-      "_adult": true,
-      "_crawler": true,
-      "_line": "X4菠菜pro",
-      "_src": "网页线路"
-    },
-    {
       "key": "Douban",
       "name": "🐮【免费分享】🐮",
       "type": 3,
@@ -640,6 +601,20 @@
       "_adult": true,
       "_crawler": true,
       "_line": "真六",
+      "_src": "网页线路"
+    },
+    {
+      "key": "🔱豆瓣┃备用🔱黄金分割工作室🏅提供接口维护☸",
+      "name": "🔱豆瓣┃备用🔱黄金分割工作室🏅提供接口维护☸",
+      "type": 3,
+      "api": "https://gitlab.com/lzc1021lzc/hjfggzs.hjys/-/raw/main/api/1.js",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 0,
+      "ext": "https://gitlab.com/lzc1021lzc/hjfggzs.hjys/-/raw/main/js/db.js",
+      "_adult": true,
+      "_crawler": true,
+      "_line": "黄金",
       "_src": "网页线路"
     }
   ],
