@@ -4,30 +4,31 @@
 CS 出链脚本（部署到 dearloyal/CS → scripts/build.py）
 ====================================================
 任务（按用户要求）：
-  ① 读取 QWJS 生成的 4 个分类接口；
-  ② 读取 YSC 生成的「接口合集」；
+  ① 读取本仓 classify 阶段产出的 4 个分类接口；
+  ② 读取本仓 build 阶段产出的「接口合集」；
   ③ 在 CS 仓库落地【5 个可订阅链接】，供用户直接使用：
-        1. 1直连-全部.json   （来自 QWJS：直连）
-        2. 1直连-部分.json   （来自 QWJS：直连）
-        3. 2爬虫-全部.json   （来自 QWJS：爬虫）
-        4. 2爬虫-部分.json   （来自 QWJS：爬虫）
-        5. 接口合集.json     （来自 YSC：可手动选线路 饭太硬/南风/王二小…）
+        1. 1直连-全部.json   （直连 · 全部）
+        2. 1直连-部分.json   （直连 · 部分）
+        3. 2爬虫-全部.json   （爬虫 · 全部）
+        4. 2爬虫-部分.json   （爬虫 · 部分）
+        5. 接口合集.json     （可手动选线路 饭太硬/南风/王二小…）
   另外生成 README.md，列出 5 个订阅链接（对外不写分组含义）。
 运行：python3 scripts/build.py
 """
 import json, os, time, subprocess, sys
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-QWJS_BASE = os.environ.get("QWJS_BASE", "https://raw.githubusercontent.com/dearloyal/QWJS/main/")
-YSC_BASE = os.environ.get("YSC_BASE", "https://raw.githubusercontent.com/dearloyal/YSC/main/")
+# 单仓合并后，5 个文件同属 dearloyal/CS；旧 YSC / QWJS 仓已删除，
+# 此处不再保留对其 raw 地址的引用（历史遗留会在产物里泄露旧仓名）。
+SELF_BASE = os.environ.get("SELF_BASE", "https://raw.githubusercontent.com/dearloyal/CS/main/")
 
 # (本地文件名, 上游base, 上游文件名)
 ITEMS = [
-    ("1直连-全部.json", QWJS_BASE, "1直连-全部.json"),
-    ("1直连-部分.json", QWJS_BASE, "1直连-部分.json"),
-    ("2爬虫-全部.json", QWJS_BASE, "2爬虫-全部.json"),
-    ("2爬虫-部分.json", QWJS_BASE, "2爬虫-部分.json"),
-    ("接口合集.json", YSC_BASE, "接口合集.json"),
+    ("1直连-全部.json", SELF_BASE, "1直连-全部.json"),
+    ("1直连-部分.json", SELF_BASE, "1直连-部分.json"),
+    ("2爬虫-全部.json", SELF_BASE, "2爬虫-全部.json"),
+    ("2爬虫-部分.json", SELF_BASE, "2爬虫-部分.json"),
+    ("接口合集.json", SELF_BASE, "接口合集.json"),
 ]
 
 
