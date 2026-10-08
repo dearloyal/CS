@@ -5,7 +5,7 @@
   "subset_meaning": "部分 = 成人接口",
   "adult": true,
   "source": "dearloyal/YSC",
-  "count": 60,
+  "count": 56,
   "sites": [
     {
       "key": "91md.me",
@@ -779,73 +779,7 @@
       "_crawler": false,
       "_line": "夏夏影视",
       "_src": "网页线路"
-    },
-    {
-      "key": "py_MrJav",
-      "name": "MRJav",
-      "type": 4,
-      "api": "https://py.doube.eu.org/spider?site=MrJav",
-      "searchable": 1,
-      "quickSearch": 0,
-      "filterable": 0,
-      "changeable": 0,
-      "style": {
-        "type": "rect",
-        "ratio": 1.5
-      },
-      "_adult": true,
-      "_crawler": false,
-      "_line": "愿望18",
-      "_src": "网页线路"
-    },
-    {
-      "key": "py_Miss",
-      "name": "MissAV",
-      "type": 4,
-      "api": "https://py.doube.eu.org/spider?site=Miss",
-      "searchable": 1,
-      "quickSearch": 0,
-      "filterable": 0,
-      "changeable": 0,
-      "_adult": true,
-      "_crawler": false,
-      "_line": "愿望18",
-      "_src": "网页线路"
-    },
-    {
-      "key": "BadNews",
-      "name": "BadNews🔞",
-      "type": 4,
-      "api": "https://py.doube.eu.org/spider?site=BadNews",
-      "searchable": 1,
-      "quickSearch": 0,
-      "filterable": 0,
-      "changeable": 0,
-      "style": {
-        "type": "rect",
-        "ratio": 1.5
-      },
-      "_adult": true,
-      "_crawler": false,
-      "_line": "愿望18",
-      "_src": "网页线路"
-    },
-    {
-      "key": "hav6.beauty",
-      "name": "🔞黄AV",
-      "type": 0,
-      "api": "https://www.pgxdy.com/api/xml.php",
-      "searchable": 1,
-      "recordable": 0,
-      "style": {
-        "type": "rect",
-        "ratio": 1.6
-      },
-      "_adult": true,
-      "_crawler": false,
-      "_line": "愿望18",
-      "_src": "网页线路"
     }
   ],
-  "_from": "https://raw.githubusercontent.com/dearloyal/QWJS/main/1直连-部分.json"
+  "_from": "https://raw.githubusercontent.com/dearloyal/CS/main/1直连-部分.json"
 }
