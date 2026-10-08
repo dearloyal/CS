@@ -27,8 +27,8 @@ QUERIES = [
     '"api_site" "is_adult" extension:json',
 ]
 PER_PAGE = 100          # 每次 API 请求最多返回 100 条
-MAX_PAGES_PER_QUERY = 2 # 每个查询最多翻 2 页（GitHub 代码搜索上限 1000 条）
-MAX_RESULTS = 180       # 最终送给聚合器的配置文件上限（按仓库 star 数排序取前 N）
+MAX_PAGES_PER_QUERY = 3 # 每个查询最多翻 3 页（GitHub 代码搜索上限 1000 条）
+MAX_RESULTS = 400       # 最终送给聚合器的配置文件上限（按仓库 star 数排序取前 N）
 
 
 def api_get(url):
