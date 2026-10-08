@@ -11,7 +11,7 @@
 输入：--base 旧 discovered.txt（上一轮累积的发现，保证搜索偶发失败时不丢存量）
 输出：合并后的 discovered.txt（每行一个 raw 地址），供 aggregate.py 消费。
 """
-import os, sys, json, argparse, urllib.parse, urllib.request, urllib.error
+import os, sys, json, argparse, time, urllib.parse, urllib.request, urllib.error
 
 UA = "Mozilla/5.0 (compatible; TVBoxAggregator/1.0)"
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
@@ -31,14 +31,29 @@ MAX_PAGES_PER_QUERY = 3 # 每个查询最多翻 3 页（GitHub 代码搜索上�
 MAX_RESULTS = 400       # 最终送给聚合器的配置文件上限（按仓库 star 数排序取前 N）
 
 
-def api_get(url):
-    req = urllib.request.Request(url, headers={
-        "User-Agent": UA,
-        "Accept": "application/vnd.github+json",
-        "Authorization": f"Bearer {TOKEN}" if TOKEN else "",
-    })
-    with urllib.request.urlopen(req, timeout=25) as r:
-        return json.loads(r.read().decode("utf-8", "ignore"))
+def api_get(url, retries=3):
+    """GET 一次 GitHub API；429/5xx 做指数退避重试。"""
+    last = None
+    for i in range(retries):
+        req = urllib.request.Request(url, headers={
+            "User-Agent": UA,
+            "Accept": "application/vnd.github+json",
+            "Authorization": f"Bearer {TOKEN}" if TOKEN else "",
+        })
+        try:
+            with urllib.request.urlopen(req, timeout=25) as r:
+                return json.loads(r.read().decode("utf-8", "ignore"))
+        except urllib.error.HTTPError as e:
+            last = e
+            # 代码搜索限流很紧（429），退避后重试；4xx 中只有 429 值得重试
+            if e.code == 429 or e.code >= 500:
+                time.sleep(5 * (i + 1))
+                continue
+            raise
+        except Exception as e:
+            last = e
+            time.sleep(2 * (i + 1))
+    raise last
 
 
 def search(query):
@@ -53,6 +68,7 @@ def search(query):
         except Exception as e:
             print(f"[discover] 查询失败 {query!r} page{page}: {e}", file=sys.stderr)
             break
+        time.sleep(2.5)  # 主动限速，避免触发 429
         items = data.get("items", [])
         if not items:
             break
