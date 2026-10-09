@@ -109,3 +109,30 @@ jobs:
             git pull --rebase origin main || true
             git push
           fi
+
+  probe:
+    needs: output
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      # output 阶段已 push 过，这里显式 checkout main 才能拿到上一阶段的最新产物
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: 阶段4 接口探活（连通性标记，保留全部站点不剔除）
+        run: python3 scripts/probe.py
+      - name: 提交探活结果
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add 1直连-全部.json 1直连-部分.json 2爬虫-全部.json 2爬虫-部分.json 接口合集.json
+          if git diff --cached --quiet; then
+            echo "无变化，跳过提交"
+          else
+            git commit -m "probe: 健康标记 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git pull --rebase origin main || true
+            git push
+          fi
