@@ -5,7 +5,7 @@
   "subset_meaning": "部分 = 成人接口",
   "adult": true,
   "source": "dearloyal/YSC",
-  "count": 138,
+  "count": 139,
   "sites": [
     {
       "key": "视界",
@@ -538,6 +538,32 @@
       "_adult": true,
       "_crawler": true,
       "_line": "时光",
+      "_src": "网页线路"
+    },
+    {
+      "key": "短剧┃搜索1",
+      "name": "🏠短剧┃搜1",
+      "type": 3,
+      "indexs": 1,
+      "searchable": 0,
+      "quickSearch": 0,
+      "api": "https://mpimg.cn/down.php/7e246e896fa4cf52866921b818d7e8cb.py",
+      "_adult": true,
+      "_crawler": true,
+      "_line": "X4菠菜pro",
+      "_src": "网页线路"
+    },
+    {
+      "key": "短剧搜索",
+      "name": "🏠短剧┃搜2",
+      "type": 3,
+      "searchable": 0,
+      "quickSearch": 0,
+      "indexs": 1,
+      "api": "https://mpimg.cn/down.php/18b8bebbf7b64d39a1e3a90c83a86642.py",
+      "_adult": true,
+      "_crawler": true,
+      "_line": "X4菠菜pro",
       "_src": "网页线路"
     },
     {
@@ -1299,22 +1325,6 @@
         "playKey": "1bada76e67e1e7f9",
         "version": "1.2.0"
       },
-      "_adult": true,
-      "_crawler": true,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
-      "key": "马猴影视",
-      "name": "🐵马猴影视",
-      "type": 3,
-      "api": "csp_AppMH",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 1,
-      "ext": "https://45.150.167.18:8000",
-      "jar": "https://img.tofaka.com/autoupload/f/v78ve/20260814/IRwV/aidaox-20260814-154723.jar;md5;64e0a957c0459ecbc350be29174f40f0",
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
