@@ -5,7 +5,7 @@
   "subset_meaning": "部分 = 成人接口",
   "adult": true,
   "source": "dearloyal/YSC",
-  "count": 244,
+  "count": 247,
   "sites": [
     {
       "key": "91md.me",
@@ -697,21 +697,370 @@
       "_src": "网页线路"
     },
     {
-      "key": "色色色",
-      "name": "色色色",
+      "key": "pt",
+      "name": "移动｜星源",
+      "type": 1,
+      "api": "https://xy.183933.xyz/php/pt.php/provide/vod/",
+      "playUrl": "json:https://183933.xyz/xiaye.php?url=",
+      "searchable": 1,
+      "changeable": 1,
+      "_adult": true,
+      "_crawler": false,
+      "_line": "夏夏影视",
+      "_src": "网页线路"
+    },
+    {
+      "key": "kuwo",
+      "name": "酷我｜音乐",
+      "type": 1,
+      "api": "https://xy.183933.xyz/php/kuwo.php/provide/vod",
+      "playUrl": "json:https://183933.xyz/xiaye.php?url=",
+      "searchable": 1,
+      "changeable": 1,
+      "_adult": true,
+      "_crawler": false,
+      "_line": "夏夏影视",
+      "_src": "网页线路"
+    },
+    {
+      "key": "mgyy",
+      "name": "咪咕｜音乐",
+      "type": 1,
+      "api": "https://xy.183933.xyz/php/miguyy.php/provide/vod",
+      "playUrl": "json:https://183933.xyz/xiaye.php?url=",
+      "searchable": 1,
+      "changeable": 1,
+      "_adult": true,
+      "_crawler": false,
+      "_line": "夏夏影视",
+      "_src": "网页线路"
+    },
+    {
+      "key": "acfun",
+      "name": "A站｜星源",
+      "type": 1,
+      "api": "https://xy.183933.xyz/php/acfun.php/provide/vod",
+      "playUrl": "json:https://183933.xyz/xiaye.php?url=",
+      "changeable": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "_adult": true,
+      "_crawler": false,
+      "_line": "夏夏影视",
+      "_src": "网页线路"
+    },
+    {
+      "key": "咪咕",
+      "name": "小咕｜星源",
+      "type": 1,
+      "api": "https://xy.183933.xyz/php/咪咕.php",
+      "playUrl": "json:https://183933.xyz/xiaye.php?url=",
+      "changeable": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "_adult": true,
+      "_crawler": false,
+      "_line": "夏夏影视",
+      "_src": "网页线路"
+    },
+    {
+      "key": "小乐",
+      "name": "小乐｜星源",
+      "type": 1,
+      "api": "https://xy.183933.xyz/php/ls.php/vod",
+      "playUrl": "http://8.155.50.80/xiayexk.php?url=",
+      "changeable": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "_adult": true,
+      "_crawler": false,
+      "_line": "夏夏影视",
+      "_src": "网页线路"
+    },
+    {
+      "searchable": 1,
+      "search": 1,
+      "quickSearch": 1,
+      "api": "https://apilsbzy1.com/api.php/provide/vod/at/json",
+      "key": "色逼",
+      "type": 1,
+      "name": "[133ms|zy] 🍊色逼",
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "searchable": 1,
+      "search": 1,
+      "quickSearch": 1,
+      "api": "https://hsckzy888.com/api.php/provide/vod/from/hsckm3u8/at/json",
+      "key": "黄仓",
+      "type": 1,
+      "name": "[133ms|zy] 🍊黄仓",
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "key": "zp100",
+      "name": "[111ms|apple] 🔞乐播",
       "type": 0,
-      "api": "https://lbapi9.com/api.php/provide/vod/at/xml",
+      "api": "https://lbapi9.com/api.php/provide/vod/at/xml/",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 0,
-      "categories": [
-        "国产剧",
-        "港台剧",
-        "日韩剧",
-        "欧美剧",
-        "泰剧",
-        "综艺"
-      ],
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "key": "kxgav",
+      "name": "[111ms|apple] 白嫖资源(已修复)",
+      "type": 0,
+      "api": "https://www.kxgav.com/api/xml.php",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "key": "zp066",
+      "name": "[111ms|apple] 🔞花椒资源",
+      "type": 0,
+      "api": "https://api.apilyzy.com/api.php/provide/vod/at/xml/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "key": "kkzy.me",
+      "name": "[111ms|apple] 成人51",
+      "type": 1,
+      "api": "https://kkzy.me/api.php/provide/vod/",
+      "quickSearch": 1,
+      "searchable": 1,
+      "filterable": 1,
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "key": "(18+)JAV名优",
+      "name": "[111ms|apple] (18+)JAV名优",
+      "type": 0,
+      "api": "http://mygzycj.com/api.php?ac=list",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "key": "KpgxdyE",
+      "name": "[111ms|apple] 黄AV资源(已修复)",
+      "type": 0,
+      "api": "https://www.pgxdy.com/api/xml.php",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "key": "api.apilyzy.com",
+      "name": "[111ms|apple] 成人71",
+      "type": 1,
+      "api": "https://api.apilyzy.com/api.php/provide/vod/",
+      "quickSearch": 1,
+      "searchable": 1,
+      "filterable": 1,
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "key": "大地采集",
+      "name": "[111ms|apple] 🔞大地av",
+      "type": 0,
+      "api": "https://dadiapi.com/apple_m3u8.php",
+      "playUrl": "https://play.dadiapi.com/watch?url=",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "key": "zp128",
+      "name": "[111ms|apple] 🔞鲨鱼影视",
+      "type": 0,
+      "api": "https://shayuapi.com/api.php/Seacms/vod/at/xml/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "key": "*易看资源",
+      "name": "[111ms|apple] 🔞易看资源",
+      "type": 1,
+      "api": "https://api.yikanapi.com/api.php/provide/vod/",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 0,
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "key": "dadiapi.com",
+      "name": "[133ms|111] 成人01",
+      "type": 0,
+      "api": "http://dadiapi.com/api.php",
+      "searchable": 1,
+      "recordable": 0,
+      "style": {
+        "type": "rect",
+        "ratio": 1.33
+      },
+      "header": {
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+        "User-Agent": "Mozilla/5.0(WindowsNT10.0;Win64;x64)AppleWebKit/537.36(KHTML,likeGecko)Chrome/117.0.0.0Safari/537.36"
+      },
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "searchable": 1,
+      "search": 1,
+      "quickSearch": 1,
+      "api": "https://91av.cyou/api.php/provide/vod",
+      "key": "91",
+      "type": 1,
+      "name": "[133ms|zy] 🍊91",
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "searchable": 1,
+      "search": 1,
+      "quickSearch": 1,
+      "api": "https://xxavs.com/api.php/provide/vod/at/json",
+      "key": "湿园",
+      "type": 1,
+      "name": "[133ms|zy] 🍊湿园",
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "key": "souav",
+      "name": "[258ms|https://clun.top/fun.json] souav | 采集",
+      "type": 1,
+      "api": "https://api.souavzy.vip/api.php/provide/vod/?ac=list",
+      "playUrl": "https://jiexi.souavzyw.top/m3u8/?url=",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "key": "AV资源",
+      "name": "[258ms|https://clun.top/fun.json] AV | 采集",
+      "type": 1,
+      "api": "https://api.souavzy.vip/api.php/provide/vod/at/json",
+      "searchable": 1,
+      "style": {
+        "type": "rect",
+        "ratio": 1.33
+      },
+      "changeable": 1,
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "key": "*抖阴视频",
+      "name": "[258ms|https://clun.top/fun.json] *抖阴 | 采集",
+      "type": 1,
+      "api": "https://www.888dav.com/api.php/provide/vod/",
+      "quickSearch": 0,
+      "ext": "proxy",
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "key": "rrys",
+      "name": "[270ms|00000] 人人影视",
+      "type": 4,
+      "api": "https://catbox.n13.club/18/人人影视.php",
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "key": "yangshi",
+      "name": "[270ms|00000] 央视影视",
+      "type": 4,
+      "api": "https://catbox.n13.club/18/央视影视.php",
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "key": "yingtan",
+      "name": "[270ms|00000] 影探影视",
+      "type": 4,
+      "api": "https://catbox.n13.club/18/影探影视.php",
+      "_adult": true,
+      "_crawler": false,
+      "_line": "全网发现",
+      "_src": "全网发现"
+    },
+    {
+      "key": "色猫",
+      "name": "色猫2 | 采集",
+      "type": 1,
+      "api": "https://api.maozyapi.com/inc/apijson_vod.php",
+      "ext": "proxy",
       "_adult": true,
       "_crawler": false,
       "_line": "全网发现",
@@ -743,19 +1092,6 @@
       "name": "色色",
       "type": 0,
       "api": "https://api.maozyapi.com/inc/api.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
-      "key": "黄AV资源",
-      "name": "黄AV资源",
-      "type": 0,
-      "api": "https://www.pgxdy.com/api/xml.php",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 0,
@@ -806,18 +1142,6 @@
       "name": "ASMR🔞",
       "type": 1,
       "api": "http://www.asmr19.in/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
-      "key": "易看资源",
-      "name": "易看资源🔞",
-      "type": 1,
-      "api": "https://api.yikanapi.com/api.php/provide/vod/",
       "searchable": 1,
       "quickSearch": 1,
       "_adult": true,
@@ -899,19 +1223,6 @@
       "_src": "全网发现"
     },
     {
-      "key": "白嫖",
-      "name": "白嫖🔞",
-      "type": 0,
-      "api": "https://www.kxgav.com/api/xml.php",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 0,
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
       "key": "酷豆",
       "name": "酷豆2🔞",
       "type": 1,
@@ -983,18 +1294,6 @@
       "_src": "全网发现"
     },
     {
-      "key": "向日葵",
-      "name": "向日葵🔞",
-      "type": 0,
-      "api": "http://mygzycj.com/api.php?ac=list",
-      "playUrl": "",
-      "categories": [],
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
       "key": "速度資源",
       "name": "速度資源🔞",
       "type": 0,
@@ -1017,19 +1316,6 @@
       "categories": [],
       "searchable": 0,
       "quickSearch": 0,
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
-      "key": "大地采集",
-      "name": "大地🔞",
-      "type": 0,
-      "searchable": 0,
-      "quickSearch": 1,
-      "api": "https://dadiapi.com/apple_m3u8.php",
-      "playUrl": "https://play.dadiapi.com/watch?url=",
       "_adult": true,
       "_crawler": false,
       "_line": "全网发现",
@@ -1126,19 +1412,6 @@
       "_src": "全网发现"
     },
     {
-      "key": "小湿妹",
-      "name": "小湿妹🔞",
-      "type": 0,
-      "api": "https://www.afasu.com/api/xml.php",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 0,
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
       "key": "青青草",
       "name": "青青草🔞",
       "type": 0,
@@ -1219,37 +1492,12 @@
       "_src": "全网发现"
     },
     {
-      "key": "*色猫资源",
-      "name": "*色猫资源🔞",
-      "type": 1,
-      "api": "https://api.maozyapi.com/inc/apijson_vod.php",
-      "searchable": 0,
-      "quickSearch": 0,
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
       "key": "*草莓资源",
       "name": "*草莓资源🔞",
       "type": 1,
       "api": "https://caiji.caomeiapi.com/inc/apijson_vod.php",
       "searchable": 0,
       "quickSearch": 0,
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
-      "key": "奶茶采集",
-      "name": "奶茶🔞",
-      "type": 0,
-      "searchable": 0,
-      "quickSearch": 1,
-      "api": "https://caiji.naichaapi.com/inc/api.php",
-      "playUrl": "https://jiexi.naichaapi.com/?url=",
       "_adult": true,
       "_crawler": false,
       "_line": "全网发现",
@@ -1327,16 +1575,6 @@
       "_src": "全网发现"
     },
     {
-      "key": "*KK真资源",
-      "name": "*KK真资源🔞",
-      "type": 1,
-      "api": "https://kkzy.me/api.php/provide/vod/",
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
       "key": "*佳丽资源",
       "name": "*佳丽资源🔞",
       "type": 1,
@@ -1361,52 +1599,10 @@
       "_src": "全网发现"
     },
     {
-      "key": "888dav.com",
-      "name": "成人02",
-      "type": 1,
-      "api": "https://www.888dav.com/api.php/provide/vod/",
-      "style": {
-        "type": "rect",
-        "ratio": 1.485
-      },
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
       "key": "apilj.com",
       "name": "成人05",
       "type": 1,
       "api": "http://apilj.com/api.php/provide/vod/at/ext/",
-      "style": {
-        "type": "rect",
-        "ratio": 1.485
-      },
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
-      "key": "apittzy.com",
-      "name": "成人06",
-      "type": 1,
-      "api": "https://apittzy.com/api.php/provide/vod/",
-      "style": {
-        "type": "rect",
-        "ratio": 1.485
-      },
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
-      "key": "api.apilyzy.com",
-      "name": "成人07",
-      "type": 1,
-      "api": "https://api.apilyzy.com/api.php/provide/vod/",
       "style": {
         "type": "rect",
         "ratio": 1.485
@@ -1473,20 +1669,6 @@
       "_src": "全网发现"
     },
     {
-      "key": "dadiapi.com",
-      "name": "成人13",
-      "type": 0,
-      "api": "http://dadiapi.com/api.php",
-      "style": {
-        "type": "rect",
-        "ratio": 1.485
-      },
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
       "key": "dmmapi.com",
       "name": "成人14",
       "type": 0,
@@ -1543,20 +1725,6 @@
       "_src": "全网发现"
     },
     {
-      "key": "lbapiby.com",
-      "name": "成人25",
-      "type": 0,
-      "api": "http://lbapiby.com/api.php/provide/vod/at/xml",
-      "style": {
-        "type": "rect",
-        "ratio": 1.485
-      },
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
       "key": "llzxcj.com",
       "name": "成人26",
       "type": 0,
@@ -1589,20 +1757,6 @@
       "name": "成人28",
       "type": 0,
       "api": "https://www.mgav1.cc/api.php/provide/vod/at/xml",
-      "style": {
-        "type": "rect",
-        "ratio": 1.485
-      },
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
-      "key": "mgzyz1.com",
-      "name": "成人29",
-      "type": 1,
-      "api": "https://mgzyz1.com/api.php/provide/vod/",
       "style": {
         "type": "rect",
         "ratio": 1.485
@@ -1948,28 +2102,6 @@
       "_src": "全网发现"
     },
     {
-      "name": "🔞鲨鱼影视|godling",
-      "type": 1,
-      "api": "https://shayuapi.com/api.php/Seacms/vod/at/xml/",
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
-      "key": "色戒",
-      "name": "色戒(18)",
-      "type": 1,
-      "api": "https://apilsbzy1.com/api.php/provide/vod/at/json",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
       "key": "老鸭",
       "name": "老鸭(18)",
       "type": 1,
@@ -1987,32 +2119,6 @@
       "name": "玉兔(18)",
       "type": 1,
       "api": "https://apiyutu.com/api.php/providedao/vod/at/json",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
-      "key": "猎豹",
-      "name": "猎豹(18)",
-      "type": 1,
-      "api": "https://lbapi9.com/api.php/provide/vod/at/json",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
-      "key": "乐园",
-      "name": "乐园(18)",
-      "type": 1,
-      "api": "https://xxavs.com/api.php/provide/vod/at/json",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
@@ -2137,18 +2243,6 @@
       "_src": "全网发现"
     },
     {
-      "key": "apilj.com",
-      "name": "成人11",
-      "type": 1,
-      "api": "http://apilj.com/api.php/provide/vod/at/json/",
-      "searchable": 1,
-      "filterable": 1,
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
       "key": "zmcj88.com",
       "name": "成人12",
       "type": 0,
@@ -2233,22 +2327,6 @@
       "_src": "全网发现"
     },
     {
-      "key": "av资源",
-      "name": "av资源",
-      "type": 1,
-      "api": "https://api.souavzy.vip/api.php/provide/vod/at/json",
-      "searchable": 1,
-      "style": {
-        "type": "rect",
-        "ratio": 1.33
-      },
-      "changeable": 1,
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
       "key": "av_api_24",
       "name": "AV-黄色资源啊啊",
       "api": "https://hsckzy888.com/api.php/provide/vod",
@@ -2280,19 +2358,6 @@
       "name": "【9kg】色猫资源",
       "type": 0,
       "api": "https://caiji.semaozy.net/inc/api.php",
-      "searchable": 1,
-      "quickSearch": 0,
-      "filterable": 1,
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
-      "key": "souavzy",
-      "name": "【9kg】搜AV",
-      "type": 1,
-      "api": "https://api.souavzy.vip/api.php/provide/vod/?ac=list",
       "searchable": 1,
       "quickSearch": 0,
       "filterable": 1,
@@ -2340,23 +2405,6 @@
       "key": "黄瓜资源",
       "name": "黄瓜资源",
       "api": "https://to.to-long.com/api.php/provide/vod/",
-      "playUrl": "",
-      "search": 1,
-      "group": "影视",
-      "type": 1,
-      "ext": "",
-      "categories": "",
-      "isActive": true,
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
-      "id": "84",
-      "key": "91视频",
-      "name": "91视频",
-      "api": "https://91av.cyou/api.php/provide/vod/",
       "playUrl": "",
       "search": 1,
       "group": "影视",
@@ -2819,19 +2867,6 @@
       "quickSearch": 1,
       "filterable": 1,
       "detail": "",
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现"
-    },
-    {
-      "key": "❤91麻豆",
-      "name": "91麻豆",
-      "type": 1,
-      "api": "https://19q.cc/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
       "_adult": true,
       "_crawler": false,
       "_line": "全网发现",
