@@ -20,7 +20,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "饭太硬",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "MTV",
@@ -40,7 +42,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "饭太硬",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "name": "🎉合集┃Bili",
@@ -62,7 +66,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "嗷呜2线",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "Douban",
@@ -77,7 +83,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "王二小",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "webdav",
@@ -89,7 +97,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "王二小",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "Tg豆瓣",
@@ -108,7 +118,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "南风",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "半日",
@@ -127,7 +139,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "南风",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "TgYunPan|本地",
@@ -145,7 +159,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "南风",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "马猴影视",
@@ -165,7 +181,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "潇洒",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "油管jar",
@@ -188,7 +206,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "老张",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "线路7",
@@ -205,7 +225,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "周J",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "zhizhen1",
@@ -219,7 +241,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "周J",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "py_huavod",
@@ -232,7 +256,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "clun",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "py_4KAV",
@@ -245,7 +271,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "clun",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "哔哩影视",
@@ -267,7 +295,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "东篱",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "WebDAV",
@@ -281,7 +311,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "东篱",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "应该可以",
@@ -291,7 +323,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "哈吉米",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 567,
+      "_ms": 578
     },
     {
       "key": "青麦",
@@ -301,7 +337,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "哈吉米",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 132
     },
     {
       "key": "4k-av",
@@ -311,7 +351,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "哈吉米",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 302,
+      "_ms": 733
     },
     {
       "key": "咕噜画",
@@ -328,7 +372,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "哈吉米",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 567,
+      "_ms": 599
     },
     {
       "key": "星辰影院",
@@ -338,7 +386,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "哈吉米",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 165
     },
     {
       "key": "柠檬",
@@ -351,7 +403,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "星微Vip",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "drpy_js_豆瓣",
@@ -362,7 +416,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "小虎斑",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "静月",
@@ -373,7 +429,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "小虎斑",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 762
     },
     {
       "key": "tenteng",
@@ -384,7 +444,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "小虎斑",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 762
     },
     {
       "key": "youyou",
@@ -395,7 +459,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "小虎斑",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 762
     },
     {
       "key": "qiqi",
@@ -406,7 +474,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "小虎斑",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 762
     },
     {
       "key": "mangmang",
@@ -417,7 +489,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "小虎斑",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 762
     },
     {
       "key": "4Kav",
@@ -428,7 +504,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "小虎斑",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "4k-av",
@@ -439,7 +517,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "幸福年年",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 302,
+      "_ms": 747
     },
     {
       "key": "Douban",
@@ -459,7 +541,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "摸鱼3线",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "Kan360",
@@ -477,7 +561,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "摸鱼3线",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "drpy_js_188影视",
@@ -488,7 +574,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "高天流云js",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "drpy_js_18哈",
@@ -499,7 +587,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "高天流云js",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "集多聚合",
@@ -523,7 +613,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "时光",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "短剧┃搜索1",
@@ -536,7 +628,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "X4菠菜pro",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 166
     },
     {
       "key": "短剧搜索",
@@ -549,7 +645,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "X4菠菜pro",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 163
     },
     {
       "key": "Douban",
@@ -563,7 +663,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "王二小3线",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "tianyi",
@@ -579,7 +681,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "王二小3线",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "河马短剧",
@@ -593,7 +697,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "真六",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "西瓜视频",
@@ -611,7 +717,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "真六",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "耐看影视",
@@ -625,7 +733,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "真六",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "🔱豆瓣┃备用🔱黄金分割工作室🏅提供接口维护☸",
@@ -639,7 +749,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "黄金",
-      "_src": "网页线路"
+      "_src": "网页线路",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 288
     },
     {
       "key": "py_porn",
@@ -650,7 +764,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "py_huangguo",
@@ -661,7 +777,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "py_huangguo2",
@@ -672,7 +790,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "py_huangdou",
@@ -683,7 +803,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "py_Youavhub",
@@ -694,7 +816,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "py_owoav",
@@ -705,7 +829,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "py_91porn",
@@ -716,7 +842,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "女优色库",
@@ -728,7 +856,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "py_javdb",
@@ -743,7 +873,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "py_18",
@@ -758,7 +890,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "py_ 小黄书",
@@ -773,7 +907,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "色播",
@@ -785,7 +921,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 141
     },
     {
       "key": "Zuise",
@@ -800,7 +940,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "lav",
@@ -815,7 +957,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 142
     },
     {
       "key": "xhm",
@@ -830,7 +976,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 156
     },
     {
       "key": "pornhub",
@@ -845,7 +995,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 148
     },
     {
       "key": "推特",
@@ -860,7 +1014,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 151
     },
     {
       "key": "18AV",
@@ -878,7 +1036,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "csp_JavBus",
@@ -893,7 +1053,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "csp_JavDb",
@@ -908,7 +1070,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "csp_Netflav",
@@ -925,7 +1089,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "米陌",
@@ -940,7 +1106,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "name": "[394ms|直播] 🐱嗷嗚动漫",
@@ -955,7 +1123,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "TgSearch189",
@@ -977,7 +1147,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "双子星",
@@ -997,7 +1169,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "溢彩",
@@ -1011,7 +1185,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "橘子",
@@ -1026,7 +1202,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "drpy_js_188影视",
@@ -1037,7 +1215,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 927
     },
     {
       "key": "hsck_open",
@@ -1050,7 +1232,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 627
     },
     {
       "key": "maiyoux_open",
@@ -1063,7 +1249,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 623
     },
     {
       "key": "Miss",
@@ -1078,7 +1268,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "Cable",
@@ -1097,7 +1289,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "18a",
@@ -1111,7 +1305,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 404,
+      "_ms": 439
     },
     {
       "key": "zjm_open",
@@ -1124,7 +1322,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 640
     },
     {
       "key": "ysgc_spider",
@@ -1136,7 +1338,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "zjm_spider",
@@ -1149,7 +1353,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "PigAV",
@@ -1161,7 +1367,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "Supjav",
@@ -1173,7 +1381,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "py_lav",
@@ -1183,7 +1393,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 404,
+      "_ms": 89
     },
     {
       "key": "色播",
@@ -1195,7 +1409,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 172
     },
     {
       "key": "lav",
@@ -1210,7 +1428,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 170
     },
     {
       "key": "xhm",
@@ -1225,7 +1447,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 157
     },
     {
       "key": "pornhub",
@@ -1240,7 +1466,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 168
     },
     {
       "key": "推特",
@@ -1255,7 +1485,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 158
     },
     {
       "name": "4k-av",
@@ -1265,7 +1499,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "SeHuaTang",
@@ -1285,7 +1521,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "Xojav",
@@ -1305,7 +1543,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "AvTime",
@@ -1317,7 +1557,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "drpy_js_Missav",
@@ -1328,7 +1570,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "hipy_js_腾云驾雾",
@@ -1344,7 +1588,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 6002
     },
     {
       "key": "txsp",
@@ -1361,7 +1609,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 6002
     },
     {
       "key": "csp_Jianying",
@@ -1375,7 +1627,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "追剧喵",
@@ -1388,7 +1642,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "WWRR",
@@ -1400,7 +1656,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "J91",
@@ -1412,7 +1670,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "Cg51",
@@ -1424,7 +1684,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "XVideos",
@@ -1436,7 +1698,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "MiMei",
@@ -1448,7 +1712,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "RouVideo",
@@ -1460,7 +1726,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "ROU223",
@@ -1472,7 +1740,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "HiPianZhiBo",
@@ -1484,7 +1754,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "JJAiPian",
@@ -1496,7 +1768,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "py_lav",
@@ -1506,7 +1780,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "py_色播聚合",
@@ -1521,7 +1797,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "追忆",
@@ -1538,7 +1816,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "AppV7Fz",
@@ -1553,7 +1833,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "dr_18av",
@@ -1567,7 +1849,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 77
     },
     {
       "key": "dr_Missav",
@@ -1581,7 +1867,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 77
     },
     {
       "key": "腾讯视频",
@@ -1592,7 +1882,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 31
     },
     {
       "key": "优酷视频",
@@ -1603,7 +1897,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 31
     },
     {
       "key": "芒果视频",
@@ -1614,7 +1912,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 31
     },
     {
       "key": "爱奇艺",
@@ -1625,7 +1927,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 31
     },
     {
       "key": "直播聚合",
@@ -1639,7 +1945,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 404,
+      "_ms": 84
     },
     {
       "key": "hipy_js_番号资源[密]",
@@ -1655,7 +1965,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 404,
+      "_ms": 315
     },
     {
       "key": "189Share",
@@ -1675,7 +1989,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "4Kav",
@@ -1686,7 +2002,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "dr_艾旦影视",
@@ -1700,7 +2018,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 256
     },
     {
       "key": "dr_玩偶姐姐",
@@ -1713,7 +2035,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 127
     },
     {
       "key": "dr_18av",
@@ -1726,7 +2052,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 127
     },
     {
       "key": "dr_banan",
@@ -1739,7 +2069,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 127
     },
     {
       "key": "dr_Missav",
@@ -1752,7 +2086,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 127
     },
     {
       "key": "dr_养端",
@@ -1765,7 +2103,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 63
     },
     {
       "key": "dr_吸瓜",
@@ -1778,7 +2120,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 127
     },
     {
       "key": "dr_朱古力",
@@ -1791,7 +2137,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 63
     },
     {
       "key": "色播",
@@ -1803,7 +2153,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 7
     },
     {
       "key": "lav",
@@ -1818,7 +2172,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 7
     },
     {
       "key": "xhm",
@@ -1833,7 +2191,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 7
     },
     {
       "key": "pornhub",
@@ -1848,7 +2210,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 15
     },
     {
       "key": "推特",
@@ -1863,7 +2229,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 15
     },
     {
       "key": "cat_js_18av",
@@ -1876,7 +2246,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "lf_js_p2p",
@@ -1891,7 +2263,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "push_agent",
@@ -1906,7 +2280,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "相随",
@@ -1917,7 +2293,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "csp_Gxqvlj",
@@ -1929,7 +2307,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "18A貓",
@@ -1944,7 +2324,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 404,
+      "_ms": 89
     },
     {
       "key": "18av",
@@ -1954,7 +2338,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 506
     },
     {
       "key": "lf_js_search",
@@ -1969,7 +2357,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 506
     },
     {
       "key": "lf_js_p2p",
@@ -1985,7 +2377,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 506
     },
     {
       "key": "4K影院",
@@ -1996,7 +2392,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "厂长影视",
@@ -2010,7 +2408,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "来看影视",
@@ -2023,7 +2423,9 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": null
     },
     {
       "key": "色播",
@@ -2035,7 +2437,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 127
     },
     {
       "key": "Theporn",
@@ -2053,7 +2459,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 127
     },
     {
       "key": "drpy_js_lecao",
@@ -2066,7 +2476,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 0,
+      "_ms": 127
     },
     {
       "key": "drpy_js_Pornhub_密_.js",
@@ -2080,7 +2494,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 404,
+      "_ms": 459
     },
     {
       "key": "drpy_js_R18撸_密_.js",
@@ -2094,7 +2512,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 404,
+      "_ms": 459
     },
     {
       "key": "drpy_js_188视频_密_.js",
@@ -2108,7 +2530,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 404,
+      "_ms": 459
     },
     {
       "key": "drpy_js_绿色仓库_密_.js",
@@ -2122,7 +2548,11 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": false,
+      "_code": 404,
+      "_ms": 459
     },
     {
       "key": "py_4KAV",
@@ -2135,8 +2565,23 @@
       "_adult": true,
       "_crawler": true,
       "_line": "全网发现",
-      "_src": "全网发现"
+      "_src": "全网发现",
+      "_probe_at": "2026-10-09T23:12:34Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 268
     }
   ],
-  "_from": "https://raw.githubusercontent.com/dearloyal/CS/main/2爬虫-部分.json"
+  "_from": "https://raw.githubusercontent.com/dearloyal/CS/main/2爬虫-部分.json",
+  "_probe": {
+    "at": "2026-10-09T23:12:34Z",
+    "standard": "连通性判定（不校验返回内容）",
+    "probed": 65,
+    "alive": 27,
+    "dead": 38,
+    "engine_unprobeable": 87,
+    "not_checked": 0,
+    "alive_rate": "41.5%",
+    "dead_suffix": ""
+  }
 }
