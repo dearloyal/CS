@@ -122,6 +122,19 @@ def main():
     normal = pin_first(normal, PIN_ALL_FIRST)
     adult = pin_first(adult, PIN_PART_FIRST)
 
+    # ⑤ 有分类的源排前面、无分类的排后面
+    #    置顶第一项（红线：全部→❤闪电资源 / 部分→老色逼）保持最前，
+    #    其余按「是否带 categories 字段」稳定排序，有分类的整体前置。
+    def cat_first(lst):
+        if not lst:
+            return lst
+        top, rest = lst[0], lst[1:]
+        rest_sorted = sorted(rest, key=lambda s: 0 if s.get("categories") else 1)
+        return [top] + rest_sorted
+
+    normal = cat_first(normal)
+    adult = cat_first(adult)
+
     def write(fname, subset, lst):
         meta = {
             "name": f"{'全部' if subset == '全部' else '部分'}接口（{'正常' if subset == '全部' else '成人'}）",
