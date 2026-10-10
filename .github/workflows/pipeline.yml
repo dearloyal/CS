@@ -53,7 +53,6 @@ jobs:
           name: stage1
           path: |
             网站接口数据.json
-            接口合集.json
 
   classify:
     needs: build
@@ -73,10 +72,8 @@ jobs:
         with:
           name: stage2
           path: |
-            1直连-全部.json
-            1直连-部分.json
-            2爬虫-全部.json
-            2爬虫-部分.json
+            全部.json
+            部分.json
 
   output:
     needs: classify
@@ -101,7 +98,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add 1直连-全部.json 1直连-部分.json 2爬虫-全部.json 2爬虫-部分.json 接口合集.json
+          # 清理上一版遗留的 4 份 + 接口合集（重构后不再产出）
+          git rm -f --ignore-unmatch 1直连-全部.json 1直连-部分.json 2爬虫-全部.json 2爬虫-部分.json 接口合集.json 2>/dev/null || true
+          git add 全部.json 部分.json
           if git diff --cached --quiet; then
             echo "无变化，跳过提交"
           else
@@ -122,13 +121,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: 阶段4 接口探活（连通性标记，保留全部站点不剔除）
+      - name: 阶段4 接口探活（严格模式：不返回数据即删除；纯引擎 Spider 保留不可验证）
         run: python3 scripts/probe.py
       - name: 提交探活结果
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add 1直连-全部.json 1直连-部分.json 2爬虫-全部.json 2爬虫-部分.json 接口合集.json
+          git add 全部.json 部分.json
           if git diff --cached --quiet; then
             echo "无变化，跳过提交"
           else

@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-QWJS 分类脚本（部署到 dearloyal/QWJS → scripts/classify.py）
+QWJS 分类脚本（部署到 dearloyal/CS → scripts/qwjs_classify.py）
 ==============================================================
-任务（按用户要求）：
-  读取 YSC 产出的「全部网站接口」
-    （dearloyal/YSC/main/网站接口数据.json，可用环境变量 YSC_JSON 覆盖为本地路径做测试），
-  ① 用【直连脚本】与【爬虫脚本】分别判定接口类型；
-  ② 按【成人 / 正常】标注（全部 = 正常接口；部分 = 成人接口）；
-  ③ 分成 4 份文件，并在文件内明确标注：
-        1直连-全部.json : 直连 + 正常接口（全部）
-        1直连-部分.json : 直连 + 成人接口（部分）
-        2爬虫-全部.json : 爬虫 + 正常接口（全部）
-        2爬虫-部分.json : 爬虫 + 成人接口（部分）
-  标注说明：
-        全部 = 正常可用接口；部分 = 成人接口。
-运行：python3 scripts/classify.py
+任务（按用户 2026-10-11 要求重构）：
+  读取 YSC 产出的「全部网站接口」（网站接口数据.json），统一输出 2 份订阅文件：
+        全部.json : 正常可用接口（直连 + 爬虫 合并）
+        部分.json : 成人接口（直连 + 爬虫 合并）
+  不再区分直连 / 爬虫（用户要求合并）。
+
+附加处理：
+  ① 删除「酷我」系列（用户指定从全部中移除）；
+  ② 给每个源打标志：正常 → 名字前缀「影视 」，成人 → 名字前缀「18 」；
+  ③ 排序：全部.json 把「闪电资源」置顶（它有分类），部分.json 把「老色逼」置顶。
+
+成人判定与 build 阶段共用 adult_filter.is_adult，规则唯一、不漂移。
+运行：python3 scripts/qwjs_classify.py
 """
 import json, os, re, sys, time, subprocess
 
@@ -26,10 +26,16 @@ YSC_URL = os.environ.get(
 # 合并管线场景：上游产物已在同一工作目录，直接读本地（可用 LOCAL_YSC 覆盖）
 LOCAL_YSC = os.environ.get("LOCAL_YSC", "网站接口数据.json")
 
-ADULT_KW = re.compile(
-    r"(18|r18|成人|🔞|色|黄|麻豆|艾旦|sex|av|番号|福利|伦理|裸|春药|约炮|同志|同性|"
-    r"avb|porn|hentai|jm|萝莉)", re.I)
-CRAWLER_API = re.compile(r"^(csp_|drpy|spider|\./|jar:|js:|py:|http.*\.js$|http.*\.py$)", re.I)
+# 用户指定从「全部」中剔除的名称（模糊匹配）
+BLOCK_NAME_FRAGMENTS = ("酷我",)
+
+# 置顶规则：全部.json 把含此关键字的源放最前；部分.json 同理
+PIN_ALL_FIRST = "闪电资源"
+PIN_PART_FIRST = "老色逼"
+
+# 标志前缀
+FLAG_NORMAL = "影视 "
+FLAG_ADULT = "18 "
 
 # 与 build 阶段共用同一份成人判定规则（adult_filter.py）
 try:
@@ -52,8 +58,7 @@ def fetch_json(url, timeout=40):
 
 
 def load_input():
-    """优先读同仓库本地文件（合并管线），否则回退 raw 拉取（多仓链路）。
-    这样同一份脚本在两种部署形态下都能跑，方便回退。"""
+    """优先读同仓库本地文件（合并管线），否则回退 raw 拉取（多仓链路）。"""
     if os.path.exists(LOCAL_YSC):
         with open(LOCAL_YSC, encoding="utf-8") as f:
             print(f"[QWJS] 读取本地文件: {LOCAL_YSC}")
@@ -62,27 +67,35 @@ def load_input():
     return fetch_json(YSC_URL)
 
 
-def is_crawler(api):
-    api = str(api or "").strip()
-    if not api:
-        return True
-    return bool(CRAWLER_API.match(api)) or (not api.lower().startswith("http"))
-
-
 def adult_of(site):
-    # 优先用 YSC 已标注的字段，缺则重算（规则与 build 阶段共用 adult_filter）
-    if isinstance(site.get("_adult"), bool):
-        return site["_adult"]
     if _is_adult is not None:
         return _is_adult(site)
-    blob = " ".join(str(site.get(k, "")) for k in ("name", "key", "api", "type", "ext"))
-    return bool(ADULT_KW.search(blob))
+    # 兜底（极少触发）：直接导入失败时退回最简判定
+    blob = " ".join(str(site.get(k, "")) for k in ("name", "key", "api"))
+    return bool(re.search(r"(成人|🔞|色|黄|麻豆|av|avb|porn|hentai|萝莉)", blob, re.I))
 
 
-def crawler_of(site):
-    if isinstance(site.get("_crawler"), bool):
-        return site["_crawler"]
-    return is_crawler(site.get("api"))
+def block(site):
+    """是否命中剔除名单（酷我 等）。"""
+    name = str(site.get("name", "") or "")
+    return any(frag in name for frag in BLOCK_NAME_FRAGMENTS)
+
+
+def apply_flag(site, is_adult):
+    """给源名打标志前缀；已带前缀则幂等不加。"""
+    name = str(site.get("name", "") or "")
+    prefix = FLAG_ADULT if is_adult else FLAG_NORMAL
+    if not name.startswith(prefix):
+        site = dict(site)  # 不污染上游，写副本
+        site["name"] = prefix + name
+    return site
+
+
+def pin_first(lst, keyword):
+    """把名字含 keyword 的源整体置顶（其余保持原顺序）。"""
+    head = [s for s in lst if keyword in str(s.get("name", ""))]
+    tail = [s for s in lst if keyword not in str(s.get("name", ""))]
+    return head + tail
 
 
 def main():
@@ -90,24 +103,31 @@ def main():
     sites = d.get("sites", [])
     print(f"[QWJS] 读取上游接口数: {len(sites)}")
 
-    direct = [s for s in sites if not crawler_of(s)]
-    crawler = [s for s in sites if crawler_of(s)]
-    print(f"  直连 {len(direct)} | 爬虫 {len(crawler)}")
+    # ① 剔除酷我 等
+    kept = [s for s in sites if not block(s)]
+    removed = len(sites) - len(kept)
+    if removed:
+        print(f"  剔除（酷我 等）: {removed}")
 
-    d_all = [s for s in direct if not adult_of(s)]
-    d_part = [s for s in direct if adult_of(s)]
-    c_all = [s for s in crawler if not adult_of(s)]
-    c_part = [s for s in crawler if adult_of(s)]
-    print(f"  直连-全部 {len(d_all)} | 直连-部分 {len(d_part)} | "
-          f"爬虫-全部 {len(c_all)} | 爬虫-部分 {len(c_part)}")
+    # ② 按成人/正常分流（直连 + 爬虫 合并，不再区分）
+    normal = [s for s in kept if not adult_of(s)]
+    adult = [s for s in kept if adult_of(s)]
+    print(f"  全部（正常） {len(normal)} | 部分（成人） {len(adult)}")
 
-    def write(fname, category, subset, lst):
+    # ③ 打标志
+    normal = [apply_flag(s, False) for s in normal]
+    adult = [apply_flag(s, True) for s in adult]
+
+    # ④ 置顶规则
+    normal = pin_first(normal, PIN_ALL_FIRST)
+    adult = pin_first(adult, PIN_PART_FIRST)
+
+    def write(fname, subset, lst):
         meta = {
-            "name": f"{category}接口 - {subset}（{'正常' if subset == '全部' else '成人'}）",
-            "category": category,            # 直连 / 爬虫
+            "name": f"{'全部' if subset == '全部' else '部分'}接口（{'正常' if subset == '全部' else '成人'}）",
             "subset": subset,                # 全部 / 部分
             "subset_meaning": "全部 = 正常可用接口" if subset == "全部" else "部分 = 成人接口",
-            "adult": subset == "部分",       # 标注：部分即成人
+            "adult": subset == "部分",
             "source": "dearloyal/YSC",
             "count": len(lst),
         }
@@ -115,10 +135,8 @@ def main():
             json.dump({**meta, "sites": lst}, f, ensure_ascii=False, indent=2)
         print(f"  写出 {fname} ({len(lst)})")
 
-    write("1直连-全部.json", "直连", "全部", d_all)
-    write("1直连-部分.json", "直连", "部分", d_part)
-    write("2爬虫-全部.json", "爬虫", "全部", c_all)
-    write("2爬虫-部分.json", "爬虫", "部分", c_part)
+    write("全部.json", "全部", normal)
+    write("部分.json", "部分", adult)
     print("[QWJS] 完成")
 
 

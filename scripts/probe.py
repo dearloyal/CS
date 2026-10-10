@@ -24,9 +24,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 FILES = [
-    "1直连-全部.json", "1直连-部分.json",
-    "2爬虫-全部.json", "2爬虫-部分.json",
-    "接口合集.json",
+    "全部.json", "部分.json",
 ]
 CONCURRENCY = 24       # 并发验证数（严格模式请求更重，略降）
 TIMEOUT = 8            # 单请求超时（秒）

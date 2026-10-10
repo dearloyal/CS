@@ -1,19 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-CS 出链脚本（部署到 dearloyal/CS → scripts/build.py）
-====================================================
-任务（按用户要求）：
-  ① 读取本仓 classify 阶段产出的 4 个分类接口；
-  ② 读取本仓 build 阶段产出的「接口合集」；
-  ③ 在 CS 仓库落地【5 个可订阅链接】，供用户直接使用：
-        1. 1直连-全部.json   （直连 · 全部）
-        2. 1直连-部分.json   （直连 · 部分）
-        3. 2爬虫-全部.json   （爬虫 · 全部）
-        4. 2爬虫-部分.json   （爬虫 · 部分）
-        5. 接口合集.json     （可手动选线路 饭太硬/南风/王二小…）
-  另外生成 README.md，列出 5 个订阅链接（对外不写分组含义）。
-运行：python3 scripts/build.py
+CS 出链脚本（部署到 dearloyal/CS → scripts/cs_build.py）
+========================================================
+任务（按用户 2026-10-11 重构要求）：
+  ① 读取本仓 classify 阶段产出的 2 个订阅文件（全部 / 部分，已合并直连+爬虫）；
+  ② 在 CS 仓库落地【2 个可订阅链接】，供用户直接使用：
+        1. 全部.json   （正常接口，名字带「影视 」标志）
+        2. 部分.json   （成人接口，名字带「18 」标志）
+  另外生成 README.md，列出 2 个订阅链接（对外不写分组含义）。
+运行：python3 scripts/cs_build.py
 """
 import json, os, time, subprocess, sys
 
@@ -24,11 +20,8 @@ SELF_BASE = os.environ.get("SELF_BASE", "https://raw.githubusercontent.com/dearl
 
 # (本地文件名, 上游base, 上游文件名)
 ITEMS = [
-    ("1直连-全部.json", SELF_BASE, "1直连-全部.json"),
-    ("1直连-部分.json", SELF_BASE, "1直连-部分.json"),
-    ("2爬虫-全部.json", SELF_BASE, "2爬虫-全部.json"),
-    ("2爬虫-部分.json", SELF_BASE, "2爬虫-部分.json"),
-    ("接口合集.json", SELF_BASE, "接口合集.json"),
+    ("全部.json", SELF_BASE, "全部.json"),
+    ("部分.json", SELF_BASE, "部分.json"),
 ]
 
 
@@ -92,11 +85,8 @@ def build_readme(landed):
         "",
     ]
     labels = {
-        "1直连-全部.json": "① 直连 · 全部",
-        "1直连-部分.json": "② 直连 · 部分",
-        "2爬虫-全部.json": "③ 爬虫 · 全部",
-        "2爬虫-部分.json": "④ 爬虫 · 部分",
-        "接口合集.json": "⑤ 接口合集（可手动选线路：饭太硬/南风/王二小…）",
+        "全部.json": "① 全部（正常接口）",
+        "部分.json": "② 部分（成人接口）",
     }
     for local, n in landed:
         gh = f"https://raw.githubusercontent.com/dearloyal/CS/main/{local}"
@@ -107,9 +97,8 @@ def build_readme(landed):
         lines.append("")
     lines += [
         "## 备注",
-        "- 全部 / 部分为接口的不同分组，按使用需要选用。",
-        "- 直连 / 爬虫 由 QWJS 用直连脚本与爬虫脚本判定后分流。",
-        "- 接口合集来自 YSC：导入影视仓后可在线路列表手动切换 饭太硬 / 南风 / 王二小 等。",
+        "- 全部 = 正常可用接口（名字带「影视 」标志）；部分 = 成人接口（名字带「18 」标志）。",
+        "- 直连 / 爬虫 已合并，不再区分；爬虫类有 HTTP 地址的会严格探活，纯引擎 Spider 保留不可验证。",
     ]
     return "\n".join(lines) + "\n"
 

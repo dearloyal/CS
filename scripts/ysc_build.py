@@ -10,13 +10,11 @@ YSC 数据源构建脚本（部署到 dearloyal/YSC → scripts/build.py）
      （饭太硬 / 南风 / 王二小 / 肥猫 … 每条含主 URL 与多备份）；
   3. 上面每一条配置 URL 都经过「饭太硬解密端点 jiemi.php?url=<URL>」解密，
      转换为影视仓可用接口；
-  4. 产出两个文件（均放在仓库根，供用户订阅 / 供 QWJS 读取）：
+  4. 产出文件（放在仓库根，供 QWJS 读取）：
      - 网站接口数据.json : 全部经解密得到的扁平 sites 聚合（按地址去重：
                            真实接口/csp 按归一化地址合并重复，drpy/js/py 共享
-                           引擎路径保留 key 区分），QWJS 每周一会读取它做分类；
-     - 接口合集.json     : 可「手动选择线路」的合集 —— 内含每条线路元信息
-                           （饭太硬 / 南风 / 王二小 …）＋ 合并的全部 sites，
-                           用户导入影视仓后可手动切换线路。
+                           引擎路径保留 key 区分），QWJS 读取它做分类；
+     （2026-10-11 重构后不再产出「接口合集.json」，分类只输出 全部/部分 两份。）
 运行：在仓库根目录执行  python3 scripts/build.py
 """
 import json, os, re, sys, time, subprocess
@@ -389,17 +387,8 @@ def main():
         json.dump(w2, f, ensure_ascii=False, indent=2)
     print("    写出 网站接口数据.json")
 
-    # 写 接口合集.json（可手动选择线路）
-    w1 = {
-        "name": "影视仓接口合集 (YSC)",
-        "description": "可手动选择线路的接口合集：导入影视仓后，可在线路列表手动切换 饭太硬 / 南风 / 王二小 等。",
-        "decrypt_endpoint": DEC,
-        "lines": line_meta,
-        "sites": master,
-    }
-    with open("接口合集.json", "w", encoding="utf-8") as f:
-        json.dump(w1, f, ensure_ascii=False, indent=2)
-    print("    写出 接口合集.json")
+    # 注：原「接口合集.json」已不再产出（2026-10-11 重构后只区分 全部/部分，
+    # 由 qwjs_classify.py 直接分流，不再需要这一份合集）。
 
     print(f"[完成] 总用时 {(time.time()-t0):.1f}s")
 
