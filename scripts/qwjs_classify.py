@@ -12,7 +12,7 @@ QWJS 分类脚本（部署到 dearloyal/CS → scripts/qwjs_classify.py）
 附加处理：
   ① 删除「酷我」系列（用户指定从全部中移除）；
   ② 给每个源打标志：正常 → 名字前缀「影视 」，成人 → 名字前缀「18 」；
-  ③ 排序：全部.json 把「闪电资源」置顶（它有分类），部分.json 把「老色逼」置顶。
+  ③ 排序：全部.json 把「❤闪电资源」（心型闪电，有分类）置顶，部分.json 把「老色逼」置顶。
 
 成人判定与 build 阶段共用 adult_filter.is_adult，规则唯一、不漂移。
 运行：python3 scripts/qwjs_classify.py
@@ -30,7 +30,7 @@ LOCAL_YSC = os.environ.get("LOCAL_YSC", "网站接口数据.json")
 BLOCK_NAME_FRAGMENTS = ("酷我",)
 
 # 置顶规则：全部.json 把含此关键字的源放最前；部分.json 同理
-PIN_ALL_FIRST = "闪电资源"
+PIN_ALL_FIRST = "❤闪电资源"
 PIN_PART_FIRST = "老色逼"
 
 # 标志前缀
