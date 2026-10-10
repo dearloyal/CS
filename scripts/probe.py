@@ -9,9 +9,12 @@
   · 判定标准：不只要连得上，必须能拿到数据（有列表/点播内容）
   · 失败处理：**删除**（此前是保留并加 [失效] 后缀）
 
-覆盖范围：
-  api 是 http(s) 地址的站点才能验证。`csp_Xxx` 等引擎 Spider 没有 HTTP 地址，
-  无从验证，一律**保留**（不删），并在统计里单列，不混入存活率。
+最终化（2026-10-10 收紧）：
+  探活后**只保留 _alive=True 的源**（100% 确认可用），其余一律剔除：
+    · 未验证引擎（csp_Xxx / ./lib/drpy 等无 HTTP 地址，外部无法确认可用）→ 舍弃
+    · 死链（_alive=False）→ 已在上面删除
+  并按「归一化 api」（去 query / 尾部斜杠 / 小写 host）**去重**，同一后台只留一条，
+  避免影视仓因源过多而卡死。
 
 验证方式：
   对接口按「标准苹果CMS参数」依次尝试（接口自带参数则直接测）：
@@ -21,6 +24,7 @@
 """
 import json, os, re, subprocess, time, datetime, argparse
 from concurrent.futures import ThreadPoolExecutor
+from urllib.parse import urlsplit, urlunsplit
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 FILES = [
@@ -48,6 +52,23 @@ def probe_key(s):
     if api.lower().startswith("http"):
         return ("U", api)
     return ("E", s.get("key", ""), api)
+
+
+def norm_api(api):
+    """归一化接口地址：去 query、去尾部斜杠、host 转小写，用作去重键。
+
+    例： https://x.com/a/?ac=list 与 https://x.com/a/ 视为同一后台。
+    """
+    if not api:
+        return api
+    api = api.strip()
+    try:
+        sp = urlsplit(api)
+        host = sp.netloc.lower()
+        path = sp.path.rstrip("/")
+        return urlunsplit((sp.scheme.lower(), host, path, "", ""))
+    except Exception:
+        return api.lower()
 
 
 def candidates(url):
@@ -225,33 +246,47 @@ def main():
                 s["_alive"] = None
                 n_engine += 1
                 kept.append(s)
+        # 3.5) 最终化：只保留已验证可用(_alive=True) + 按归一化 api 去重
+        #      未验证引擎(csp_/./lib) 与死链均无 100% 可用保证，一律舍弃，避免源过多卡死。
+        verified = [s for s in kept if s.get("_alive") is True]
+        seen_norm, final = set(), []
+        for s in verified:
+            na = norm_api(str(s.get("api") or ""))
+            if na in seen_norm:
+                continue
+            seen_norm.add(na)
+            final.append(s)
+        dedup_removed = len(verified) - len(final)
+        engine_dropped = n_engine + n_skip  # 未验证引擎，外部无法确认可用
+
         before = len(d.get("sites", []))
-        d["sites"] = kept
+        d["sites"] = final
         total = n_alive + n_dead
         summary = {
             "at": ts,
             "standard": "必须返回有效影视数据（内容校验）",
-            "mode": "删除失败源" if mode == "delete" else "保留并标记",
+            "mode": "仅保留已验证可用 + 去重",
             "verified": total,
             "alive": n_alive,
             "dead": n_dead,
-            "engine_kept": n_engine,
+            "engine_dropped": engine_dropped,
             "not_checked": n_skip,
+            "dedup_removed": dedup_removed,
             "alive_rate": f"{(n_alive / total * 100):.1f}%" if total else "-",
             "sites_before": before,
-            "sites_after": len(kept),
+            "sites_after": len(final),
         }
         d["_probe"] = summary
         # count 是 classify 阶段写入的「探活前」数量，删源后必须同步，
         # 否则文件自称 791 条、实际只有 238 条，App 端读数会自相矛盾。
         if "count" in d:
-            d["count"] = len(kept)
+            d["count"] = len(final)
         with open(f, "w", encoding="utf-8") as fp:
             json.dump(d, fp, ensure_ascii=False, indent=2)
         print(f"[probe] {f:16s} 验证 {total:5d}  通过 {n_alive:5d}  "
-              f"删除 {n_dead:5d}  引擎保留 {n_engine:5d}  未判定 {n_skip:5d}  "
+              f"删除 {n_dead:5d}  弃引擎 {engine_dropped:5d}  去重 {dedup_removed:5d}  "
               f"通过率 {summary['alive_rate']}  "
-              f"站点 {before}→{len(kept)}", flush=True)
+              f"站点 {before}→{len(final)}", flush=True)
 
     print(f"[probe] 完成，用时 {(time.time() - t0):.1f}s", flush=True)
 
