@@ -34,6 +34,13 @@ MAX_BODY = 300_000     # 响应体截断上限（字节），防止超大响应�
 DATA_KEYS = ("list", "data", "videos", "video", "class", "items")
 DATA_MARK = re.compile(r"<video>|vod_play_url|vod_name|<list>|\"vod_id\"|vod_pic")
 
+# 引擎蜘蛛脚本：api 指向 .js/.py/.json 等文件（而非 CMS 接口）。
+# 这类地址不能用「是否返回影视数据」判断，只能看文件还在不在（HTTP 状态码）。
+SCRIPT_RE = re.compile(r"\.(js|py|min\.js|json)(\?|$|&)", re.I)
+# 国内代理包裹的真实地址：https://gh-proxy.com/https://raw.githubusercontent.com/...
+# 剥掉代理前缀才能从 CI 网络直达底层文件，避免把可达的脚本误判死。
+PROXY_RE = re.compile(r"^https?://[^/]+/(https?://.+)$")
+
 
 def probe_key(s):
     """去重键：http 类按地址，引擎类按 (key, api)。"""
@@ -115,6 +122,29 @@ def probe_strict(url):
     return False, code, ms
 
 
+def probe_script(url):
+    """引擎蜘蛛脚本的存在性校验。
+
+    脚本文件不会返回影视数据，只能用 HTTP 状态码判断「文件是否还在」：
+      · 200/2xx/3xx      → 文件在，存活（保留）
+      · 404 / 410         → 文件已删/移走，死（删除）
+      · 连接失败/超时/其它 → 不确定，保留不删（防 CI 网络抖动误删）
+    同时剥掉 gh-proxy 等国内代理前缀，直达底层 raw 地址再查。
+    返回 (alive, code, ms)。
+    """
+    real = PROXY_RE.sub(r"\1", url)
+    code, ms = 0, 0
+    for attempt in range(RETRY_ON_FAIL + 1):
+        code, ms, _ = fetch(real)
+        if code and 200 <= code < 400:
+            return True, code, ms
+        if code in (404, 410):
+            return False, code, ms
+        if attempt < RETRY_ON_FAIL:
+            time.sleep(0.8)
+    return True, code, ms
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sample", type=int, default=0,
@@ -137,20 +167,27 @@ def main():
     for d in docs.values():
         for s in d.get("sites", []):
             k = probe_key(s)
-            if k[0] == "U" and k not in seen:
-                seen.add(k)
-                tasks.append(k[1])
+            if k[0] == "U" and k[1] not in seen:
+                seen.add(k[1])
+                kind = "script" if SCRIPT_RE.search(k[1]) else "cms"
+                tasks.append((k[1], kind))
     if args.sample:
         tasks = tasks[:args.sample]
-    print(f"[probe] 严格模式：待验证接口 {len(tasks)} 个（并发 {CONCURRENCY}，"
-          f"剔除未返回数据的源）", flush=True)
+    n_script = sum(1 for _, kind in tasks if kind == "script")
+    print(f"[probe] 严格模式：待验证接口 {len(tasks)} 个"
+          f"（CMS {len(tasks) - n_script} / 引擎脚本 {n_script}），并发 {CONCURRENCY}，"
+          f"剔除未返回数据的源", flush=True)
 
-    # 2) 并发验证
+    # 2) 并发验证（CMS 验数据；引擎脚本验文件存在性）
+    def verify(t):
+        url, kind = t
+        return probe_script(url) if kind == "script" else probe_strict(url)
+
     result = {}
     if tasks:
         with ThreadPoolExecutor(max_workers=CONCURRENCY) as ex:
-            for url, (alive, code, ms) in zip(tasks, ex.map(probe_strict, tasks)):
-                result[url] = (alive, code, ms)
+            for t, (alive, code, ms) in zip(tasks, ex.map(verify, tasks)):
+                result[t[0]] = (alive, code, ms)
 
     ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
