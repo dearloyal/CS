@@ -50,6 +50,13 @@ ADULT_KW = re.compile(
     r"avb|porn|hentai|jm|萝莉)", re.I)
 CRAWLER_API = re.compile(r"^(csp_|drpy|spider|\./|jar:|js:|py:|http.*\.js$|http.*\.py$)", re.I)
 
+# 成人判定下沉到 adult_filter.py（分层关键词 + 乱码还原），两阶段共用同一份规则。
+# 模块缺失时不阻塞流水线，回退为旧的单一正则。
+try:
+    from adult_filter import is_adult as _is_adult
+except Exception:
+    _is_adult = None
+
 # 地址归一化：去协议头、去末尾斜杠（用于真实接口地址去重）
 def norm_api(api):
     a = api.strip().lower()
@@ -238,8 +245,11 @@ def decrypt(url, attempts=4):
 
 
 def tag(site):
-    blob = " ".join(str(site.get(k, "")) for k in ("name", "key", "api", "type", "ext"))
-    site["_adult"] = bool(ADULT_KW.search(blob))
+    if _is_adult is not None:
+        site["_adult"] = _is_adult(site)
+    else:
+        blob = " ".join(str(site.get(k, "")) for k in ("name", "key", "api", "type", "ext"))
+        site["_adult"] = bool(ADULT_KW.search(blob))
     api = str(site.get("api", "")).strip()
     site["_crawler"] = bool(CRAWLER_API.match(api)) or (api.startswith("http") is False)
     return site

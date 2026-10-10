@@ -31,6 +31,12 @@ ADULT_KW = re.compile(
     r"avb|porn|hentai|jm|萝莉)", re.I)
 CRAWLER_API = re.compile(r"^(csp_|drpy|spider|\./|jar:|js:|py:|http.*\.js$|http.*\.py$)", re.I)
 
+# 与 build 阶段共用同一份成人判定规则（adult_filter.py）
+try:
+    from adult_filter import is_adult as _is_adult
+except Exception:
+    _is_adult = None
+
 
 def fetch_json(url, timeout=40):
     from urllib.parse import quote
@@ -64,9 +70,11 @@ def is_crawler(api):
 
 
 def adult_of(site):
-    # 优先用 YSC 已标注的字段，缺则重算
+    # 优先用 YSC 已标注的字段，缺则重算（规则与 build 阶段共用 adult_filter）
     if isinstance(site.get("_adult"), bool):
         return site["_adult"]
+    if _is_adult is not None:
+        return _is_adult(site)
     blob = " ".join(str(site.get(k, "")) for k in ("name", "key", "api", "type", "ext"))
     return bool(ADULT_KW.search(blob))
 
