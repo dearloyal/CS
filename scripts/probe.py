@@ -207,6 +207,10 @@ def main():
             "sites_after": len(kept),
         }
         d["_probe"] = summary
+        # count 是 classify 阶段写入的「探活前」数量，删源后必须同步，
+        # 否则文件自称 791 条、实际只有 238 条，App 端读数会自相矛盾。
+        if "count" in d:
+            d["count"] = len(kept)
         with open(f, "w", encoding="utf-8") as fp:
             json.dump(d, fp, ensure_ascii=False, indent=2)
         print(f"[probe] {f:16s} 验证 {total:5d}  通过 {n_alive:5d}  "
