@@ -26,10 +26,13 @@ ADULT_KW = re.compile(
 # ── 用户指定清单：中文词（番茄/极品带否定后缀，排除同名正常站） ──────────
 CN_KW = re.compile(
     r"(小鸡|蝙蝠|精东|美少女|香奶儿?|桃花|乐播|滴滴|嘿嘿|废柴|玉兔|淫水机|越南"
+    r"|大奶子|杏吧"
     r"|番茄(?!动漫|小说)|极品(?!┃听书|影视))"
 )
 # ── 用户指定清单：字母/别名词 ───────────────────────────────────────────
-EN_KW = re.compile(r"(jkun|鸡坤|爱坤)", re.I)
+# ck 不裸搜（会误伤 bitbucket 的 "bucket"、track、luck 等），只匹配成人专用
+# token：ckzy=CK资源、hsck=黄色仓库 这批域名，实测 9 条全为成人、零误伤。
+EN_KW = re.compile(r"(jkun|鸡坤|爱坤|ckzy|hsck)", re.I)
 # ── 用户指定清单：站点名里的独立 19 ─────────────────────────────────────
 NAME_NUM_KW = re.compile(r"(?<![0-9a-z])19(?![0-9a-z])", re.I)
 
@@ -54,8 +57,8 @@ def demojibake(s):
 
 LOOSE = os.environ.get("ADULT_MODE", "").lower() == "loose"
 _LOOSE_KW = re.compile(
-    r"(小鸡|蝙蝠|精东|美少女|香奶儿?|桃花|乐播|滴滴|嘿嘿|废柴|玉兔|淫水机|越南"
-    r"|番茄|极品|jkun|鸡坤|爱坤|19)", re.I)
+    r"(小鸡|蝙蝠|精东|美少女|香奶儿?|桃花|乐播|滴滴|嘿嘿|废柴|玉兔|淫水机|越南|大奶子|杏吧"
+    r"|番茄|极品|ckzy|hsck|jkun|鸡坤|爱坤|19)", re.I)
 
 
 def is_adult(site):
