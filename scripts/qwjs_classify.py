@@ -12,7 +12,10 @@ QWJS 分类脚本（部署到 dearloyal/CS → scripts/qwjs_classify.py）
 附加处理：
   ① 删除「酷我」系列（用户指定从全部中移除）；
   ② 给每个源打标志：正常 → 名字前缀「影视 」，成人 → 名字前缀「18 」；
-  ③ 排序：全部.json 把「❤闪电资源」（心型闪电，有分类）置顶；部分.json 不强制置顶，纯按「真实有分类在前、无分类(含空壳)在后」排序。
+  ③ 剔除「验证为空」的分类（empty_cats_cache.json，由 probe_empty_cats.py 逐源探测
+     ?ac=videolist&t=<type_id> 的 total 生成；苹果CMS 筛选参数是 t 不是 type）；
+  ④ 排序：全部.json 把「❤闪电资源」（心型闪电，有分类）置顶；部分.json 不强制置顶，纯按「分类【能显示】在前、不能显示在后」排序。
+     「能显示」= 有真实分类 且 type != 0（用户确认 type=0 源不显示分类筛选栏）。
 
 成人判定与 build 阶段共用 adult_filter.is_adult，规则唯一、不漂移。
 运行：python3 scripts/qwjs_classify.py
@@ -39,6 +42,10 @@ FLAG_ADULT = "18 "
 
 # ── 分类缓存（离线抓取生成，防止每日流水线把真实分类打回空壳）──
 # categories_cache.json: { norm_api(url): [分类名, ...] }，仅用于填补上游配置缺失的分类。
+# empty_cats_cache.json: { norm_api(url): [空分类名, ...] }，逐源验证为空的分类，运行时剔除。
+# （用户 2026-10-12：闪电资源「电影/电视剧/综艺/动漫」等标准分类 App 里点开是空的；
+#   苹果CMS provide 接口筛选参数是 t 而非 type，?ac=videolist&t=<id> 的 total 即真实内容量，
+#   已用 probe_empty_cats.py 全量验证并生成 empty_cats_cache.json。）
 def norm_api(api):
     a = (api or "").strip().lower()
     a = re.sub(r"^https?://", "", a)
@@ -55,19 +62,26 @@ def displayable_categories(site):
     """分类能否在 App 显示：须有真实分类，且 type != 0（用户 2026-10-12 确认 type=0 不显示分类）。"""
     return has_real_categories(site) and site.get("type") != 0
 
-_CACHE_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "categories_cache.json")
-if not os.path.exists(_CACHE_FILE):
-    _CACHE_FILE = "categories_cache.json"
+def _cache_path(name):
+    p = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), name)
+    return p if os.path.exists(p) else name
+
+_CACHE_FILE = _cache_path("categories_cache.json")
+_EMPTY_CACHE_FILE = _cache_path("empty_cats_cache.json")
+
+def _load_json_cache(path):
+    if not os.path.exists(path):
+        return {}
+    try:
+        d = json.load(open(path, encoding="utf-8"))
+        return d if isinstance(d, dict) else {}
+    except Exception:
+        return {}
 
 def merge_categories_cache(sites):
     """用 categories_cache.json 补回上游配置未提供的真实分类；不覆盖已有真实分类。"""
-    if not os.path.exists(_CACHE_FILE):
-        return sites, 0
-    try:
-        cache = json.load(open(_CACHE_FILE, encoding="utf-8"))
-    except Exception:
-        return sites, 0
-    if not isinstance(cache, dict):
+    cache = _load_json_cache(_CACHE_FILE)
+    if not cache:
         return sites, 0
     out, filled = [], 0
     for s in sites:
@@ -81,6 +95,24 @@ def merge_categories_cache(sites):
             filled += 1
         out.append(s)
     return out, filled
+
+def remove_empty_cats(sites):
+    """剔除 empty_cats_cache.json 中记录的「验证为空」分类（防每日流水线复活空壳分类）。"""
+    cache = _load_json_cache(_EMPTY_CACHE_FILE)
+    if not cache:
+        return sites, 0
+    out, cleaned = [], 0
+    for s in sites:
+        rm = cache.get(norm_api(s.get("api", "")))
+        if rm and isinstance(s.get("categories"), list):
+            rm_set = {str(x).strip() for x in rm}
+            new_cats = [c for c in s["categories"] if not (isinstance(c, str) and c.strip() in rm_set)]
+            if len(new_cats) != len(s["categories"]):
+                s = dict(s)
+                s["categories"] = new_cats
+                cleaned += 1
+        out.append(s)
+    return out, cleaned
 
 # 与 build 阶段共用同一份成人判定规则（adult_filter.py）
 try:
@@ -165,6 +197,11 @@ def main():
     sites, filled = merge_categories_cache(sites)
     if filled:
         print(f"  从分类缓存补回真实分类: {filled} 条")
+
+    # 0.2) 剔除逐源验证为空的分类（empty_cats_cache.json，防空壳分类复活）
+    sites, cleaned = remove_empty_cats(sites)
+    if cleaned:
+        print(f"  剔除验证为空的分类: {cleaned} 个源")
 
     # 0.5) 统一补齐 filterable/searchable/quickSearch=1（否则 App 不显示分类筛选栏）
     sites = ensure_flags(sites)
