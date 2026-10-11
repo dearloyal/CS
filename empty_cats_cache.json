@@ -1,0 +1,1149 @@
+{
+  "sdzyapi.com/api.php/provide/vod": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "斯诺克"
+  ],
+  "ffzy.tv/api.php/provide/vod": [
+    "电影片",
+    "连续剧",
+    "综艺片"
+  ],
+  "api.guangsuapi.com/api.php/provide/vod/from/gsm3u8": [
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "短剧"
+  ],
+  "api.xinlangapi.com/xinlangapi.php/provide//vod": [
+    "电视剧",
+    "动漫",
+    "综艺",
+    "体育",
+    "短剧"
+  ],
+  "api.wujinapi.net/api.php/provide/vod": [
+    "电影",
+    "连续剧",
+    "动漫",
+    "资讯",
+    "公告",
+    "头条",
+    "体育赛事"
+  ],
+  "jyzyapi.com/api.php/provide/vod": [
+    "电视剧",
+    "动漫",
+    "综艺",
+    "体育赛事",
+    "短剧"
+  ],
+  "mtzy.me/api.php/provide/vod": [
+    "新闻资讯",
+    "LPL",
+    "电影资讯",
+    "娱乐新闻",
+    "擦边短剧",
+    "记录片"
+  ],
+  "360zy.com/api.php/seaxml/vod": [
+    "电影",
+    "连续剧",
+    "综艺",
+    "动漫",
+    "体育",
+    "篮球",
+    "反转爽剧"
+  ],
+  "caiji.dyttzyapi.com/api.php/provide/vod/from/dyttm3u8/at/json": [
+    "电影片",
+    "综艺片",
+    "动漫片",
+    "海外动漫"
+  ],
+  "ffzy5.tv/api.php/provide/vod": [
+    "电影片",
+    "连续剧",
+    "综艺片"
+  ],
+  "jyzyapi.com/provide/vod": [
+    "电视剧",
+    "动漫",
+    "综艺",
+    "体育赛事",
+    "短剧"
+  ],
+  "tyyszyapi.com/api.php/provide/vod": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "海外动漫",
+    "短剧"
+  ],
+  "api.wujinapi.cc/api.php/provide/vod": [
+    "电影",
+    "连续剧",
+    "动漫",
+    "资讯",
+    "公告",
+    "头条",
+    "体育赛事"
+  ],
+  "api.yparse.com/api/json": [
+    "微电影"
+  ],
+  "api.niuniuzy.me/api.php/provide/vod": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "斯诺克"
+  ],
+  "dbzy.tv/api.php/provide/vod": [
+    "新闻资讯",
+    "LPL",
+    "电影资讯",
+    "娱乐新闻",
+    "擦边短剧"
+  ],
+  "hongniuzy3.com/api.php/provide/vod": [
+    "连续剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "短剧"
+  ],
+  "yayazy2.com/api.php/provide/vod": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "斯诺克"
+  ],
+  "zuida.xyz/api.php/provide/vod": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "斯诺克"
+  ],
+  "api.wsyzy.net/api.php/provide/vod": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "篮球",
+    "足球",
+    "预告片",
+    "斯诺克",
+    "影视解说",
+    "预告解说",
+    "科普学习"
+  ],
+  "lzizy1.com/api.php/provide/vod": [
+    "演员",
+    "新闻资讯",
+    "电影资讯",
+    "娱乐新闻"
+  ],
+  "huyaapi.com/api.php/provide/vod/from/hym3u8": [
+    "动漫",
+    "综艺",
+    "体育赛事",
+    "短剧"
+  ],
+  "suoniapi.com/api.php/provide/vod/at/json": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "斯诺克",
+    "预告解说"
+  ],
+  "cj.lziapi.com/api.php/provide/vod/at/json": [
+    "演员",
+    "新闻资讯",
+    "电影资讯",
+    "娱乐新闻"
+  ],
+  "cj.ffzyapi.com/api.php/provide/vod/at/json": [
+    "电影片",
+    "连续剧",
+    "综艺片"
+  ],
+  "jszyapi.com/api.php/provide/vod/from/jsm3u8": [
+    "电视剧",
+    "动漫",
+    "体育赛事",
+    "短剧"
+  ],
+  "cj.lziapi.com/api.php/provide/vod/from/lzm3u8": [
+    "演员",
+    "新闻资讯",
+    "电影资讯",
+    "娱乐新闻"
+  ],
+  "hhzyapi.com/api.php/provide/vod/from/hhm3u8": [
+    "电视剧",
+    "动漫",
+    "短剧",
+    "体育赛事"
+  ],
+  "caiji.dyttzyapi.com/api.php/provide/vod": [
+    "电影片",
+    "综艺片",
+    "动漫片",
+    "海外动漫"
+  ],
+  "doudouzy.com/api.php/provide/vod": [
+    "采集教程"
+  ],
+  "iqiyizyapi.com/api.php/provide/vod": [
+    "动漫",
+    "体育"
+  ],
+  "caiji.dbzy5.com/api.php/provide/vod": [
+    "新闻资讯",
+    "LPL",
+    "电影资讯",
+    "娱乐新闻",
+    "擦边短剧"
+  ],
+  "caiji.maotaizy.cc/api.php/provide/vod": [
+    "新闻资讯",
+    "LPL",
+    "电影资讯",
+    "娱乐新闻",
+    "擦边短剧",
+    "记录片"
+  ],
+  "api.maoyanapi.top/api.php/provide/vod": [
+    "电影",
+    "连续剧",
+    "综艺",
+    "动漫",
+    "体育",
+    "海外剧",
+    "欧美综艺",
+    "足球",
+    "篮球",
+    "爽文短剧"
+  ],
+  "360zyzz.com/api.php/provide/vod": [
+    "电影",
+    "连续剧",
+    "综艺",
+    "动漫",
+    "体育",
+    "篮球",
+    "反转爽剧"
+  ],
+  "jszyapi.com/api.php/provide/vod": [
+    "电视剧",
+    "动漫",
+    "体育赛事",
+    "短剧"
+  ],
+  "mdzyapi.com/api.php/provide/vod": [
+    "连续剧",
+    "体育"
+  ],
+  "api.ffzyapi.com/api.php/provide/vod": [
+    "电影片",
+    "连续剧",
+    "综艺片"
+  ],
+  "bfzyapi.com/api.php/provide/vod": [
+    "体育赛事"
+  ],
+  "api.zuidapi.com/api.php/provide/vod": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "斯诺克"
+  ],
+  "api.wujinapi.me/api.php/provide/vod": [
+    "电影",
+    "连续剧",
+    "动漫",
+    "资讯",
+    "公告",
+    "头条",
+    "体育赛事"
+  ],
+  "api.xinlangapi.com/xinlangapi.php/provide/vod": [
+    "电视剧",
+    "动漫",
+    "综艺",
+    "体育",
+    "短剧"
+  ],
+  "subocaiji.com/api.php/provide/vod": [
+    "综艺",
+    "体育赛事",
+    "短剧"
+  ],
+  "jyzyapi.com/provide/vod/from/jinyingyun/at/json": [
+    "电视剧",
+    "动漫",
+    "综艺",
+    "体育赛事",
+    "短剧"
+  ],
+  "api.ukuapi88.com/api.php/provide/vod": [
+    "电影",
+    "电视剧",
+    "资讯",
+    "新闻资讯",
+    "预告资讯",
+    "影视资讯",
+    "明星资讯"
+  ],
+  "api.guangsuapi.com/api.php/provide/vod": [
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "短剧"
+  ],
+  "hongniuzy2.com/api.php/provide/vod": [
+    "连续剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "短剧"
+  ],
+  "caiji.moduapi.cc/api.php/provide/vod": [
+    "连续剧",
+    "体育"
+  ],
+  "hhzyapi.com/api.php/provide/vod": [
+    "电视剧",
+    "动漫",
+    "短剧",
+    "体育赛事"
+  ],
+  "cj.lziapi.com/api.php/provide/vod": [
+    "演员",
+    "新闻资讯",
+    "电影资讯",
+    "娱乐新闻"
+  ],
+  "api.wujinapi.com/api.php/provide/vod": [
+    "电影",
+    "连续剧",
+    "动漫",
+    "资讯",
+    "公告",
+    "头条",
+    "体育赛事"
+  ],
+  "huyaapi.com/api.php/provide/vod": [
+    "动漫",
+    "综艺",
+    "体育赛事",
+    "短剧"
+  ],
+  "cj.yayazy.net/api.php/provide/vod": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "斯诺克"
+  ],
+  "suoniapi.com/api.php/provide/vod": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "斯诺克",
+    "预告解说"
+  ],
+  "caiji.kuaichezy.org/api.php/provide/vod": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "斯诺克"
+  ],
+  "xsd.sdzyapi.com/api.php/provide/vod": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "斯诺克"
+  ],
+  "m3u8.apiyhzy.com/api.php/provide/vod": [
+    "电影",
+    "连续剧",
+    "动漫",
+    "资讯",
+    "公告",
+    "头条"
+  ],
+  "tyyszy.com/api.php/provide/vod": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "海外动漫",
+    "短剧"
+  ],
+  "jinyingzy.com/api.php/provide/vod": [
+    "电视剧",
+    "动漫",
+    "综艺",
+    "体育赛事",
+    "短剧"
+  ],
+  "360zy.com/api.php/provide/vod": [
+    "电影",
+    "连续剧",
+    "综艺",
+    "动漫",
+    "体育",
+    "篮球",
+    "反转爽剧"
+  ],
+  "cj.ffzyapi.com/api.php/provide/vod": [
+    "电影片",
+    "连续剧",
+    "综艺片"
+  ],
+  "zhangqun1818.serv00.net/cj/cjjh.php": [
+    "综艺片",
+    "动漫片",
+    "海外动漫"
+  ],
+  "154.219.117.232:9981/jacloudapi.php/provide/vod": [
+    "剧集"
+  ],
+  "caiji.dyttzyapi.com/api.php/provide/vod/from/dyttm3u8/at/m3u8": [
+    "电影片",
+    "综艺片",
+    "动漫片",
+    "海外动漫"
+  ],
+  "suoniapi.com/api.php/provide/vod/from/snm3u8": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "斯诺克",
+    "预告解说"
+  ],
+  "api.maoyanapi.top/api.php/provide/vod/from/mym3u8/at/json": [
+    "电影",
+    "连续剧",
+    "综艺",
+    "动漫",
+    "体育",
+    "海外剧",
+    "欧美综艺",
+    "足球",
+    "篮球",
+    "爽文短剧"
+  ],
+  "hhzyapi.com/api.php/provide/vod/at/json": [
+    "电视剧",
+    "动漫",
+    "短剧",
+    "体育赛事"
+  ],
+  "huyaapi.com/api.php/provide/vod/from/hym3u8/at/json": [
+    "动漫",
+    "综艺",
+    "体育赛事",
+    "短剧"
+  ],
+  "slapibf.com/api.php/provide/vod": [
+    "都市激情",
+    "校园情事",
+    "人妻縱情",
+    "風俗倫理",
+    "另类小说",
+    "武侠古典",
+    "长篇连载",
+    "唯美写真",
+    "网友自拍",
+    "露出激情",
+    "街拍偷拍",
+    "丝袜美腿",
+    "卡通漫画",
+    "欧美风情"
+  ],
+  "ysxq.cc/api.php/provide/vod": [
+    "B站",
+    "文艺片",
+    "新加坡",
+    "歌舞片",
+    "古装片",
+    "历史片",
+    "体育赛事",
+    "青春片",
+    "灾难片",
+    "经典片",
+    "西部片",
+    "番剧",
+    "直播",
+    "海外综艺",
+    "少儿片",
+    "网络电影",
+    "新马泰动漫",
+    "电视直播",
+    "电影轮播",
+    "电视剧轮播",
+    "海外频道",
+    "动漫频道",
+    "熊猫频道",
+    "体育频道",
+    "国内频道",
+    "武侠片"
+  ],
+  "caiji.dbzy5.com/api.php/provide/vod/at/json": [
+    "新闻资讯",
+    "LPL",
+    "电影资讯",
+    "娱乐新闻",
+    "擦边短剧"
+  ],
+  "caiji.dbzy5.com/api.php/provide/vod/at/josn": [
+    "新闻资讯",
+    "LPL",
+    "电影资讯",
+    "娱乐新闻",
+    "擦边短剧"
+  ],
+  "caiji.dbzy5.com/api.php/provide/vod/from/dbm3u8/at/json": [
+    "新闻资讯",
+    "LPL",
+    "电影资讯",
+    "娱乐新闻",
+    "擦边短剧"
+  ],
+  "bf.xoxowin86cisyap.com/api.php/provide/vod": [
+    "体育赛事"
+  ],
+  "caiji.maotaizy.cc/api.php/provide/vod/from/mtm3u8/at/josn": [
+    "新闻资讯",
+    "LPL",
+    "电影资讯",
+    "娱乐新闻",
+    "擦边短剧",
+    "记录片"
+  ],
+  "caiji.maotaizy.cc/api.php/provide/vod/at/josn": [
+    "新闻资讯",
+    "LPL",
+    "电影资讯",
+    "娱乐新闻",
+    "擦边短剧",
+    "记录片"
+  ],
+  "caiji.maotaizy.cc/api.php/provide/vod/from/mtm3u8/at/json": [
+    "新闻资讯",
+    "LPL",
+    "电影资讯",
+    "娱乐新闻",
+    "擦边短剧",
+    "记录片"
+  ],
+  "jszyapi.com/api.php/provide/vod/at/json": [
+    "电视剧",
+    "动漫",
+    "体育赛事",
+    "短剧"
+  ],
+  "tyyszyapi.com/api.php/provide/vod/at": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "海外动漫",
+    "短剧"
+  ],
+  "api.okzyw.net/api.php/provide/vod": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "斯诺克"
+  ],
+  "caiji.xgzyapi.com/api.php/provide/vod": [
+    "电影片",
+    "综艺片",
+    "动漫片",
+    "海外动漫",
+    "体育",
+    "篮球"
+  ],
+  "subocaiji.com/api.php/provide/vod/from/subyun/at/json": [
+    "综艺",
+    "体育赛事",
+    "短剧"
+  ],
+  "api.niuniuzy.me/api.php/provide/vod/from/nnm3u8/at/json": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "斯诺克"
+  ],
+  "zhangqun1818.serv00.net/zh/2242.php": [
+    "澳洲电视",
+    "yy轮播",
+    "直播文件六"
+  ],
+  "zhangqun19.serv00.net/cctv.php": [
+    "自然传奇",
+    "中国好歌曲"
+  ],
+  "haohuazy.com/api.php/provide/vod": [
+    "电视剧",
+    "动漫",
+    "短剧",
+    "体育赛事"
+  ],
+  "api.apiyhzy.com/api.php/provide/vod": [
+    "电影",
+    "连续剧",
+    "动漫",
+    "资讯",
+    "公告",
+    "头条"
+  ],
+  "slapibf.com/api.php/provide/vod/at/json": [
+    "都市激情",
+    "校园情事",
+    "人妻縱情",
+    "風俗倫理",
+    "另类小说",
+    "武侠古典",
+    "长篇连载",
+    "唯美写真",
+    "网友自拍",
+    "露出激情",
+    "街拍偷拍",
+    "丝袜美腿",
+    "卡通漫画",
+    "欧美风情"
+  ],
+  "ty.tyyszy5.com/api.php/provide/vod": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "海外动漫",
+    "短剧"
+  ],
+  "aosikazy2.com/api.php/provide/vod": [
+    "视频一区",
+    "视频二区",
+    "视频三区",
+    "视频四区"
+  ],
+  "cj.ffzyapi.com//api.php/provide/vod": [
+    "电影片",
+    "连续剧",
+    "综艺片"
+  ],
+  "ffzy3.tv/api.php/provide/vod": [
+    "电影片",
+    "连续剧",
+    "综艺片"
+  ],
+  "ffzy4.tv/api.php/provide/vod": [
+    "电影片",
+    "连续剧",
+    "综艺片"
+  ],
+  "by.bfzyapi.com/api.php/provide/vod": [
+    "体育赛事"
+  ],
+  "lzzy.tv/api.php/provide/vod": [
+    "演员",
+    "新闻资讯",
+    "电影资讯",
+    "娱乐新闻"
+  ],
+  "lzizy4.com/api.php/provide/vod": [
+    "演员",
+    "新闻资讯",
+    "电影资讯",
+    "娱乐新闻"
+  ],
+  "lzizy8.com/api.php/provide/vod": [
+    "演员",
+    "新闻资讯",
+    "电影资讯",
+    "娱乐新闻"
+  ],
+  "lzizy2.com/api.php/provide/vod": [
+    "演员",
+    "新闻资讯",
+    "电影资讯",
+    "娱乐新闻"
+  ],
+  "lzizy5.com/api.php/provide/vod": [
+    "演员",
+    "新闻资讯",
+    "电影资讯"
+  ],
+  "lzizy3.com/api.php/provide/vod": [
+    "演员",
+    "新闻资讯",
+    "娱乐新闻"
+  ],
+  "zuidazy.co/api.php/provide/vod": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "斯诺克"
+  ],
+  "niuniuzy3.com/api.php/provide/vod": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "斯诺克"
+  ],
+  "api.zeqaht.com/api.php/provide/vod": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "世界杯",
+    "体育直播",
+    "其他综艺",
+    "港台动漫",
+    "其他动漫",
+    "短剧",
+    "少儿",
+    "亲子"
+  ],
+  "360zy.tv/api.php/provide/vod": [
+    "电影",
+    "连续剧",
+    "综艺",
+    "动漫",
+    "体育",
+    "篮球",
+    "反转爽剧"
+  ],
+  "zhangqun1818.serv00.net/cjjh.php": [
+    "综艺片",
+    "动漫片",
+    "日韩综艺",
+    "海外动漫"
+  ],
+  "155api.com/api.php/provide/vod": [
+    "生活都市",
+    "不偷恋情",
+    "学生校园",
+    "人妻熟女",
+    "暴力虐待",
+    "明星偶像",
+    "玄幻仙侠",
+    "科学幻想",
+    "街拍偷拍",
+    "丝袜美腿",
+    "欧美风情",
+    "网友自拍",
+    "卡通漫画",
+    "露出激情",
+    "唯美写真",
+    "女优情报"
+  ],
+  "jinyingzy.com/provide/vod": [
+    "电视剧",
+    "动漫",
+    "综艺",
+    "体育赛事",
+    "短剧"
+  ],
+  "shandianzy.com/api.php/provide/vod": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "斯诺克"
+  ],
+  "api.zuidapi.com/api.php/provide/vod/from/zuidam3u8": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "斯诺克"
+  ],
+  "huyaapi.com/api.php/provide/vod/at/json": [
+    "动漫",
+    "综艺",
+    "体育赛事",
+    "短剧"
+  ],
+  "jisuziyuan.com/api.php/provide/vod": [
+    "电视剧",
+    "动漫",
+    "体育赛事",
+    "短剧"
+  ],
+  "hongniuzy2.com/api.php/provide/vod/at/josn": [
+    "连续剧",
+    "综艺",
+    "动漫",
+    "体育赛事",
+    "短剧"
+  ],
+  "jyzyapi.com/provide/vod/from/jinyingm3u8/at/json": [
+    "电视剧",
+    "动漫",
+    "综艺",
+    "体育赛事",
+    "短剧"
+  ],
+  "155api.com/api.php/provide/vod/at/json": [
+    "生活都市",
+    "不偷恋情",
+    "学生校园",
+    "人妻熟女",
+    "暴力虐待",
+    "明星偶像",
+    "玄幻仙侠",
+    "科学幻想",
+    "街拍偷拍",
+    "丝袜美腿",
+    "欧美风情",
+    "网友自拍",
+    "卡通漫画",
+    "露出激情",
+    "唯美写真",
+    "女优情报"
+  ],
+  "api.xjzyapi.xyz/provide/vod": [
+    "国产自拍",
+    "日韩AV",
+    "欧美精品",
+    "异族风情",
+    "动漫专栏",
+    "蓝光超清"
+  ],
+  "api.xiaojizy.live/provide/vod": [
+    "国产自拍",
+    "日韩AV",
+    "欧美精品",
+    "异族风情",
+    "动漫专栏",
+    "蓝光超清"
+  ],
+  "hsckzy.xyz/api.php/provide/vod": [
+    "国产区",
+    "AV区",
+    "欧美区",
+    "动漫区",
+    "其他区"
+  ],
+  "apidanaizi.com/api.php/provide/vod": [
+    "视频一区",
+    "视频二区",
+    "视频三区",
+    "视频四区"
+  ],
+  "jkunzyapi.com/api.php/provide/vod": [
+    "都市激情",
+    "校园情事",
+    "人妻纵情",
+    "风俗伦理",
+    "另类小说",
+    "武侠古典",
+    "长篇连载",
+    "成人笑话"
+  ],
+  "beiyong.slapibf.com/api.php/provide/vod": [
+    "都市激情",
+    "校园情事",
+    "人妻縱情",
+    "風俗倫理",
+    "另类小说",
+    "武侠古典",
+    "长篇连载",
+    "唯美写真",
+    "网友自拍",
+    "露出激情",
+    "街拍偷拍",
+    "丝袜美腿",
+    "卡通漫画",
+    "欧美风情"
+  ],
+  "api.douapi.cc/api.php/provide/vod": [
+    "采集教程"
+  ],
+  "api.ddapi.cc/api.php/provide/vod": [
+    "采集教程"
+  ],
+  "heiliaozyapi.com/api.php/provide/vod": [
+    "都市激情",
+    "校园情事",
+    "人妻纵情",
+    "风俗伦理",
+    "另类小说",
+    "武侠古典",
+    "长篇连载"
+  ],
+  "thzy1.me/api.php/provide/vod": [
+    "视频1区",
+    "视频2区"
+  ],
+  "ckzy.me/api.php/provide/vod": [
+    "教程"
+  ],
+  "api.souavzyw.net/api.php/provide/vod": [
+    "中文传媒",
+    "国产",
+    "日本AV",
+    "明星网黄",
+    "吃瓜黑料",
+    "变态暗网",
+    "小众口味",
+    "男同",
+    "传媒-情欲国潮",
+    "领导官员",
+    "裸贷黑料",
+    "AI制作",
+    "吃瓜资讯",
+    "必看大瓜",
+    "网红黑料",
+    "海外吃瓜",
+    "偷拍自拍",
+    "道德伦理",
+    "吃瓜新闻",
+    "直播大秀"
+  ],
+  "xingba222.com/api.php/provide/vod": [
+    "视频一区",
+    "视频三区",
+    "视频二区",
+    "视频四区",
+    "视频五区",
+    "小说专区",
+    "都市激情",
+    "校园情色",
+    "少妇縱情",
+    "国風倫理",
+    "恋情偷情",
+    "玄幻仙侠",
+    "连淫幻想",
+    "图片专区",
+    "唯美写真",
+    "网友自拍",
+    "露出激情",
+    "街拍偷拍",
+    "丝袜美腿",
+    "卡通漫画",
+    "欧美风情"
+  ],
+  "api.souavzy.vip/api.php/provide/vod": [
+    "中文传媒",
+    "国产",
+    "日本AV",
+    "明星网黄",
+    "吃瓜黑料",
+    "小众口味",
+    "男同",
+    "传媒-情欲国潮",
+    "领导官员",
+    "裸贷黑料",
+    "吃瓜资讯",
+    "必看大瓜",
+    "网红黑料",
+    "海外吃瓜",
+    "偷拍自拍",
+    "道德伦理",
+    "吃瓜新闻",
+    "直播大秀"
+  ],
+  "xingba111.com/api.php/provide/vod": [
+    "视频一区",
+    "视频三区",
+    "视频二区",
+    "视频四区",
+    "视频五区",
+    "小说专区",
+    "都市激情",
+    "校园情色",
+    "少妇縱情",
+    "国風倫理",
+    "恋情偷情",
+    "玄幻仙侠",
+    "连淫幻想",
+    "图片专区",
+    "唯美写真",
+    "网友自拍",
+    "露出激情",
+    "街拍偷拍",
+    "丝袜美腿",
+    "卡通漫画",
+    "欧美风情"
+  ],
+  "api.11bat.com/api.php/provide/vod": [
+    "公告",
+    "头条",
+    "柚木TINA",
+    "原纱央莉",
+    "大桥未久",
+    "仁科百华",
+    "天海翼",
+    "小川阿佐美",
+    "三上悠亚",
+    "长泽梓"
+  ],
+  "jipinvip.com/api.php/provide/vod": [
+    "视频三区",
+    "视频二区",
+    "视频四区",
+    "野战车震",
+    "SM调教",
+    "家庭乱伦",
+    "百合女同",
+    "学生空姐",
+    "撸管必看",
+    "视频五区",
+    "偷情少妇"
+  ],
+  "hsckzy888.com/api.php/provide/vod/from/hsckm3u8/at/json": [
+    "国产区",
+    "AV区",
+    "欧美区",
+    "动漫区",
+    "其他区"
+  ],
+  "api.xjzyapi.com/provide/vod": [
+    "国产自拍",
+    "日韩AV",
+    "欧美精品",
+    "异族风情",
+    "动漫专栏",
+    "蓝光超清"
+  ],
+  "fqzy.me//api.php/provide/vod": [
+    "视频一区",
+    "视频二区",
+    "视频三区"
+  ],
+  "api.souavzy.vip/api.php/provide/vod/at/json": [
+    "中文传媒",
+    "国产",
+    "日本AV",
+    "明星网黄",
+    "吃瓜黑料",
+    "小众口味",
+    "男同",
+    "传媒-情欲国潮",
+    "领导官员",
+    "裸贷黑料",
+    "吃瓜资讯",
+    "必看大瓜",
+    "网红黑料",
+    "海外吃瓜",
+    "偷拍自拍",
+    "道德伦理",
+    "吃瓜新闻",
+    "直播大秀"
+  ],
+  "api.heiapi.cc/api.php/provide/vod": [
+    "传媒厂商",
+    "日本AV",
+    "特殊嗜好",
+    "网黄自制",
+    "三级伦理"
+  ],
+  "vnzyz.com/api.php/provide/vod": [
+    "视频一区",
+    "视频二区",
+    "视频三区"
+  ],
+  "fhapi9.com/api.php/provide/vod/at/json": [
+    "亚州图片",
+    "欧美图片",
+    "美腿丝袜",
+    "网友自拍",
+    "清纯唯美",
+    "另类图片",
+    "卡通贴图",
+    "熟女乱伦",
+    "现代激情",
+    "古典武侠",
+    "暴力强奸",
+    "校园春色",
+    "家庭乱伦",
+    "长篇连载",
+    "情色幽默",
+    "淫妻交换"
+  ],
+  "jkunzyapi.com/api.php/seaxml/vod": [
+    "都市激情",
+    "校园情事",
+    "人妻纵情",
+    "风俗伦理",
+    "另类小说",
+    "武侠古典",
+    "长篇连载",
+    "成人笑话"
+  ],
+  "api.ddapi.cc/api.php/provide/vod/at/json": [
+    "采集教程"
+  ],
+  "hsckzy888.com/api.php/provide/vod": [
+    "国产区",
+    "AV区",
+    "欧美区",
+    "动漫区",
+    "其他区"
+  ],
+  "jkunzyapi.com/api.php/provide/vod/at/seaxml": [
+    "都市激情",
+    "校园情事",
+    "人妻纵情",
+    "风俗伦理",
+    "另类小说",
+    "武侠古典",
+    "长篇连载",
+    "成人笑话"
+  ],
+  "hsckzy.vip/api.php/provide/vod": [
+    "国产区",
+    "AV区",
+    "欧美区",
+    "动漫区",
+    "其他区"
+  ],
+  "lzizy.net/api.php/provide/vod": [
+    "演员",
+    "新闻资讯",
+    "电影资讯",
+    "娱乐新闻"
+  ]
+}
