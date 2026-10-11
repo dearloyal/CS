@@ -12,7 +12,7 @@ QWJS 分类脚本（部署到 dearloyal/CS → scripts/qwjs_classify.py）
 附加处理：
   ① 删除「酷我」系列（用户指定从全部中移除）；
   ② 给每个源打标志：正常 → 名字前缀「影视 」，成人 → 名字前缀「18 」；
-  ③ 排序：全部.json 把「❤闪电资源」（心型闪电，有分类）置顶，部分.json 把「老色逼」置顶。
+  ③ 排序：全部.json 把「❤闪电资源」（心型闪电，有分类）置顶；部分.json 不强制置顶，纯按「真实有分类在前、无分类(含空壳)在后」排序。
 
 成人判定与 build 阶段共用 adult_filter.is_adult，规则唯一、不漂移。
 运行：python3 scripts/qwjs_classify.py
@@ -30,8 +30,8 @@ LOCAL_YSC = os.environ.get("LOCAL_YSC", "网站接口数据.json")
 BLOCK_NAME_FRAGMENTS = ("酷我",)
 
 # 置顶规则：全部.json 把含此关键字的源放最前；部分.json 同理
-PIN_ALL_FIRST = "❤闪电资源"
-PIN_PART_FIRST = "老色逼"
+PIN_ALL_FIRST = "❤闪电资源"   # 全部.json 红线：首位固定闪电资源
+# 注：部分.json 已取消「老色逼」置顶红线（用户 2026-10-12 要求，纯按有效分类排序）
 
 # 标志前缀
 FLAG_NORMAL = "影视 "
@@ -118,22 +118,27 @@ def main():
     normal = [apply_flag(s, False) for s in normal]
     adult = [apply_flag(s, True) for s in adult]
 
-    # ④ 置顶规则
+    # ④ 置顶规则（仅全部.json 保留红线；部分.json 已取消置顶，见下）
     normal = pin_first(normal, PIN_ALL_FIRST)
-    adult = pin_first(adult, PIN_PART_FIRST)
 
-    # ⑤ 有分类的源排前面、无分类的排后面
-    #    置顶第一项（红线：全部→❤闪电资源 / 部分→老色逼）保持最前，
-    #    其余按「是否带 categories 字段」稳定排序，有分类的整体前置。
-    def cat_first(lst):
+    # ⑤ 有【真实】分类的源排前面、无分类(含空壳 []) 排后面
+    #    - 全部.json：保留红线(❤闪电资源)首位，其余按真实分类前置；
+    #    - 部分.json：不保留红线，纯按「真实有分类在前、无分类在后」排序。
+    #    真实分类判定见 has_real_categories：categories 须为非空列表且含至少一个非空分类名。
+    def has_real_categories(site):
+        c = site.get("categories")
+        return isinstance(c, list) and any(isinstance(x, str) and x.strip() for x in c)
+
+    def sort_by_real_cat(lst, keep_first):
         if not lst:
             return lst
-        top, rest = lst[0], lst[1:]
-        rest_sorted = sorted(rest, key=lambda s: 0 if s.get("categories") else 1)
-        return [top] + rest_sorted
+        if keep_first:
+            top, rest = lst[0], lst[1:]
+            return [top] + sorted(rest, key=lambda s: 0 if has_real_categories(s) else 1)
+        return sorted(lst, key=lambda s: 0 if has_real_categories(s) else 1)
 
-    normal = cat_first(normal)
-    adult = cat_first(adult)
+    normal = sort_by_real_cat(normal, keep_first=True)
+    adult = sort_by_real_cat(adult, keep_first=False)
 
     def write(fname, subset, lst):
         meta = {
