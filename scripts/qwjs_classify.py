@@ -37,6 +37,47 @@ PIN_ALL_FIRST = "❤闪电资源"   # 全部.json 红线：首位固定闪电资
 FLAG_NORMAL = "影视 "
 FLAG_ADULT = "18 "
 
+# ── 分类缓存（离线抓取生成，防止每日流水线把真实分类打回空壳）──
+# categories_cache.json: { norm_api(url): [分类名, ...] }，仅用于填补上游配置缺失的分类。
+def norm_api(api):
+    a = (api or "").strip().lower()
+    a = re.sub(r"^https?://", "", a)
+    a = re.sub(r"\?.*$", "", a)   # 去掉查询串（如 ?ac=list），仅按地址归一，避免 ?ac=list 有无导致匹配失败
+    a = a.rstrip("/")
+    a = re.sub(r"^www\.", "", a)
+    return a
+
+def has_real_categories(site):
+    c = site.get("categories")
+    return isinstance(c, list) and any(isinstance(x, str) and x.strip() for x in c)
+
+_CACHE_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "categories_cache.json")
+if not os.path.exists(_CACHE_FILE):
+    _CACHE_FILE = "categories_cache.json"
+
+def merge_categories_cache(sites):
+    """用 categories_cache.json 补回上游配置未提供的真实分类；不覆盖已有真实分类。"""
+    if not os.path.exists(_CACHE_FILE):
+        return sites, 0
+    try:
+        cache = json.load(open(_CACHE_FILE, encoding="utf-8"))
+    except Exception:
+        return sites, 0
+    if not isinstance(cache, dict):
+        return sites, 0
+    out, filled = [], 0
+    for s in sites:
+        if has_real_categories(s):
+            out.append(s)
+            continue
+        cats = cache.get(norm_api(s.get("api", "")))
+        if cats:
+            s = dict(s)
+            s["categories"] = cats
+            filled += 1
+        out.append(s)
+    return out, filled
+
 # 与 build 阶段共用同一份成人判定规则（adult_filter.py）
 try:
     from adult_filter import is_adult as _is_adult
@@ -103,6 +144,11 @@ def main():
     sites = d.get("sites", [])
     print(f"[QWJS] 读取上游接口数: {len(sites)}")
 
+    # 0) 合并分类缓存（离线抓取的真实分类），填补上游配置缺失项
+    sites, filled = merge_categories_cache(sites)
+    if filled:
+        print(f"  从分类缓存补回真实分类: {filled} 条")
+
     # ① 剔除酷我 等
     kept = [s for s in sites if not block(s)]
     removed = len(sites) - len(kept)
@@ -124,11 +170,7 @@ def main():
     # ⑤ 有【真实】分类的源排前面、无分类(含空壳 []) 排后面
     #    - 全部.json：保留红线(❤闪电资源)首位，其余按真实分类前置；
     #    - 部分.json：不保留红线，纯按「真实有分类在前、无分类在后」排序。
-    #    真实分类判定见 has_real_categories：categories 须为非空列表且含至少一个非空分类名。
-    def has_real_categories(site):
-        c = site.get("categories")
-        return isinstance(c, list) and any(isinstance(x, str) and x.strip() for x in c)
-
+    #    真实分类判定见模块级 has_real_categories：categories 须为非空列表且含至少一个非空分类名。
     def sort_by_real_cat(lst, keep_first):
         if not lst:
             return lst
