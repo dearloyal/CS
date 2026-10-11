@@ -51,6 +51,10 @@ def has_real_categories(site):
     c = site.get("categories")
     return isinstance(c, list) and any(isinstance(x, str) and x.strip() for x in c)
 
+def displayable_categories(site):
+    """分类能否在 App 显示：须有真实分类，且 type != 0（用户 2026-10-12 确认 type=0 不显示分类）。"""
+    return has_real_categories(site) and site.get("type") != 0
+
 _CACHE_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "categories_cache.json")
 if not os.path.exists(_CACHE_FILE):
     _CACHE_FILE = "categories_cache.json"
@@ -183,17 +187,16 @@ def main():
     # ④ 置顶规则（仅全部.json 保留红线；部分.json 已取消置顶，见下）
     normal = pin_first(normal, PIN_ALL_FIRST)
 
-    # ⑤ 有【真实】分类的源排前面、无分类(含空壳 []) 排后面
-    #    - 全部.json：保留红线(❤闪电资源)首位，其余按真实分类前置；
-    #    - 部分.json：不保留红线，纯按「真实有分类在前、无分类在后」排序。
-    #    真实分类判定见模块级 has_real_categories：categories 须为非空列表且含至少一个非空分类名。
+    # ⑤ 分类【能显示】的源排前面、其余排后面
+    #    - 「能显示」= 有真实分类 且 type != 0（用户确认 type=0 源不显示分类筛选栏）；
+    #    - 全部.json：保留红线(❤闪电资源)首位；部分.json：纯按此规则排。
     def sort_by_real_cat(lst, keep_first):
         if not lst:
             return lst
         if keep_first:
             top, rest = lst[0], lst[1:]
-            return [top] + sorted(rest, key=lambda s: 0 if has_real_categories(s) else 1)
-        return sorted(lst, key=lambda s: 0 if has_real_categories(s) else 1)
+            return [top] + sorted(rest, key=lambda s: 0 if displayable_categories(s) else 1)
+        return sorted(lst, key=lambda s: 0 if displayable_categories(s) else 1)
 
     normal = sort_by_real_cat(normal, keep_first=True)
     adult = sort_by_real_cat(adult, keep_first=False)
