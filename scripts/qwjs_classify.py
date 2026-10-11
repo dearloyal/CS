@@ -139,6 +139,19 @@ def pin_first(lst, keyword):
     return head + tail
 
 
+def ensure_flags(sites):
+    """统一补齐 filterable/searchable/quickSearch=1。
+    否则影视仓对 filterable=0 的源不显示分类筛选栏（即使该源带 categories 也不显示）。"""
+    out = []
+    for s in sites:
+        s = dict(s)
+        s["filterable"] = 1
+        s["searchable"] = 1
+        s["quickSearch"] = 1
+        out.append(s)
+    return out
+
+
 def main():
     d = load_input()
     sites = d.get("sites", [])
@@ -148,6 +161,9 @@ def main():
     sites, filled = merge_categories_cache(sites)
     if filled:
         print(f"  从分类缓存补回真实分类: {filled} 条")
+
+    # 0.5) 统一补齐 filterable/searchable/quickSearch=1（否则 App 不显示分类筛选栏）
+    sites = ensure_flags(sites)
 
     # ① 剔除酷我 等
     kept = [s for s in sites if not block(s)]
