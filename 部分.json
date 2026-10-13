@@ -2,7 +2,7 @@
   "name": "部分",
   "subset": "部分",
   "source": "dearloyal/YSC",
-  "count": 151,
+  "count": 146,
   "sites": [
     {
       "key": "155zy2.com",
@@ -2535,29 +2535,6 @@
       "_ms": 790
     },
     {
-      "key": "seajav",
-      "name": "18 🔞SeaJAV",
-      "type": 1,
-      "api": "https://seajav.com/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "categories": [],
-      "style": {
-        "type": "rect",
-        "ratio": 1.8
-      },
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/aa999ok/CK/18003/tvbox18.json",
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 321
-    },
-    {
       "key": "fhapiby",
       "name": "18 🔞番号by🌈",
       "type": 1,
@@ -2604,53 +2581,6 @@
       "_ms": 457
     },
     {
-      "key": "998资源🌈🔞",
-      "name": "18 🔞998资源🌈💯",
-      "type": 1,
-      "api": "https://api.998zy.com/api.php/provide/vod/at/json/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "categories": [],
-      "style": {
-        "type": "rect",
-        "ratio": 1.6
-      },
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/aa999ok/CK/18003/tvbox18.json",
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": null,
-      "_code": 0,
-      "_ms": 1396
-    },
-    {
-      "key": "秀人",
-      "name": "18 🔞秀人🌈",
-      "type": 1,
-      "api": "https://xiuren.site/api.php/provide/vod/",
-      "searchable": 1,
-      "changeable": 1,
-      "categories": [],
-      "style": {
-        "type": "rect",
-        "ratio": 1.6
-      },
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/aa999ok/CK/18003/tvbox18.json",
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": null,
-      "_code": 403,
-      "_ms": 90
-    },
-    {
       "key": "奥斯卡资源",
       "name": "18 🔞奥斯卡资源🌈",
       "type": 1,
@@ -2667,24 +2597,6 @@
       "_alive": true,
       "_code": 200,
       "_ms": 1855
-    },
-    {
-      "key": "黄瓜1资源",
-      "name": "18 🔞黄瓜<倒>资源🌈",
-      "type": 1,
-      "api": "https://www.avre06.com/api.php/Prodao/vod/?ac=list",
-      "searchable": 1,
-      "quickSearch": 1,
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/aa999ok/CK/18003/tvbox18.json",
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": null,
-      "_code": 0,
-      "_ms": 644
     },
     {
       "key": "老色逼资源",
@@ -2793,24 +2705,6 @@
       "_alive": true,
       "_code": 200,
       "_ms": 355
-    },
-    {
-      "key": "*鲍鱼AV",
-      "name": "18 🌈鲍鱼AV",
-      "type": 0,
-      "api": "https://www.caiji26.com/cjapi/sda/vod/json/m3u8.html",
-      "searchable": 1,
-      "quickSearch": 1,
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/aa999ok/CK/18003/tvbox18.json",
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": null,
-      "_code": 0,
-      "_ms": 464
     },
     {
       "key": "*鲨鱼资源",
@@ -4122,6 +4016,17 @@
     "dedup_removed": 7,
     "alive_rate": "80.5%",
     "sites_before": 190,
-    "sites_after": 151
+    "sites_after": 151,
+    "_recheck": {
+      "at": "2026-10-13T22:01:49Z",
+      "mode": "复测：仅对首轮暂留(_alive=None)源复测，通过转正、再失败丢弃",
+      "pending_before": 5,
+      "probed": 24,
+      "recovered": 0,
+      "dropped": 5,
+      "kept_pending": 0,
+      "sites_before": 151,
+      "sites_after": 146
+    }
   }
 }

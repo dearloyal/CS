@@ -175,24 +175,28 @@
     "code": 0
   },
   "https://php.doube.eu.org/spider/php/官方资源.php": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 404,
+    "final": true
   },
   "https://php.doube.eu.org/spider/php/电影天堂.php": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 404,
+    "final": true
   },
   "https://php.doube.eu.org/spider/php/非凡资源.php": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 404,
+    "final": true
   },
   "https://git.yylx.win/raw.githubusercontent.com/PizazzGY/NewTVBox/main/webcast/py/BLZB.py": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 404,
+    "final": true
   },
   "https://git.yylx.win/raw.githubusercontent.com/PizazzGY/NewTVBox/main/movie/py/XYDJ.py": {
     "fail": 4,
@@ -220,9 +224,10 @@
     "code": 200
   },
   "https://so.yinpai.xyz/duanju.php": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 200
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 200,
+    "final": true
   },
   "http://120.53.102.254/dsp999": {
     "fail": 4,
@@ -280,9 +285,10 @@
     "code": 502
   },
   "https://www.afasu.com/api/xml.php": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 0,
+    "final": true
   },
   "https://caiji.naichaapi.com/inc/api.php": {
     "fail": 4,
@@ -629,11 +635,6 @@
     "at": "2026-10-13T21:49:21Z",
     "code": 404
   },
-  "https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/py/py_douban.py": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 404
-  },
   "http://xh1.xn--yetu07f.icu/api.php/provide/vod": {
     "fail": 4,
     "at": "2026-10-13T21:49:21Z",
@@ -660,9 +661,10 @@
     "code": 0
   },
   "https://gh-proxy.com/https://raw.githubusercontent.com/PizazzGY/TVBox_warehouse/main/影视/JS/drpy2.min.js": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 404,
+    "final": true
   },
   "http://dsakf23665.com/api.php/provide/vod/from/NBY": {
     "fail": 4,
@@ -670,9 +672,10 @@
     "code": 0
   },
   "https://gh-proxy.com/https://raw.githubusercontent.com/PizazzGY/TVBox_warehouse/main/磁力/JS/drpy2.min.js": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 404,
+    "final": true
   },
   "https://mv.wogg.link/mv/vod": {
     "fail": 4,
@@ -685,14 +688,16 @@
     "code": 0
   },
   "https://ghproxy.cc/https://raw.githubusercontent.com/PizazzGY/TVBox/main/JS/drpy.min.js": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 404,
+    "final": true
   },
   "http://120.53.102.254/dsp16": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 404,
+    "final": true
   },
   "http://120.53.102.254/dsp": {
     "fail": 4,
@@ -700,14 +705,16 @@
     "code": 404
   },
   "https://example.invalid/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 0,
+    "final": true
   },
   "https://your-cms.example.com/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 0,
+    "final": true
   },
   "https://caiji.dbzy.tv/api.php/provide/vod/from/dbm3u8/at/josn": {
     "fail": 3,
@@ -730,9 +737,10 @@
     "code": 403
   },
   "http://zyz.yxys.top/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 0,
+    "final": true
   },
   "http://cj.bajiecaiji.com/inc/apijson_vod.php": {
     "fail": 4,
@@ -740,14 +748,16 @@
     "code": 0
   },
   "http://192.129.140.23:5757/api/新韩剧网": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 500
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 500,
+    "final": true
   },
   "http://192.129.140.23:5757/api/新浪资源": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 500
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 500,
+    "final": true
   },
   "https://98zy.vip/api.php/provide/vod": {
     "fail": 4,
@@ -755,19 +765,22 @@
     "code": 0
   },
   "https://chaturbate.xvideos4.tk/pb.php": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 0,
+    "final": true
   },
   "https://banyeomni.780420.xyz:17777/api/tvbox/source/2070335664104148992": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 500
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 500,
+    "final": true
   },
   "https://www.afasu.com/api/json.php": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 0,
+    "final": true
   },
   "http://zzdj.cc/api.php/provide/vod": {
     "fail": 4,
@@ -935,9 +948,10 @@
     "code": 200
   },
   "https://seajav.com/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 404,
+    "final": true
   },
   "https://8day.icu/api.php/provide/vod/at/json": {
     "fail": 4,
@@ -945,9 +959,10 @@
     "code": 403
   },
   "https://api.998zy.com/api.php/provide/vod/at/json": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 0,
+    "final": true
   },
   "https://www.avre06.com/api.php/provide/vod": {
     "fail": 4,
@@ -955,14 +970,16 @@
     "code": 0
   },
   "https://xiuren.site/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 403
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 403,
+    "final": true
   },
   "https://www.avre06.com/api.php/Prodao/vod": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 0,
+    "final": true
   },
   "https://to.to-long.com/api.php/provide/vod": {
     "fail": 4,
@@ -970,9 +987,10 @@
     "code": 0
   },
   "https://www.caiji26.com/cjapi/sda/vod/json/m3u8.html": {
-    "fail": 1,
-    "at": "2026-10-13T21:49:21Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-13T22:01:49Z",
+    "code": 0,
+    "final": true
   },
   "http://wmcj8.com/inc/sapi.php": {
     "fail": 4,
