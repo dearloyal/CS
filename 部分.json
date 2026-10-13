@@ -1,10 +1,8 @@
 {
-  "name": "部分接口（成人）",
+  "name": "部分",
   "subset": "部分",
-  "subset_meaning": "部分 = 成人接口",
-  "adult": true,
   "source": "dearloyal/YSC",
-  "count": 274,
+  "count": 271,
   "sites": [
     {
       "key": "155zy2.com",
@@ -3082,40 +3080,6 @@
       "_alive": null,
       "_code": 403,
       "_ms": 427
-    },
-    {
-      "key": "py_huangguo",
-      "name": "18 [171ms|https://clun.top/fun.json] 黄果短剧[py]",
-      "type": 3,
-      "api": "./js/ss/huangguo.py",
-      "ext": "",
-      "_cfg": "https://raw.githubusercontent.com/25175/tvyuan/master/tvbox_full.json",
-      "_adult": true,
-      "_crawler": true,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-13T10:18:27Z",
-      "_alive": null
-    },
-    {
-      "key": "py_huangdou",
-      "name": "18 [171ms|https://clun.top/fun.json] 黄豆短剧[py]",
-      "type": 3,
-      "api": "./js/ss/huangdou.py",
-      "ext": "",
-      "_cfg": "https://raw.githubusercontent.com/25175/tvyuan/master/tvbox_full.json",
-      "_adult": true,
-      "_crawler": true,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-13T10:18:27Z",
-      "_alive": null
     },
     {
       "key": "色播",
@@ -7021,23 +6985,6 @@
       "_ms": 15
     },
     {
-      "key": "极品短剧",
-      "name": "18 极品短剧",
-      "type": 3,
-      "api": "csp_Wexduanjuvmp",
-      "searchable": 1,
-      "changeable": 1,
-      "_cfg": "https://raw.githubusercontent.com/aliluya1977/PizazzGYTVBox/main/api.json",
-      "_adult": true,
-      "_crawler": true,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-13T10:18:27Z",
-      "_alive": null
-    },
-    {
       "key": "dr_番茄影视",
       "name": "18 番茄影视(drpy)",
       "type": 3,
@@ -7258,21 +7205,5 @@
       "_ms": 1547
     }
   ],
-  "_from": "https://raw.githubusercontent.com/dearloyal/CS/main/部分.json",
-  "_probe": {
-    "at": "2026-10-13T10:18:27Z",
-    "standard": "必须返回有效影视数据（内容校验）",
-    "mode": "验证层(100%可用+防抖暂留) / 候选层(引擎+失效，连续失败>1次降级)",
-    "verified": 306,
-    "alive": 146,
-    "dead": 160,
-    "bounced": 160,
-    "demoted": 0,
-    "engine_to_cand": 0,
-    "not_checked": 3,
-    "dedup_removed": 35,
-    "alive_rate": "47.7%",
-    "sites_before": 309,
-    "sites_after": 274
-  }
+  "_from": "https://raw.githubusercontent.com/dearloyal/CS/main/部分.json"
 }
