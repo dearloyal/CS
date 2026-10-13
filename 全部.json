@@ -2,7 +2,7 @@
   "name": "全部",
   "subset": "全部",
   "source": "dearloyal/YSC",
-  "count": 540,
+  "count": 538,
   "sites": [
     {
       "key": "csp_xml_闪电资源",
@@ -5468,24 +5468,6 @@
       "_ms": 105
     },
     {
-      "key": "93合1.py",
-      "name": "影视 💥93合1💥",
-      "api": "https://gh-proxy.org/https://raw.githubusercontent.com/wliqi495-create/jaychouqq/refs/heads/main/yingshi/py9/93合1.py",
-      "type": 3,
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/jaychouqq/tvbox/cece.json",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": true,
-      "_code": 200,
-      "_ms": 139
-    },
-    {
       "key": "57短剧.py",
       "name": "影视 💥57短剧💥",
       "api": "https://gh-proxy.org/https://raw.githubusercontent.com/wliqi495-create/jaychouqq/refs/heads/main/yingshi/py9/57短剧.py",
@@ -7146,24 +7128,6 @@
       "_alive": true,
       "_code": 200,
       "_ms": 144
-    },
-    {
-      "key": "骚女档案馆.py",
-      "name": "影视 💥骚女档案馆💥",
-      "api": "https://gh-proxy.org/https://raw.githubusercontent.com/wliqi495-create/jaychouqq/refs/heads/main/yingshi/py9/骚女档案馆.py",
-      "type": 3,
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/jaychouqq/tvbox/cece.json",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": true,
-      "_code": 200,
-      "_ms": 121
     },
     {
       "key": "青蛙视频.py",
