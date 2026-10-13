@@ -1,0 +1,36 @@
+name: recheck
+
+on:
+  schedule:
+    - cron: '0 18 * * *'        # 每天 北京时间 02:00（UTC 18:00）—— 复测 01:00 首轮留下的暂留源
+  workflow_dispatch: {}          # 手动触发（验证线路用）
+
+permissions:
+  contents: write
+
+jobs:
+  recheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      # 读取 01:00 首轮已提交的探活产物（含暂留 _alive=None 源）
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: 复测暂留源（通过转正 / 再失败丢弃）
+        run: python3 scripts/probe.py --recheck
+      - name: 提交复测结果
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add 全部.json 部分.json probe_history.json
+          if git diff --cached --quiet; then
+            echo "无变化，跳过提交"
+          else
+            git commit -m "recheck: 复测暂留源 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git pull --rebase origin main || true
+            git push
+          fi
