@@ -9,3 +9,34 @@
 - 本仓库内容可能随时变更、失效或停止维护，不保证准确性、可用性及安全性。
 - 任何人若自行获取、复制或使用本仓库内容，所产生的任何风险、责任与后果均由使用者自行承担，与本人无关。
 - 如本仓库内容涉及您的合法权益，请通过 GitHub 联系本人处理。
+
+---
+
+## 维护约定（2026-10-14 归纳，避免重复踩坑）
+
+### 1. 订阅文件
+- `全部.json` —— 影视综合订阅，顶层 `name` 固定为「全部」。
+- `部分.json` —— 成人向订阅（`_adult:true`），顶层 `name` 固定为「部分」。
+- 两个文件顶层 `name` **不要改**，count 字段在清理后自动同步。
+
+### 2. 每日流水线自动清理（pipeline.yml）
+- `discover` → `build`(ysc_build) → `classify`(qwjs_classify) → `output`(cs_build) →
+  **`cleanup`(cleanup.py，2026-10-14 新增)** → `probe`(probe.py) → `recheck`(probe --recheck)。
+- **probe.py**：死链检测 + 精确 api 去重 + 防抖暂留；引擎源/连续失效源直接丢弃。
+- **cleanup.py（新增）**：在 probe 之前做语义级清理，对 `全部.json` 与 `部分.json` 同时生效：
+  1. **删纯音频源**：音乐 / 听书 / 有声 / 广播 / 电台 / KTV / 相声 / 评书 / radio / 网易云 /
+     千千音乐 / 枫叶音乐 / 悦听 / DJ 等。视频类（直播 / 戏曲 / 电视 / 体育 / 虎牙 / 哔哩 / 动漫 /
+     短剧 等）一律保留；视频关键词优先级高于音频，防误删。
+  2. **同站马甲去重**：type 0/1 的苹果CMS直连源按「资源站品牌」归并（剥 api./cj. 前缀、合并同站别名
+     域名，如 lziapi/lzizy/lzzy → 量子），同一资源站只留 1 个最优（type=1 + https + 标准
+     api.php/provide/vod + 探活存活优先）。`zhangqun` 同服务器多应用组整体保留。
+  3. 名字保持「全部」/「部分」不变，同步 count；脚本幂等可重复跑。
+- 规则来源：藤藤（解析链死源）、非凡/量子/360 等（同站重复）、音乐/听书（非影视）均为人工排查后固化。
+
+### 3. 对外链接约定（交付时务必遵守）
+- **链接必须用字面中文路径**：`main/全部.json`，**不要 URL 编码**（`%E5%85%A8...` 影视仓识别不出）。
+- **镜像优先用 gh-proxy.com 实时代理**（每次从 GitHub 拉最新）：
+  `https://gh-proxy.com/https://raw.githubusercontent.com/dearloyal/CS/main/全部.json`
+  —— **不要用 jsDelivr**（cdn.jsdelivr.net 会缓存旧内容，实测返回清理前的旧 840 源）。
+- 直连 `https://raw.githubusercontent.com/dearloyal/CS/main/全部.json` 作慢速备用。
+- 交付链接时**每条单独成块、可单独长按复制**；非用户要求**不发产物 / 文件预览**。
