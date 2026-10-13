@@ -41,10 +41,13 @@ LOCAL_YSC = os.environ.get("LOCAL_YSC", "网站接口数据.json")
 BLOCK_NAME_FRAGMENTS = ("酷我",)
 
 # 用户指定提级白名单（2026-10-13）：命中 name/key 子串的 csp_ 引擎源跳过 ①.5 结构性预分流，
-# 直接进入验证层（全部.json）。用途：fish2035/xs 等仓里的「哔哩合集」+ 各「短剧」引擎外部不可
-# 验证，但用户要求可直接观看，故按子串提级；probe.py 同步放开防踢回候选层（见其 else 分支）。
-# 回退方式：清空本元组即可。与 probe.py 中同一逻辑保持一致（直接 from 本常量导入）。
-PROMOTE_SUBSTR = ("哔哩", "短剧")
+# 提级白名单（方案A，2026-10-13）：短剧/哔哩等 csp_ 引擎外部不可验证，且必须由完整单仓自带的
+# spider.jar 提供引擎实现才能运行；全部.json 顶层无 spider，拆进来只会得到"有名字、没代码"的
+# 空壳（看不了，且把主订阅从 620 污染到 1994）。故清空本元组——这类引擎源全部退回候选层，改由
+# 用户在 App 里单独导入 fish2035 完整配置（其自带 spider，见 ysc_build.EXTRA_SOURCES）。probe.py
+# 的 `if PROMOTE_SUBSTR and ...` 守卫随之失效，白名单引擎源会被踢回候选层。
+# 若将来全部.json 顶层补了 spider 且确要提级，再把子串加回本元组。
+PROMOTE_SUBSTR = ()
 
 # 置顶规则：全部.json 把含此关键字的源放最前；部分.json 同理
 PIN_ALL_FIRST = "❤闪电资源"   # 全部.json 红线：首位固定闪电资源
@@ -300,20 +303,11 @@ def main():
                 + sort_by_real_cat(cand_adult, keep_first=False))
 
     def write(fname, subset, lst):
-        if subset == "全部":
-            name = "全部接口（正常）"
-            meaning, is_adult = "全部 = 正常可用接口", False
-        elif subset == "部分":
-            name = "部分接口（成人）"
-            meaning, is_adult = "部分 = 成人接口", True
-        else:
-            name = CAND_META["name"]
-            meaning, is_adult = CAND_META["subset_meaning"], False
+        # 红线①：对外显示名严格只用「全部 / 部分 / 候选」，
+        # 绝不出现"正常/成人/未验证/失效"等字样，也不外泄 subset_meaning/adult 等内部语义。
         meta = {
-            "name": name,
-            "subset": subset,                # 全部 / 部分 / 候选
-            "subset_meaning": meaning,
-            "adult": is_adult,
+            "name": subset,                   # 全部 / 部分 / 候选
+            "subset": subset,
             "source": "dearloyal/YSC",
             "count": len(lst),
         }
@@ -321,7 +315,7 @@ def main():
             # probe 阶段会在此基础上追加失效源并重写 _cand 统计
             meta["_cand"] = {
                 "at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                "desc": CAND_META["subset_meaning"],
+                "desc": "候选层源，导入后如不可用可单独删除，不影响验证层",
                 "from_classify": len(lst),
                 "demoted_now": 0,
                 "engine": len(lst),
