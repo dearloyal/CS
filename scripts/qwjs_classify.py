@@ -4,10 +4,18 @@
 QWJS 分类脚本（部署到 dearloyal/CS → scripts/qwjs_classify.py）
 ==============================================================
 任务（按用户 2026-10-11 要求重构）：
-  读取 YSC 产出的「全部网站接口」（网站接口数据.json），统一输出 2 份订阅文件：
+  读取 YSC 产出的「全部网站接口」（网站接口数据.json），统一输出 3 份订阅文件：
         全部.json : 正常可用接口（直连 + 爬虫 合并）
         部分.json : 成人接口（直连 + 爬虫 合并）
+        候选.json : 候选层——结构性无法外部验证的引擎源（非 http 接口：
+                   csp_/相对路径/jar:/js:/py:），成人候选打「18 」前缀排尾
   不再区分直连 / 爬虫（用户要求合并）。
+
+分层设计（2026-10-13，配合 probe.py 分层改造）：
+  旧逻辑把引擎源留在 全部.json 里、probe 阶段再整体丢弃，用户感知「源少了一半」。
+  现在 classify 先把结构性不可验证的引擎源预分流到 候选.json；probe 阶段再把
+  连续探活失败的失效源追加进同一份候选.json。验证层保持 100% 可用，
+  候选层供用户自行甄别导入，两层互不干扰。
 
 附加处理：
   ① 删除「酷我」系列（用户指定从全部中移除）；
@@ -20,7 +28,7 @@ QWJS 分类脚本（部署到 dearloyal/CS → scripts/qwjs_classify.py）
 成人判定与 build 阶段共用 adult_filter.is_adult，规则唯一、不漂移。
 运行：python3 scripts/qwjs_classify.py
 """
-import json, os, re, sys, time, subprocess
+import json, os, re, sys, time, subprocess, datetime
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 YSC_URL = os.environ.get(
@@ -39,6 +47,16 @@ PIN_ALL_FIRST = "❤闪电资源"   # 全部.json 红线：首位固定闪电资
 # 标志前缀
 FLAG_NORMAL = "影视 "
 FLAG_ADULT = "18 "
+
+# ── 候选层（2026-10-13 分层改造）──
+# 结构性无法外部验证的引擎源（api 非 http：csp_/相对路径/jar:/js:/py:）在这里
+# 单独成层，probe 阶段会把连续失败的失效源也追加进来。
+CAND_FILE = "候选.json"
+CAND_META = {
+    "name": "候选源（未验证 / 失效）",
+    "subset_meaning": "候选 = 结构上无法外部验证的引擎源，或连续探活失败的失效源；"
+                      "导入后如不可用可单独删除，不影响验证层",
+}
 
 # ── 分类缓存（离线抓取生成，防止每日流水线把真实分类打回空壳）──
 # categories_cache.json: { norm_api(url): [分类名, ...] }，与上游分类做并集合并，
@@ -224,14 +242,29 @@ def main():
     if removed:
         print(f"  剔除（酷我 等）: {removed}")
 
+    # ①.5) 结构性预分流：非 http 接口（csp_/相对路径/jar:/js:/py:）外部无法验证，
+    #       移入候选层（候选.json）。http 的 .js 脚本仍留验证层（probe 验存在性）。
+    def is_structural(s):
+        return not str(s.get("api", "") or "").lower().startswith("http")
+
+    cand_structural = [s for s in kept if is_structural(s)]
+    kept = [s for s in kept if not is_structural(s)]
+    if cand_structural:
+        print(f"  结构性引擎源移入候选层: {len(cand_structural)}")
+
     # ② 按成人/正常分流（直连 + 爬虫 合并，不再区分）
     normal = [s for s in kept if not adult_of(s)]
     adult = [s for s in kept if adult_of(s)]
-    print(f"  全部（正常） {len(normal)} | 部分（成人） {len(adult)}")
+    cand_normal = [s for s in cand_structural if not adult_of(s)]
+    cand_adult = [s for s in cand_structural if adult_of(s)]
+    print(f"  全部（正常） {len(normal)} | 部分（成人） {len(adult)}"
+          f" | 候选（引擎 {len(cand_normal)} + 成人引擎 {len(cand_adult)}）")
 
     # ③ 打标志
     normal = [apply_flag(s, False) for s in normal]
     adult = [apply_flag(s, True) for s in adult]
+    cand_normal = [apply_flag(s, False) for s in cand_normal]
+    cand_adult = [apply_flag(s, True) for s in cand_adult]
 
     # ④ 置顶规则（仅全部.json 保留红线；部分.json 已取消置顶，见下）
     normal = pin_first(normal, PIN_ALL_FIRST)
@@ -249,22 +282,47 @@ def main():
 
     normal = sort_by_real_cat(normal, keep_first=True)
     adult = sort_by_real_cat(adult, keep_first=False)
+    # 候选层：正常引擎源按「有可显示分类」排前，成人引擎源排尾
+    for s in cand_normal + cand_adult:
+        s["_cand_reason"] = "engine"   # 供 probe 阶段统计与分层管理
+    cand_all = (sort_by_real_cat(cand_normal, keep_first=False)
+                + sort_by_real_cat(cand_adult, keep_first=False))
 
     def write(fname, subset, lst):
+        if subset == "全部":
+            name = "全部接口（正常）"
+            meaning, is_adult = "全部 = 正常可用接口", False
+        elif subset == "部分":
+            name = "部分接口（成人）"
+            meaning, is_adult = "部分 = 成人接口", True
+        else:
+            name = CAND_META["name"]
+            meaning, is_adult = CAND_META["subset_meaning"], False
         meta = {
-            "name": f"{'全部' if subset == '全部' else '部分'}接口（{'正常' if subset == '全部' else '成人'}）",
-            "subset": subset,                # 全部 / 部分
-            "subset_meaning": "全部 = 正常可用接口" if subset == "全部" else "部分 = 成人接口",
-            "adult": subset == "部分",
+            "name": name,
+            "subset": subset,                # 全部 / 部分 / 候选
+            "subset_meaning": meaning,
+            "adult": is_adult,
             "source": "dearloyal/YSC",
             "count": len(lst),
         }
+        if subset == "候选":
+            # probe 阶段会在此基础上追加失效源并重写 _cand 统计
+            meta["_cand"] = {
+                "at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "desc": CAND_META["subset_meaning"],
+                "from_classify": len(lst),
+                "demoted_now": 0,
+                "engine": len(lst),
+                "revived_dropped": 0,
+            }
         with open(fname, "w", encoding="utf-8") as f:
             json.dump({**meta, "sites": lst}, f, ensure_ascii=False, indent=2)
         print(f"  写出 {fname} ({len(lst)})")
 
     write("全部.json", "全部", normal)
     write("部分.json", "部分", adult)
+    write(CAND_FILE, "候选", cand_all)
     print("[QWJS] 完成")
 
 
