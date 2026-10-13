@@ -7,8 +7,10 @@ CS 订阅清理脚本（部署到 dearloyal/CS → scripts/cleanup.py）
 
 清理规则（对 全部.json 与 部分.json 同时生效）：
   「成人内容」从 全部.json 移除后，自动「移入」部分.json（成人订阅），而非直接丢弃。
+  ⓪ 用户点名删除（优先级最高，绕过视频词保护）：如 哔哩 / bilibili / b站。
+     本质是视频但用户明确要求移除的源放这里；非影视的音频源见 ①。
   ① 删纯音频源：音乐 / 听歌 / KTV / 听书 / 有声 / 广播 / 电台 / 相声 / 评书 /
-     radio / music / 网易云 / 千千音乐 / 枫叶音乐 / 悦听 / 音乐聚合 / DJ /
+     喜马拉雅 / radio / music / 网易云 / 千千音乐 / 枫叶音乐 / 悦听 / 音乐聚合 / DJ /
      听小说 / 漫画 / 绘本 / 书城 / 电子书 等。视频类（直播 / 戏曲 / 动漫 等）保留。
   ② 删「藤藤 / 谐音」源：藤、腾、滕、疼、填、瑅 任一命中即删（均为依赖第三方解析、
      易失效的爬虫源；用户确认不可用）。
@@ -36,6 +38,7 @@ AUDIO_KW = [
     "音乐", "听歌", "ktv", "KTV", "听书", "有声", "广播", "电台", "相声", "评书",
     "radio", "music", "音频", "爱听", "千千音乐", "网易云", "枫叶音乐", "悦听",
     "音乐聚合", "音乐网", "听书网", "DJ", "听小说", "漫画", "绘本", "书城", "电子书",
+    "喜马拉雅",
 ]
 # 视频关键词（命中则保留，优先级高于音频，防误删直播/戏曲/动漫等）
 VIDEO_KW = [
@@ -45,6 +48,9 @@ VIDEO_KW = [
 
 # ── ② 藤藤 / 谐音（均不可用，删除）──
 TENG_HOMOPHONE = list("藤腾滕疼填瑅")
+
+# ── ②.5 用户点名删除（优先级最高，绕过视频词保护；如 哔哩/bilibili 本质是视频但用户要求移除）──
+USER_REMOVE = ["哔哩", "bilibili", "b站"]
 
 # ── ③ 成人内容（仅 全部.json 生效）──
 # 用户点名（名字子串匹配，忽略大小写）
@@ -99,6 +105,11 @@ def is_audio(name):
 def has_teng(name, key):
     s = str(name) + str(key)
     return any(ch in s for ch in TENG_HOMOPHONE)
+
+
+def is_user_remove(name):
+    low = str(name).lower()
+    return any(r.lower() in low for r in USER_REMOVE)
 
 
 def is_adult(name, cats):
@@ -187,19 +198,27 @@ def clean_file(path, is_main, moved=None):
     sites = d.get("sites", [])
     before = len(sites)
 
-    n_audio = n_teng = n_adult = n_dup = 0
+    n_audio = n_teng = n_adult = n_dup = n_user = 0
 
-    # ① 音频
+    # 0 用户点名删除（优先级最高，绕过视频词保护）
     rest = []
     for s in sites:
-        if is_audio(s.get("name", "")):
-            n_audio += 1
+        if is_user_remove(s.get("name", "")):
+            n_user += 1
         else:
             rest.append(s)
 
+    # ① 音频
+    rest1 = []
+    for s in rest:
+        if is_audio(s.get("name", "")):
+            n_audio += 1
+        else:
+            rest1.append(s)
+
     # ② 藤藤 / 谐音
     rest2 = []
-    for s in rest:
+    for s in rest1:
         if has_teng(s.get("name", ""), s.get("key", "")):
             n_teng += 1
         else:
@@ -251,7 +270,7 @@ def clean_file(path, is_main, moved=None):
         json.dump(d, f, ensure_ascii=False, indent=2)
 
     print(f"[cleanup] {os.path.basename(path):16s} 源 {before}→{len(deduped)} "
-          f"（删音频 {n_audio} / 藤藤谐音 {n_teng} / 成人(移入部分) {'%d' % n_adult if is_main else '—(跳过)'} / 去重 {n_dup}），"
+          f"（用户删除 {n_user} / 删音频 {n_audio} / 藤藤谐音 {n_teng} / 成人(移入部分) {'%d' % n_adult if is_main else '—(跳过)'} / 去重 {n_dup}），"
           f"名称保持「{d.get('name')}」")
 
 
