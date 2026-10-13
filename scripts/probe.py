@@ -63,11 +63,8 @@ SCRIPT_RE = re.compile(r"\.(js|py|min\.js|json)(\?|$|&)", re.I)
 PROXY_RE = re.compile(r"^https?://[^/]+/(https?://.+)$")
 
 CAND_META = {
-    "name": "候选源（未验证 / 失效）",
+    "name": "候选",
     "subset": "候选",
-    "subset_meaning": "候选 = 结构上无法外部验证的引擎源，或连续探活失败的失效源；"
-                      "导入后如不可用可单独删除，不影响验证层",
-    "adult": False,
     "source": "dearloyal/YSC",
 }
 
@@ -402,8 +399,7 @@ def main():
         "_from": f"https://raw.githubusercontent.com/dearloyal/CS/main/{CAND_FILE}",
         "_cand": {
             "at": ts,
-            "desc": "候选层：结构上无法外部验证的引擎源 + 连续探活失败的失效源。"
-                    "导入后如不可用可单独删除，不影响验证层。",
+            "desc": "候选层源，导入后如不可用可单独删除，不影响验证层",
             "from_classify": n_from_classify,
             "demoted_now": n_cand_dead,
             "engine": n_cand_engine,
