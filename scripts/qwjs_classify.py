@@ -41,7 +41,8 @@ FLAG_NORMAL = "影视 "
 FLAG_ADULT = "18 "
 
 # ── 分类缓存（离线抓取生成，防止每日流水线把真实分类打回空壳）──
-# categories_cache.json: { norm_api(url): [分类名, ...] }，仅用于填补上游配置缺失的分类。
+# categories_cache.json: { norm_api(url): [分类名, ...] }，与上游分类做并集合并，
+#                       把上游配置裁剪掉的真实分类（如闪电资源的短剧分类）补回来。
 # empty_cats_cache.json: { norm_api(url): [空分类名, ...] }，逐源验证为空的分类，运行时剔除。
 # （用户 2026-10-12：闪电资源「电影/电视剧/综艺/动漫」等标准分类 App 里点开是空的；
 #   苹果CMS provide 接口筛选参数是 t 而非 type，?ac=videolist&t=<id> 的 total 即真实内容量，
@@ -79,20 +80,31 @@ def _load_json_cache(path):
         return {}
 
 def merge_categories_cache(sites):
-    """用 categories_cache.json 补回上游配置未提供的真实分类；不覆盖已有真实分类。"""
+    """用 categories_cache.json 补回上游配置未提供的真实分类（并集合并）。
+
+    2026-10-13 修复：原实现只在分类列表为空时才整体补，导致上游配置裁剪分类时
+    缓存永远加不回来——当日流水线把「❤闪电资源」分类从 53 砍到 32，丢失全部
+    短剧分类（爽文短剧/擦边短剧/漫剧），用户反馈「看不了短剧」。
+    现改为并集：以离线抓取的真实分类为准，把上游缺失的分类按原顺序追加到列表
+    尾部（不改动上游已有分类的顺序）；随后 remove_empty_cats 会剥掉验证为空的
+    父级分类（电影/电视剧/综艺/动漫 等），二者配合保证「真实分类不丢、空壳不复活」。
+    """
     cache = _load_json_cache(_CACHE_FILE)
     if not cache:
         return sites, 0
     out, filled = [], 0
     for s in sites:
-        if has_real_categories(s):
-            out.append(s)
-            continue
         cats = cache.get(norm_api(s.get("api", "")))
         if cats:
-            s = dict(s)
-            s["categories"] = cats
-            filled += 1
+            existing = s.get("categories")
+            existing = [c for c in existing if isinstance(c, str)] if isinstance(existing, list) else []
+            seen = {c.strip() for c in existing}
+            add = [c for c in cats
+                   if isinstance(c, str) and c.strip() and c.strip() not in seen]
+            if add:
+                s = dict(s)
+                s["categories"] = existing + add
+                filled += 1
         out.append(s)
     return out, filled
 
@@ -193,7 +205,7 @@ def main():
     sites = d.get("sites", [])
     print(f"[QWJS] 读取上游接口数: {len(sites)}")
 
-    # 0) 合并分类缓存（离线抓取的真实分类），填补上游配置缺失项
+    # 0) 合并分类缓存（离线抓取的真实分类），并集补回上游缺失的分类
     sites, filled = merge_categories_cache(sites)
     if filled:
         print(f"  从分类缓存补回真实分类: {filled} 条")
