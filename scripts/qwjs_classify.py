@@ -40,6 +40,12 @@ LOCAL_YSC = os.environ.get("LOCAL_YSC", "网站接口数据.json")
 # 用户指定从「全部」中剔除的名称（模糊匹配）
 BLOCK_NAME_FRAGMENTS = ("酷我",)
 
+# 用户指定提级白名单（2026-10-13）：命中 name/key 子串的 csp_ 引擎源跳过 ①.5 结构性预分流，
+# 直接进入验证层（全部.json）。用途：fish2035/xs 等仓里的「哔哩合集」+ 各「短剧」引擎外部不可
+# 验证，但用户要求可直接观看，故按子串提级；probe.py 同步放开防踢回候选层（见其 else 分支）。
+# 回退方式：清空本元组即可。与 probe.py 中同一逻辑保持一致（直接 from 本常量导入）。
+PROMOTE_SUBSTR = ("哔哩", "短剧")
+
 # 置顶规则：全部.json 把含此关键字的源放最前；部分.json 同理
 PIN_ALL_FIRST = "❤闪电资源"   # 全部.json 红线：首位固定闪电资源
 # 注：部分.json 已取消「老色逼」置顶红线（用户 2026-10-12 要求，纯按有效分类排序）
@@ -244,11 +250,16 @@ def main():
 
     # ①.5) 结构性预分流：非 http 接口（csp_/相对路径/jar:/js:/py:）外部无法验证，
     #       移入候选层（候选.json）。http 的 .js 脚本仍留验证层（probe 验存在性）。
+    #       白名单 PROMOTE_SUBSTR 命中的提级源例外：留验证层（用户要求可直接观看短剧/哔哩）。
     def is_structural(s):
         return not str(s.get("api", "") or "").lower().startswith("http")
 
-    cand_structural = [s for s in kept if is_structural(s)]
-    kept = [s for s in kept if not is_structural(s)]
+    def is_promoted(s):
+        blob = str(s.get("name", "") or "") + " " + str(s.get("key", "") or "")
+        return any(sub in blob for sub in PROMOTE_SUBSTR)
+
+    cand_structural = [s for s in kept if is_structural(s) and not is_promoted(s)]
+    kept = [s for s in kept if (not is_structural(s)) or is_promoted(s)]
     if cand_structural:
         print(f"  结构性引擎源移入候选层: {len(cand_structural)}")
 
