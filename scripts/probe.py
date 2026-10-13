@@ -206,6 +206,121 @@ def load_json(path, default):
         return default
 
 
+def run_recheck(docs, history, sample=0):
+    """复测模式（02:00 定时触发）：仅对首轮暂留(_alive=None)的 http 源复测。
+
+    首轮探活(probe)把单日失败的 http 源留作暂留(None)；本模式给它们二次机会：
+      · 复测通过           → _alive=True，转正加回验证层，并清零防抖计数
+      · 复测仍失败（第2次） → 直接丢弃（连续失败 ≥2，不再暂留）
+      · 已确认可用(_alive=True)的源一律不动，避免复测误伤
+    仅 re-probe 暂留源，全量远小于首轮，速度快、对确认源零扰动。
+    """
+    ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    t0 = time.time()
+
+    # 收集暂留源（_alive is None 的 http 接口），按地址去重，只复测这些
+    seen, tasks = set(), []
+    pending_total = 0
+    for d in docs.values():
+        for s in d.get("sites", []):
+            if s.get("_alive") is None:
+                pending_total += 1
+                k = probe_key(s)
+                if k[0] == "U" and k[1] not in seen:
+                    seen.add(k[1])
+                    kind = "script" if SCRIPT_RE.search(k[1]) else "cms"
+                    tasks.append((k[1], kind))
+    if sample:
+        tasks = tasks[:sample]
+    n_script = sum(1 for _, kind in tasks if kind == "script")
+    print(f"[recheck] 复测暂留源：待复测接口 {len(tasks)} 个"
+          f"（CMS {len(tasks) - n_script} / 引擎脚本 {n_script}），并发 {CONCURRENCY}", flush=True)
+
+    def verify(t):
+        url, kind = t
+        return probe_script(url) if kind == "script" else probe_strict(url)
+
+    result = {}
+    if tasks:
+        with ThreadPoolExecutor(max_workers=CONCURRENCY) as ex:
+            for t, (alive, code, ms) in zip(tasks, ex.map(verify, tasks)):
+                result[t[0]] = (alive, code, ms)
+
+    # 逐文件：确认源不动；暂留源复测后定夺（转正 / 丢弃）
+    new_history = dict(history)
+    tot_recovered = tot_dropped = tot_kept = 0
+    for f, d in docs.items():
+        recovered = dropped = kept_pending = 0
+        pending_file = sum(1 for s in d.get("sites", []) if s.get("_alive") is None)
+        final = []
+        for s in d.get("sites", []):
+            if s.get("_alive") is not None:
+                final.append(s)                      # 确认可用/已处置，不动
+                continue
+            k = probe_key(s)
+            s["_probe_at"] = ts
+            if k[0] == "U" and k[1] in result:
+                alive, code, ms = result[k[1]]
+                na = norm_api(k[1])
+                if alive:
+                    s["_alive"] = True
+                    s["_code"] = code
+                    s["_ms"] = ms
+                    new_history.pop(na, None)         # 复活：清零计数
+                    recovered += 1
+                    final.append(s)
+                else:
+                    # 第二次失败 → 丢弃（连续失败 ≥2）
+                    dropped += 1
+                    fail = int(history.get(na, {}).get("fail", 0)) + 1
+                    new_history[na] = {"fail": fail, "at": ts,
+                                       "code": code, "final": True}
+                    # 不 append → 丢弃
+            else:
+                # 暂留源未纳入复测（异常兜底）：保留，不丢
+                s["_alive"] = None
+                kept_pending += 1
+                final.append(s)
+
+        before = len(d.get("sites", []))
+        d["sites"] = final
+        if "count" in d:
+            d["count"] = len(final)
+        recheck_summary = {
+            "at": ts,
+            "mode": "复测：仅对首轮暂留(_alive=None)源复测，通过转正、再失败丢弃",
+            "pending_before": pending_file,
+            "probed": len(tasks),
+            "recovered": recovered,
+            "dropped": dropped,
+            "kept_pending": kept_pending,
+            "sites_before": before,
+            "sites_after": len(final),
+        }
+        probe_blk = d.get("_probe", {})
+        probe_blk["_recheck"] = recheck_summary
+        d["_probe"] = probe_blk
+        with open(f, "w", encoding="utf-8") as fp:
+            json.dump(d, fp, ensure_ascii=False, indent=2)
+        print(f"[recheck] {f:16s} 复测通过转正 {recovered:5d}  丢弃 {dropped:5d}  "
+              f"仍暂留 {kept_pending:5d}  站点 {before}→{len(final)}", flush=True)
+        tot_recovered += recovered
+        tot_dropped += dropped
+        tot_kept += kept_pending
+
+    # 持久化防抖状态（清理超龄条目）
+    cutoff = (datetime.datetime.now(datetime.timezone.utc)
+              - datetime.timedelta(days=14)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    pruned = {k: v for k, v in new_history.items()
+              if str(v.get("at", "")) >= cutoff}
+    n_pruned = len(new_history) - len(pruned)
+    with open(HISTORY_FILE, "w", encoding="utf-8") as fp:
+        json.dump(pruned, fp, ensure_ascii=False, indent=2)
+    print(f"[recheck] 完成：转正 {tot_recovered} / 丢弃 {tot_dropped} / 仍暂留 {tot_kept}"
+          f"（暂留总数 {pending_total}）；防抖状态 {len(pruned)} 个（清理超龄 {n_pruned}），"
+          f"用时 {(time.time() - t0):.1f}s", flush=True)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sample", type=int, default=0,
@@ -214,6 +329,8 @@ def main():
                     help="死源当天即直接丢弃（防抖阈值降为 1，旧行为）")
     ap.add_argument("--demote", type=int, default=FAIL_DEMOTE,
                     help=f"连续失败多少次降级候选层（默认 {FAIL_DEMOTE}）")
+    ap.add_argument("--recheck", action="store_true",
+                    help="复测模式：仅对首轮暂留(_alive=None)源复测，通过转正、再失败丢弃")
     args = ap.parse_args()
     demote_at = 1 if args.keep_dead else max(1, args.demote)
 
@@ -230,6 +347,12 @@ def main():
     history = load_json(HISTORY_FILE, {})
     if not isinstance(history, dict):
         history = {}
+
+    # 复测模式：仅对首轮暂留(_alive=None)源复测，通过转正、再失败丢弃。
+    # 01:00 首轮把单日失败源留作暂留(None)；02:00 复测给它们二次机会。
+    if args.recheck:
+        run_recheck(docs, history, sample=args.sample)
+        return
 
     # 1) 收集待验证接口（跨文件按 key 去重，同一接口只验一次）
     seen, tasks = set(), []
