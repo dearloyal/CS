@@ -1,4 +1,51 @@
 {
+  "iqiyizyapi.com/api.php/provide/vod": [
+    "连续剧",
+    "动漫",
+    "体育"
+  ],
+  "zhangqun1818.serv00.net/zh/2242.php": [
+    "哔哩哔哩",
+    "澳洲电视",
+    "yy轮播",
+    "直播文件六"
+  ],
+  "apilj.com/api.php/provide/vod/at/json": [
+    "公告",
+    "头条",
+    "柚木TINA",
+    "原纱央莉",
+    "仁科百华",
+    "天海翼",
+    "小川阿佐美",
+    "长泽梓"
+  ],
+  "lzizy5.com/api.php/provide/vod": [
+    "娱乐新闻",
+    "演员",
+    "新闻资讯",
+    "电影资讯"
+  ],
+  "lzizy3.com/api.php/provide/vod": [
+    "电影资讯",
+    "演员",
+    "新闻资讯",
+    "娱乐新闻"
+  ],
+  "jipinvip.com/api.php/provide/vod": [
+    "视频一区",
+    "视频三区",
+    "视频二区",
+    "视频四区",
+    "野战车震",
+    "SM调教",
+    "家庭乱伦",
+    "百合女同",
+    "学生空姐",
+    "撸管必看",
+    "视频五区",
+    "偷情少妇"
+  ],
   "sdzyapi.com/api.php/provide/vod": [
     "电影",
     "电视剧",
@@ -207,10 +254,6 @@
   ],
   "doudouzy.com/api.php/provide/vod": [
     "采集教程"
-  ],
-  "iqiyizyapi.com/api.php/provide/vod": [
-    "动漫",
-    "体育"
   ],
   "caiji.dbzy5.com/api.php/provide/vod": [
     "新闻资讯",
@@ -608,11 +651,6 @@
     "体育赛事",
     "斯诺克"
   ],
-  "zhangqun1818.serv00.net/zh/2242.php": [
-    "澳洲电视",
-    "yy轮播",
-    "直播文件六"
-  ],
   "zhangqun19.serv00.net/cctv.php": [
     "自然传奇",
     "中国好歌曲"
@@ -701,16 +739,6 @@
     "演员",
     "新闻资讯",
     "电影资讯",
-    "娱乐新闻"
-  ],
-  "lzizy5.com/api.php/provide/vod": [
-    "演员",
-    "新闻资讯",
-    "电影资讯"
-  ],
-  "lzizy3.com/api.php/provide/vod": [
-    "演员",
-    "新闻资讯",
     "娱乐新闻"
   ],
   "zuidazy.co/api.php/provide/vod": [
@@ -1019,19 +1047,6 @@
     "小川阿佐美",
     "三上悠亚",
     "长泽梓"
-  ],
-  "jipinvip.com/api.php/provide/vod": [
-    "视频三区",
-    "视频二区",
-    "视频四区",
-    "野战车震",
-    "SM调教",
-    "家庭乱伦",
-    "百合女同",
-    "学生空姐",
-    "撸管必看",
-    "视频五区",
-    "偷情少妇"
   ],
   "hsckzy888.com/api.php/provide/vod/from/hsckm3u8/at/json": [
     "国产区",
