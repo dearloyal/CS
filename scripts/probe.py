@@ -33,6 +33,13 @@ import json, os, re, subprocess, time, datetime, argparse
 from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urlsplit, urlunsplit
 
+# 提级白名单（与 qwjs_classify.PROMOTE_SUBSTR 保持一致）：命中子串的引擎源在验证层保留，
+# 不被 ① 踢回候选层。导入失败时降级为空元组（所有引擎源按原逻辑进候选层）。
+try:
+    from qwjs_classify import PROMOTE_SUBSTR
+except Exception:
+    PROMOTE_SUBSTR = ()
+
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 FILES = [
     "全部.json", "部分.json",
@@ -310,15 +317,24 @@ def main():
                     new_history[na] = history[na]   # 未测到，旧状态原样结转
             else:
                 # 引擎类 Spider（classify 未预分流掉的残留）：结构性不可验证 → 候选层
+                # 白名单 PROMOTE_SUBSTR 命中的短剧/哔哩引擎：用户要求留验证层，防踢回候选
+                _blob = str(s.get("name", "") or "") + " " + str(s.get("key", "") or "")
+                if PROMOTE_SUBSTR and any(sub in _blob for sub in PROMOTE_SUBSTR):
+                    s["_alive"] = None
+                    n_skip += 1
+                    kept.append(s)
+                    continue
                 s["_alive"] = None
                 s["_cand_reason"] = "engine"
                 n_engine += 1
                 demoted.append(s)
 
-        # 3.5) 验证层最终化：按归一化 api 去重，同一后台只留一条
+        # 3.5) 验证层最终化：http 按归一化 api 去重；引擎源按 (key,api) 身份去重
+        #      （同一 api 的多个 csp_ 引擎靠 key/ext 区分，不能按 api 并掉，否则只留 1 个）
         seen_norm, final = set(), []
         for s in kept:
-            na = norm_api(str(s.get("api") or ""))
+            k = probe_key(s)
+            na = norm_api(k[1]) if k[0] == "U" else k
             if na in seen_norm:
                 continue
             seen_norm.add(na)
