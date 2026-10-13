@@ -300,7 +300,12 @@ def load_discovered():
         return []
     out = []
     with ThreadPoolExecutor(max_workers=8) as ex:
-        for got in ex.map(lambda u: _parse_config(run_curl(u, timeout=20)), urls):
+        for url, got in zip(urls, ex.map(lambda u: _parse_config(run_curl(u, timeout=20)), urls)):
+            # 给每个站点打上来源配置 URL，随产物一路带到 全部.json/部分.json。
+            # discover.py 次日读这些 _cfg 反推「高产配置池」，保证产出过已验证源的
+            # 配置永远不会被新发现挤出 discovered.txt（反馈回路，2026-10-13）。
+            for s in got:
+                s["_cfg"] = url
             out.extend(got)
     return out
 
