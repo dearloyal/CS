@@ -40,7 +40,10 @@ EXCLUDE_API = ("dinggetv", "wolongzyw.com", "pz.v88.qzz.io", "siwazyw.tv", "api.
 # 额外手动指定源：不在 cdz list.txt 里、但你想纳入的独立源（例如独立的“老农民”线路）。
 # 格式: (线路名, 配置URL)，留空则不影响现有逻辑。
 EXTRA_SOURCES = [
-    # ("老农民", "https://example.com/老农民.json"),
+    # 用户 2026-10-13 指定：fish2035/xs 单仓（cnb.cool，非 GitHub，故不走 discover 精选清单）。
+    # 含 哔哩合集/哔哩视频/哔哩音乐… 及 七猫/河马/围观/好看/星芽/果果 短剧 等 csp_ 引擎源；
+    # 这些短剧/哔哩引擎由 qwjs_classify.PROMOTE_SUBSTR 提级进 全部.json（见 classify ①.5 与 probe 白名单）。
+    ("fish2035短剧仓", "https://cnb.cool/fish2035/xs/-/git/raw/main/api.json"),
 ]
 
 ADULT_KW = re.compile(
