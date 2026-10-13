@@ -2,7 +2,7 @@
   "name": "全部",
   "subset": "全部",
   "source": "dearloyal/YSC",
-  "count": 538,
+  "count": 525,
   "sites": [
     {
       "key": "csp_xml_闪电资源",
@@ -3064,23 +3064,6 @@
       "_ms": 425
     },
     {
-      "key": "哔哩直播py",
-      "name": "影视 🌇｜哔哩｜直播",
-      "type": 3,
-      "api": "https://chigua.eu.org/py/哔哩直播.py",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "东篱",
-      "_src": "网页线路",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": true,
-      "_code": 200,
-      "_ms": 405
-    },
-    {
       "key": "网络直播",
       "name": "影视 🌇｜网络｜直播",
       "type": 3,
@@ -3487,40 +3470,6 @@
       "_ms": 445
     },
     {
-      "key": "哔幕",
-      "name": "影视 哔哩4K",
-      "type": 3,
-      "api": "https://meow.668yun.top/api/s/unDwdM3nZBachMqnrGmG3bQDcvsubkpb/哔哩影视.py",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "哈吉米",
-      "_src": "网页线路",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": true,
-      "_code": 200,
-      "_ms": 3661
-    },
-    {
-      "key": "我的哔哩",
-      "name": "影视 我的哔哩",
-      "type": 3,
-      "api": "https://meow.668yun.top/api/s/d26yObEbm8rr5LbHYgdJg2OsfmN3Skue/我的哔哩影视.py",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "哈吉米",
-      "_src": "网页线路",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": true,
-      "_code": 200,
-      "_ms": 3317
-    },
-    {
       "key": "华数",
       "name": "影视 🦐华数",
       "type": 3,
@@ -3635,24 +3584,6 @@
       "_alive": true,
       "_code": 567,
       "_ms": 464
-    },
-    {
-      "key": "哔幕",
-      "name": "影视 哔哩｜X",
-      "type": 3,
-      "api": "http://nn.4688888.xyz/js/drpy2.min.js",
-      "ext": "http://nn.4688888.xyz/js/哔哩视频.js",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "哈吉米",
-      "_src": "网页线路",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": true,
-      "_code": 200,
-      "_ms": 1296
     },
     {
       "key": "丧尸",
@@ -4365,23 +4296,6 @@
       "_ms": 107
     },
     {
-      "key": "哔哩直播",
-      "name": "影视 📺哔哩┃点播",
-      "type": 3,
-      "api": "https://gh-proxy.com/https://raw.githubusercontent.com/IY-CPU/IY/main/lib/哔哩直播.py",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "X4菠菜pro",
-      "_src": "网页线路",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": true,
-      "_code": 200,
-      "_ms": 93
-    },
-    {
       "key": "儿童",
       "name": "影视 儿童📚启蒙",
       "type": 3,
@@ -4804,24 +4718,6 @@
       "_alive": true,
       "_code": 200,
       "_ms": 4083
-    },
-    {
-      "key": "哔哩直播",
-      "name": "影视 [4491ms|2] 哔哩｜直播合集",
-      "type": 3,
-      "api": "https://gitee.com/fuleishu/fulei/raw/master/json/哔哩直播.py",
-      "_cfg": "https://raw.githubusercontent.com/25175/tvyuan/master/tvbox_full.json",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": true,
-      "_code": 200,
-      "_ms": 3054
     },
     {
       "key": "虎牙直播js",
@@ -6242,24 +6138,6 @@
       "_ms": 142
     },
     {
-      "key": "BiliOfficial7",
-      "name": "影视 💥BilibiliTV💥",
-      "api": "https://gh-proxy.org/https://raw.githubusercontent.com/wliqi495-create/jaychouqq/refs/heads/main/yingshi/js8/BiliOfficial7.js",
-      "type": 3,
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/jaychouqq/tvbox/cece.json",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": true,
-      "_code": 200,
-      "_ms": 162
-    },
-    {
       "key": "乌云.py",
       "name": "影视 💥Y乌云💥",
       "api": "https://gh-proxy.org/https://raw.githubusercontent.com/wliqi495-create/jaychouqq/refs/heads/main/yingshi/pytesx/乌云.py",
@@ -6660,24 +6538,6 @@
       "_alive": true,
       "_code": 200,
       "_ms": 194
-    },
-    {
-      "key": "哔哩影视1.py",
-      "name": "影视 💥哔哩影视1💥",
-      "api": "https://gh-proxy.org/https://raw.githubusercontent.com/wliqi495-create/jaychouqq/refs/heads/main/yingshi/py9/哔哩影视.py",
-      "type": 3,
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/jaychouqq/tvbox/cece.json",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": true,
-      "_code": 200,
-      "_ms": 129
     },
     {
       "key": "Ncat.py",
@@ -10155,24 +10015,6 @@
       "_ms": 156
     },
     {
-      "key": "bilibili.py",
-      "name": "影视 💥b站直播💥",
-      "api": "https://gh-proxy.org/https://raw.githubusercontent.com/wliqi495-create/jaychouqq/refs/heads/main/yingshi/py2/bilibili.py",
-      "type": 3,
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/jaychouqq/tvbox/cece.json",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": true,
-      "_code": 200,
-      "_ms": 123
-    },
-    {
       "key": "欣欣影视.py",
       "name": "影视 💥欣欣影视💥",
       "api": "https://gh-proxy.org/https://raw.githubusercontent.com/wliqi495-create/jaychouqq/refs/heads/main/yingshi/py/欣欣影视.py",
@@ -10281,24 +10123,6 @@
       "_ms": 153
     },
     {
-      "key": "哔哩视频.py",
-      "name": "影视 💥哔哩视频1💥",
-      "api": "https://gh-proxy.org/https://raw.githubusercontent.com/wliqi495-create/jaychouqq/refs/heads/main/yingshi/py/哔哩视频.py",
-      "type": 3,
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/jaychouqq/tvbox/cece.json",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": true,
-      "_code": 200,
-      "_ms": 165
-    },
-    {
       "key": "泥视频.py",
       "name": "影视 💞泥视频.💞",
       "api": "https://gh-proxy.org/https://raw.githubusercontent.com/wliqi495-create/jaychouqq/refs/heads/main/yingshi/py/泥视频.py",
@@ -10392,24 +10216,6 @@
       "key": "韩剧网.js",
       "name": "影视 💞韩剧网雅💞",
       "api": "https://gh-proxy.org/https://raw.githubusercontent.com/wliqi495-create/jaychouqq/refs/heads/main/yingshi/js6/韩剧网.js",
-      "type": 3,
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/jaychouqq/tvbox/cece.json",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": true,
-      "_code": 200,
-      "_ms": 125
-    },
-    {
-      "key": "喜马拉雅.js",
-      "name": "影视 💞喜马拉雅💞",
-      "api": "https://gh-proxy.org/https://raw.githubusercontent.com/wliqi495-create/jaychouqq/refs/heads/main/yingshi/js/喜马拉雅.js",
       "type": 3,
       "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/jaychouqq/tvbox/cece.json",
       "_adult": false,
@@ -11719,24 +11525,6 @@
       "_ms": 119
     },
     {
-      "key": "BiliOfficial7",
-      "name": "影视 💥BilibiliTV💥",
-      "api": "https://gh-proxy.org/https://raw.githubusercontent.com/wliqi495-create/jaychouqq/refs/heads/main/yingshi/pytesx/哔哩哔哩.py",
-      "filterable": 1,
-      "quickSearch": 1,
-      "searchable": 1,
-      "type": 3,
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/jaychouqq/tvbox/test1.json",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": true,
-      "_code": 200,
-      "_ms": 91
-    },
-    {
       "key": "聚合平台3.js",
       "name": "影视 💥聚合平台55💥",
       "api": "https://gh-proxy.org/https://raw.githubusercontent.com/wliqi495-create/jaychouqq/refs/heads/main/yingshi/pytesx/聚合平台3.py",
@@ -11831,29 +11619,6 @@
       "_alive": true,
       "_code": 200,
       "_ms": 102
-    },
-    {
-      "key": "bili_open.js",
-      "name": "影视 💥BILIBILI💥",
-      "type": 3,
-      "api": "https://gh-proxy.org/https://raw.githubusercontent.com/wliqi495-create/jaychouqq/refs/heads/main/yingshi/js7/bili_open.js",
-      "changeable": 0,
-      "ext": {
-        "categories": "音乐#动画#电影#电视剧#番剧#综艺#影视#国创#娱乐#游戏#搞笑#单机游戏#沙雕动画#沙雕穿越#沙雕",
-        "cookie": "DedeUserID=690781341;DedeUserID__ckMd5=cabc96906269c5b6;;          "
-      },
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/jaychouqq/tvbox/test1.json",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-13T21:49:21Z",
-      "_alive": true,
-      "_code": 200,
-      "_ms": 103
     },
     {
       "key": "pyPHP",
