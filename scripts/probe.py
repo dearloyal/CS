@@ -3,7 +3,7 @@
 """
 接口探活（阶段4 · 分层模式）
 ============================
-2026-10-13 改版：从「单层严删」改为「验证层 + 候选层」双输出。
+2026-10-13 改版：从「单层严删」改为「验证层（100%可用+防抖）」单输出；候选层于同日废弃（引擎源/失效源直接丢弃）。
 
 背景（用户诉求：全网能找到的都要，不能死一片删一片）：
   · 旧逻辑把未验证引擎(csp_/相对路径)与死链一律删掉——620 个小而纯的代价是
@@ -12,16 +12,15 @@
       验证层（全部.json / 部分.json）：100% 确认可用的源（_alive=True），
         ＋ 探活防抖——单日失败的源暂留验证层（_alive=None），
         连续失败 ≥2 次才降级，防止网络抖动误杀。
-      候选层（候选.json）：结构上无法外部验证的引擎源
-        （classify 阶段预分流写入）＋ 连续失败 ≥2 次的失效源
-        （本阶段追加，名字标 [失效]）。
+      （候选层曾用于承接引擎源/失效源，2026-10-13 已废弃：
+        经实测引擎源在 App 内基本不可用，故直接丢弃，验证层更纯粹。）
   · 任一日探活成功即回验证层并清零计数（probe_history.json 持久化，
     由 probe job 的 checkout 从 main 读取昨日值）。
 
 与上游的协作：
-  · qwjs_classify.py 已把非 http 接口（csp_/相对路径/jar:/js:/py:）预分流到
-    候选.json，本脚本对 全部.json/部分.json 里残留的引擎源同样转候选层（防御）。
-  · 失效源名字统一加 " [失效]" 后缀，用户导入候选层后可自行甄别。
+  · qwjs_classify.py 不再输出 候选.json；非 http 接口（引擎源）直接丢弃，
+    不进入验证层也不落候选层。
+  · 连续失败 ≥ 阈值的失效源直接丢弃（不再改名标 [失效] 保留）。
 
 验证方式：
   对接口按「标准苹果CMS参数」依次尝试（接口自带参数则直接测）：
@@ -212,7 +211,7 @@ def main():
     ap.add_argument("--sample", type=int, default=0,
                     help="只验证前 N 个接口（本地调试用，默认全量）")
     ap.add_argument("--keep-dead", action="store_true",
-                    help="死源当天即降级候选层（防抖阈值降为 1，旧行为）")
+                    help="死源当天即直接丢弃（防抖阈值降为 1，旧行为）")
     ap.add_argument("--demote", type=int, default=FAIL_DEMOTE,
                     help=f"连续失败多少次降级候选层（默认 {FAIL_DEMOTE}）")
     args = ap.parse_args()
@@ -227,11 +226,10 @@ def main():
         with open(f, encoding="utf-8") as fp:
             docs[f] = json.load(fp)
 
-    # 0) 读昨日防抖状态 + 昨日候选层（classify 预分流的引擎源在里面）
+    # 0) 读昨日防抖状态（候选层已于 2026-10-13 废弃，不再读取/生成）
     history = load_json(HISTORY_FILE, {})
     if not isinstance(history, dict):
         history = {}
-    cand_doc = load_json(CAND_FILE, None)
 
     # 1) 收集待验证接口（跨文件按 key 去重，同一接口只验一次）
     seen, tasks = set(), []
@@ -263,15 +261,15 @@ def main():
     ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     # 3) 分层判定写回
-    #    验证层 = _alive=True（确认可用）+ _alive=None（防抖暂留/未测）
-    #    候选层 = 引擎源（结构性不可验证）+ 连续失败 ≥ 阈值的失效源
-    cand_sites = list((cand_doc or {}).get("sites", [])) if cand_doc else []
-    n_from_classify = len(cand_sites)
+    #    验证层 = _alive=True（确认可用）+ _alive=None（防抖暂留/未测/引擎提级）
+    #    引擎源（结构性不可验证）与连续失败 ≥ 阈值的失效源：直接丢弃（候选层已废弃）
+    cand_sites = []   # 候选层已废弃（2026-10-13）：引擎源与失效源不再单独保留
+    n_from_classify = 0
     new_history = {}
     for f, d in docs.items():
         n_alive = n_dead = n_engine = n_skip = 0
         n_bounce = 0          # 防抖暂留（单日失败）
-        n_demote = 0          # 本次降级候选层
+        n_demote = 0          # 本次丢弃（连续失败达阈值）
         kept, demoted = [], []
         for s in d.get("sites", []):
             k = probe_key(s)
@@ -290,13 +288,8 @@ def main():
                     n_dead += 1
                     fail = int(history.get(na, {}).get("fail", 0)) + 1
                     if fail >= demote_at:
-                        # 连续失败达到阈值 → 降级候选层，标 [失效]
+                        # 连续失败达到阈值 → 候选层已废弃，直接丢弃（不再降级保留）
                         n_demote += 1
-                        name = str(s.get("name", "") or "")
-                        base_name = name.replace(" [失效]", "")
-                        s["name"] = f"{base_name} [失效]"
-                        s["_cand_reason"] = "dead"
-                        demoted.append(s)
                         new_history[na] = {"fail": fail, "at": ts, "code": code}
                     else:
                         # 单日失败：防抖暂留验证层（不改名，_alive=None）
@@ -313,8 +306,8 @@ def main():
                 if na in history:
                     new_history[na] = history[na]   # 未测到，旧状态原样结转
             else:
-                # 引擎类 Spider（classify 未预分流掉的残留）：结构性不可验证 → 候选层
-                # 白名单 PROMOTE_SUBSTR 命中的短剧/哔哩引擎：用户要求留验证层，防踢回候选
+                # 引擎类 Spider（结构性不可验证）：候选层已废弃，默认丢弃；
+                # 仅白名单 PROMOTE_SUBSTR 命中的短剧/哔哩引擎留验证层。
                 _blob = str(s.get("name", "") or "") + " " + str(s.get("key", "") or "")
                 if PROMOTE_SUBSTR and any(sub in _blob for sub in PROMOTE_SUBSTR):
                     s["_alive"] = None
@@ -322,9 +315,7 @@ def main():
                     kept.append(s)
                     continue
                 s["_alive"] = None
-                s["_cand_reason"] = "engine"
                 n_engine += 1
-                demoted.append(s)
 
         # 3.5) 验证层最终化：http 按归一化 api 去重；引擎源按 (key,api) 身份去重
         #      （同一 api 的多个 csp_ 引擎靠 key/ext 区分，不能按 api 并掉，否则只留 1 个）
@@ -344,13 +335,13 @@ def main():
         summary = {
             "at": ts,
             "standard": "必须返回有效影视数据（内容校验）",
-            "mode": f"验证层(100%可用+防抖暂留) / 候选层(引擎+失效，连续失败>{demote_at - 1}次降级)",
+            "mode": f"验证层(100%可用+防抖暂留，引擎源/失效源直接丢弃不保留)",
             "verified": total,
             "alive": n_alive,
             "dead": n_dead,
             "bounced": n_bounce,
             "demoted": n_demote,
-            "engine_to_cand": n_engine,
+            "engine_dropped": n_engine,
             "not_checked": n_skip,
             "dedup_removed": dedup_removed,
             "alive_rate": f"{(n_alive / total * 100):.1f}%" if total else "-",
@@ -366,51 +357,12 @@ def main():
             json.dump(d, fp, ensure_ascii=False, indent=2)
         print(f"[probe] {f:16s} 验证 {total:5d}  通过 {n_alive:5d}  "
               f"死链 {n_dead:5d}（防抖留 {n_bounce:3d}/降级 {n_demote:3d}）  "
-              f"引擎转候选 {n_engine:4d}  去重 {dedup_removed:5d}  "
+              f"引擎丢弃 {n_engine:4d}  去重 {dedup_removed:5d}  "
               f"通过率 {summary['alive_rate']}  站点 {before}→{len(final)}", flush=True)
-        # 收集本文件降级的源，稍后统一入候选层
-        for s in demoted:
-            cand_sites.append(s)
+        pass  # 降级源不再收集（候选层已废弃）
 
-    # 4) 候选层最终化：与验证层去重（网站复活的源删旧 [失效] 条目）+ 层内去重
-    verified_norm = set()
-    for d in docs.values():
-        for s in d.get("sites", []):
-            verified_norm.add(norm_api(str(s.get("api") or "")))
-    seen_c, final_c = set(), []
-    n_revived = 0
-    for s in cand_sites:
-        na = norm_api(str(s.get("api") or ""))
-        if na in verified_norm:
-            n_revived += 1     # 验证层已有同名后台（复活或并行），旧候选条目作废
-            continue
-        ck = cand_key(s)
-        if ck in seen_c:
-            continue
-        seen_c.add(ck)
-        final_c.append(s)
-    n_cand_engine = sum(1 for s in final_c if s.get("_cand_reason") == "engine")
-    n_cand_dead = sum(1 for s in final_c if s.get("_cand_reason") == "dead")
-
-    cand_out = dict(CAND_META)
-    cand_out.update({
-        "count": len(final_c),
-        "sites": final_c,
-        "_from": f"https://raw.githubusercontent.com/dearloyal/CS/main/{CAND_FILE}",
-        "_cand": {
-            "at": ts,
-            "desc": "候选层源，导入后如不可用可单独删除，不影响验证层",
-            "from_classify": n_from_classify,
-            "demoted_now": n_cand_dead,
-            "engine": n_cand_engine,
-            "revived_dropped": n_revived,
-        },
-    })
-    with open(CAND_FILE, "w", encoding="utf-8") as fp:
-        json.dump(cand_out, fp, ensure_ascii=False, indent=2)
-    print(f"[probe] 候选层 {len(final_c)} 个（classify 预分流 {n_from_classify} / "
-          f"本次降级 {n_cand_dead} / 引擎 {n_cand_engine}，复活清理 {n_revived}）",
-          flush=True)
+    # 4) 候选层已于 2026-10-13 废弃：引擎源与连续失效源不再单独保留
+    #    （引擎源直接丢弃；验证层靠防抖暂留 + discover 次日重发现兜底复活）
 
     # 5) 持久化防抖状态（只留 fail>0 的条目；超过 14 天未刷新的清理，防无限增长）
     cutoff = (datetime.datetime.now(datetime.timezone.utc)
