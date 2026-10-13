@@ -4,18 +4,16 @@
 QWJS 分类脚本（部署到 dearloyal/CS → scripts/qwjs_classify.py）
 ==============================================================
 任务（按用户 2026-10-11 要求重构）：
-  读取 YSC 产出的「全部网站接口」（网站接口数据.json），统一输出 3 份订阅文件：
+  读取 YSC 产出的「全部网站接口」（网站接口数据.json），统一输出 2 份订阅文件：
         全部.json : 正常可用接口（直连 + 爬虫 合并）
         部分.json : 成人接口（直连 + 爬虫 合并）
-        候选.json : 候选层——结构性无法外部验证的引擎源（非 http 接口：
-                   csp_/相对路径/jar:/js:/py:），成人候选打「18 」前缀排尾
   不再区分直连 / 爬虫（用户要求合并）。
 
-分层设计（2026-10-13，配合 probe.py 分层改造）：
+引擎源处理（2026-10-13 更新）：
   旧逻辑把引擎源留在 全部.json 里、probe 阶段再整体丢弃，用户感知「源少了一半」。
-  现在 classify 先把结构性不可验证的引擎源预分流到 候选.json；probe 阶段再把
-  连续探活失败的失效源追加进同一份候选.json。验证层保持 100% 可用，
-  候选层供用户自行甄别导入，两层互不干扰。
+  后改为预分流到 候选.json（候选层），但实测引擎源在 App 内基本不可用，
+  故 2026-10-13 起彻底废弃候选层：非 http 接口（csp_/相对路径/jar:/js:/py:）
+  的引擎源直接丢弃，不进入 全部/部分，也不落候选层。
 
 附加处理：
   ① 删除「酷我」系列（用户指定从全部中移除）；
@@ -272,7 +270,7 @@ def main():
     cand_normal = [s for s in cand_structural if not adult_of(s)]
     cand_adult = [s for s in cand_structural if adult_of(s)]
     print(f"  全部（正常） {len(normal)} | 部分（成人） {len(adult)}"
-          f" | 候选（引擎 {len(cand_normal)} + 成人引擎 {len(cand_adult)}）")
+          f" | 引擎源（已丢弃） {len(cand_normal) + len(cand_adult)}")
 
     # ③ 打标志
     normal = [apply_flag(s, False) for s in normal]
@@ -327,8 +325,7 @@ def main():
 
     write("全部.json", "全部", normal)
     write("部分.json", "部分", adult)
-    write(CAND_FILE, "候选", cand_all)
-    print("[QWJS] 完成")
+    print("[QWJS] 完成（候选层已废弃，引擎源不再输出）")
 
 
 if __name__ == "__main__":
