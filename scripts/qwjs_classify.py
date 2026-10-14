@@ -55,15 +55,6 @@ PIN_ALL_FIRST = "❤闪电资源"   # 全部.json 红线：首位固定闪电资
 FLAG_NORMAL = "影视 "
 FLAG_ADULT = "18 "
 
-# ── 候选层（2026-10-13 分层改造）──
-# 结构性无法外部验证的引擎源（api 非 http：csp_/相对路径/jar:/js:/py:）在这里
-# 单独成层，probe 阶段会把连续失败的失效源也追加进来。
-CAND_FILE = "候选.json"
-CAND_META = {
-    "name": "候选源（未验证 / 失效）",
-    "subset_meaning": "候选 = 结构上无法外部验证的引擎源，或连续探活失败的失效源；"
-                      "导入后如不可用可单独删除，不影响验证层",
-}
 
 # ── 分类缓存（离线抓取生成，防止每日流水线把真实分类打回空壳）──
 # categories_cache.json: { norm_api(url): [分类名, ...] }，与上游分类做并集合并，
@@ -267,16 +258,12 @@ def main():
     # ② 按成人/正常分流（直连 + 爬虫 合并，不再区分）
     normal = [s for s in kept if not adult_of(s)]
     adult = [s for s in kept if adult_of(s)]
-    cand_normal = [s for s in cand_structural if not adult_of(s)]
-    cand_adult = [s for s in cand_structural if adult_of(s)]
     print(f"  全部（正常） {len(normal)} | 部分（成人） {len(adult)}"
-          f" | 引擎源（已丢弃） {len(cand_normal) + len(cand_adult)}")
+          f" | 引擎源（已丢弃） {len(cand_structural)}")
 
     # ③ 打标志
     normal = [apply_flag(s, False) for s in normal]
     adult = [apply_flag(s, True) for s in adult]
-    cand_normal = [apply_flag(s, False) for s in cand_normal]
-    cand_adult = [apply_flag(s, True) for s in cand_adult]
 
     # ④ 置顶规则（仅全部.json 保留红线；部分.json 已取消置顶，见下）
     normal = pin_first(normal, PIN_ALL_FIRST)
@@ -294,11 +281,6 @@ def main():
 
     normal = sort_by_real_cat(normal, keep_first=True)
     adult = sort_by_real_cat(adult, keep_first=False)
-    # 候选层：正常引擎源按「有可显示分类」排前，成人引擎源排尾
-    for s in cand_normal + cand_adult:
-        s["_cand_reason"] = "engine"   # 供 probe 阶段统计与分层管理
-    cand_all = (sort_by_real_cat(cand_normal, keep_first=False)
-                + sort_by_real_cat(cand_adult, keep_first=False))
 
     def write(fname, subset, lst):
         # 红线①：对外显示名严格只用「全部 / 部分 / 候选」，
