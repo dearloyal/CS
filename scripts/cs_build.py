@@ -4,11 +4,10 @@
 CS 出链脚本（部署到 dearloyal/CS → scripts/cs_build.py）
 ========================================================
 任务（按用户 2026-10-11 重构要求）：
-  ① 读取本仓 classify 阶段产出的 3 个订阅文件（全部 / 部分 / 候选，已合并直连+爬虫）；
-  ② 在 CS 仓库落地【3 个可订阅链接】，供用户直接使用：
+  ① 读取本仓 classify 阶段产出的 2 个订阅文件（全部 / 部分，已合并直连+爬虫）；
+  ② 在 CS 仓库落地【2 个可订阅链接】，供用户直接使用：
         1. 全部.json   （验证层：正常接口，名字带「影视 」标志）
         2. 部分.json   （验证层：成人接口，名字带「18 」标志）
-        3. 候选.json   （候选层：引擎源 + 连续失效源，名字带 [失效] 标志）
   另外生成 README.md，列出 2 个订阅链接（对外不写分组含义）。
 运行：python3 scripts/cs_build.py
 """
@@ -23,7 +22,6 @@ SELF_BASE = os.environ.get("SELF_BASE", "https://raw.githubusercontent.com/dearl
 ITEMS = [
     ("全部.json", SELF_BASE, "全部.json"),
     ("部分.json", SELF_BASE, "部分.json"),
-    ("候选.json", SELF_BASE, "候选.json"),
 ]
 
 
