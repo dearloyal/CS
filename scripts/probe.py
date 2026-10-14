@@ -43,7 +43,6 @@ UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 FILES = [
     "全部.json", "部分.json",
 ]
-CAND_FILE = "候选.json"            # 候选层输出（classify 预分流 + 本阶段追加失效源）
 HISTORY_FILE = "probe_history.json"  # 连续失败计数（跨日防抖状态）
 CONCURRENCY = 24       # 并发验证数（严格模式请求更重，略降）
 TIMEOUT = 8            # 单请求超时（秒）
@@ -61,11 +60,6 @@ SCRIPT_RE = re.compile(r"\.(js|py|min\.js|json)(\?|$|&)", re.I)
 # 剥掉代理前缀才能从 CI 网络直达底层文件，避免把可达的脚本误判死。
 PROXY_RE = re.compile(r"^https?://[^/]+/(https?://.+)$")
 
-CAND_META = {
-    "name": "候选",
-    "subset": "候选",
-    "source": "dearloyal/YSC",
-}
 
 
 def probe_key(s):
@@ -93,12 +87,6 @@ def norm_api(api):
         return api.lower()
 
 
-def cand_key(s):
-    """候选层去重键：U 类按归一化 api，E 类按 (key, api)。"""
-    k = probe_key(s)
-    if k[0] == "U":
-        return ("U", norm_api(k[1]))
-    return k
 
 
 def candidates(url):
@@ -386,7 +374,7 @@ def main():
     # 3) 分层判定写回
     #    验证层 = _alive=True（确认可用）+ _alive=None（防抖暂留/未测/引擎提级）
     #    引擎源（结构性不可验证）与连续失败 ≥ 阈值的失效源：直接丢弃（候选层已废弃）
-    cand_sites = []   # 候选层已废弃（2026-10-13）：引擎源与失效源不再单独保留
+    # 候选层已废弃（2026-10-13）：引擎源与失效源不再单独保留，直接丢弃。
     n_from_classify = 0
     new_history = {}
     for f, d in docs.items():
