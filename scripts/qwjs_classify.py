@@ -28,88 +28,8 @@ QWJS 分类脚本（部署到 dearloyal/CS → scripts/qwjs_classify.py）
 """
 import json, os, re, sys, time, subprocess, datetime
 
-# ── Phase 0 策略外置：音频 / 用户指定删除 / 藤谐音 过滤（在分类拆分前执行 = 蓝图 1.5 位置）──
-# 规则来自 policy.yaml（单一真相源），改规则无需改代码。
-_HERE = os.path.dirname(os.path.abspath(__file__))
-for _p in (_HERE, os.path.join(_HERE, "scripts"), os.getcwd()):
-    if os.path.isdir(_p) and _p not in sys.path:
-        sys.path.insert(0, _p)
-
-try:
-    from policy_lib import load_policy as _load_policy, get_list as _get_list
-    _POL = _load_policy()
-    AUDIO_KW = _get_list(_POL, "audio_keywords")
-    VIDEO_KW = _get_list(_POL, "video_keywords")
-    USER_REMOVE = _get_list(_POL, "user_remove")
-except Exception:
-    AUDIO_KW = ["音乐", "听书", "喜马拉雅", "广播", "电台", "相声", "评书", "漫画", "电子书"]
-    VIDEO_KW = ["直播", "戏曲", "电视", "体育", "哔哩", "动漫", "短剧", "电影", "综艺"]
-    USER_REMOVE = ["哔哩", "bilibili", "b站", "BILIBILI"]
-TENG_HOMOPHONE = list("藤腾滕疼填瑅")
-
-
-def is_audio(name):
-    """命中音频词即非影视；先剥离「影视 」前缀，遇视频词则保留（防误删直播/戏曲等）。"""
-    name = re.sub(r"^影视\s*", "", str(name))
-    if any(v in name for v in VIDEO_KW):
-        return False
-    return any(a.lower() in name.lower() for a in AUDIO_KW)
-
-
-def is_user_remove(name):
-    low = str(name).lower()
-    return any(u.lower() in low for u in USER_REMOVE)
-
-
-def has_teng(name, key):
-    s = str(name) + str(key)
-    return any(ch in s for ch in TENG_HOMOPHONE)
-
-
-def is_plugin_source(s):
-    """该源是否需要 spider.jar / 引擎 才能在手机上播放（即用户说的「爬虫类不能用的」）。
-
-    真实信号不在 type 字段（上游把大量可用标准接口也标成了 type=1），
-    而在 ext / api 是否指向 spider 或引擎脚本。命中即视为手机端不可用，拆分层直接丢弃。
-    注意：标准 MacCMS 接口（ext 为空、api 为 api.php/provide/vod）不会被命中，
-          故用户置顶的「❤闪电资源」(type=1, ext='') 会被保留。
-    """
-    ext = str(s.get("ext", "") or "").lower()
-    api = str(s.get("api", "") or "").lower()
-    blob = ext + " " + api
-    if ext.startswith("jar:") or ext.startswith("py:") or ext.startswith("js:") or "js:" in blob:
-        return True
-    if "spider" in blob:
-        return True
-    if "csp_" in api:                      # 引擎标识
-        return True
-    if "engine" in blob or "drpy" in blob or "dr_py" in blob:
-        return True
-    if ext and (ext.endswith(".js") or "/js/" in ext or "github" in ext and ext.endswith(".js")):
-        return True
-    return False
-
-
-def pre_filter(sites):
-    """拆分前预处理：移除音频 / 用户指定删除 / 藤谐音 / 需插件的爬虫·引擎源，返回 (保留列表, 计数)。"""
-    rm = {"audio": 0, "user_remove": 0, "teng": 0, "plugin": 0}
-    kept = []
-    for s in sites:
-        nm = str(s.get("name", "") or "")
-        if is_user_remove(nm):
-            rm["user_remove"] += 1
-            continue
-        if has_teng(nm, s.get("key", "")):
-            rm["teng"] += 1
-            continue
-        if is_audio(nm):
-            rm["audio"] += 1
-            continue
-        if is_plugin_source(s):          # 手机端需 spider.jar/引擎，直接丢弃
-            rm["plugin"] += 1
-            continue
-        kept.append(s)
-    return kept, rm
+# ── 注：音频 / 用户删除 / 藤谐音 / 插件引擎源 的「拆分前」过滤，已统一前移到
+#    scripts/cleanup.py（蓝图 1.5 位置，读取 policy.yaml 单一真相源）；本脚本只负责「拆分」。──
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 YSC_URL = os.environ.get(
@@ -118,8 +38,7 @@ YSC_URL = os.environ.get(
 # 合并管线场景：上游产物已在同一工作目录，直接读本地（可用 LOCAL_YSC 覆盖）
 LOCAL_YSC = os.environ.get("LOCAL_YSC", "网站接口数据.json")
 
-# 用户指定从「全部」中剔除的名称（模糊匹配）
-BLOCK_NAME_FRAGMENTS = ("酷我",)
+# 用户指定从「全部」中剔除的名称（酷我 等）已在 cleanup.py 的 block_names 阶段（拆分前）统一处理。
 
 # 用户指定提级白名单（2026-10-13）：命中 name/key 子串的 csp_ 引擎源跳过 ①.5 结构性预分流，
 # 提级白名单（方案A，2026-10-13）：短剧/哔哩等 csp_ 引擎外部不可验证，且必须由完整单仓自带的
@@ -272,12 +191,6 @@ def adult_of(site):
     return bool(re.search(r"(成人|🔞|色|黄|麻豆|av|avb|porn|hentai|萝莉)", blob, re.I))
 
 
-def block(site):
-    """是否命中剔除名单（酷我 等）。"""
-    name = str(site.get("name", "") or "")
-    return any(frag in name for frag in BLOCK_NAME_FRAGMENTS)
-
-
 def apply_flag(site, is_adult):
     """给源名打标志前缀；已带前缀则幂等不加。"""
     name = str(site.get("name", "") or "")
@@ -326,16 +239,10 @@ def main():
     # 0.5) 统一补齐 filterable/searchable/quickSearch=1（否则 App 不显示分类筛选栏）
     sites = ensure_flags(sites)
 
-    # 0.6) 预处理过滤（Phase 0 策略外置，蓝图 1.5 位置）：音频 / 用户删除 / 藤谐音，必须在成人分流前
-    sites, frem = pre_filter(sites)
-    if any(frem.values()):
-        print(f"  预处理过滤：音频 {frem['audio']} | 用户删除 {frem['user_remove']} | 藤谐音 {frem['teng']}")
+    # 注：音频 / 用户删除 / 藤谐音 / 插件引擎源 / 同站去重 已在 cleanup.py（拆分前）完成，
+    #     本脚本直接进入「拆分」（成人分流 + 分类缓存 + 标志 + 置顶 + 排序）。
 
-    # ① 剔除酷我 等
-    kept = [s for s in sites if not block(s)]
-    removed = len(sites) - len(kept)
-    if removed:
-        print(f"  剔除（酷我 等）: {removed}")
+    kept = sites
 
     # ①.5) 结构性预分流：非 http 接口（csp_/相对路径/jar:/js:/py:）外部无法验证，
     #       移入候选层（候选.json）。http 的 .js 脚本仍留验证层（probe 验存在性）。

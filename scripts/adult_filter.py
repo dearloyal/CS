@@ -19,6 +19,25 @@
 """
 import os
 import re
+import sys
+
+# ── 策略读取：复用 policy_lib，把成人「名字/分类清单」外置到 policy.yaml ──
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_ROOT = os.path.dirname(_HERE)
+for _p in (_HERE, _ROOT, os.getcwd()):
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
+try:
+    from policy_lib import load_policy as _load_policy, get_list as _get_list
+    _POL = _load_policy()
+    _ADULT_NAMES = _get_list(_POL, "adult_names")
+    _ADULT_NAME_HARD = _get_list(_POL, "adult_name_hard")
+    _ADULT_CAT_HARD = _get_list(_POL, "adult_cat_hard")
+except Exception:
+    _POL = {}
+    _ADULT_NAMES = []
+    _ADULT_NAME_HARD = []
+    _ADULT_CAT_HARD = []
 
 # ── 通用强特征（沿用旧表） ─────────────────────────────────────────────
 # 注：原表里的 `18` / `jm` 已移出，改为更精准的边界匹配（见下方 NAME_NUM_18 / JM_KW）：
@@ -95,4 +114,17 @@ def is_adult(site):
         return True
     if NAME_NUM_KW.search(name_field) or NAME_NUM_18.search(name_field):
         return True
+
+    # ── 外置清单（policy.yaml 的 adult_names / adult_name_hard / adult_cat_hard）──
+    # 与上方正则并用，作为成人判定的统一真相源；清单缺失时回退为空（不误伤）。
+    low = name.lower()
+    if any(n and n.lower() in low for n in _ADULT_NAMES):
+        return True
+    if any(h and h.lower() in low for h in _ADULT_NAME_HARD):
+        return True
+    cats = site.get("categories")
+    if isinstance(cats, list) and cats:
+        cstr = " ".join(str(c) for c in cats)
+        if any(c and c in cstr for c in _ADULT_CAT_HARD):
+            return True
     return False

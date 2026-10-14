@@ -46,7 +46,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: 阶段1 抓取与解密
+      - name: 阶段1 抓取与解密（产出统一数据池 网站接口数据.json）
         run: python3 scripts/ysc_build.py
       - uses: actions/upload-artifact@v4
         with:
@@ -54,8 +54,28 @@ jobs:
           path: |
             网站接口数据.json
 
-  classify:
+  cleanup:
     needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          name: stage1
+      - name: 阶段1.5 全量清理（拆分前；读 policy.yaml：删音频/用户删除/藤谐音/插件引擎源 + 同站去重）
+        run: python3 scripts/cleanup.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pool-clean
+          path: |
+            网站接口数据.json
+
+  classify:
+    needs: cleanup
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -65,8 +85,8 @@ jobs:
           python-version: "3.11"
       - uses: actions/download-artifact@v4
         with:
-          name: stage1
-      - name: 阶段2 分类
+          name: pool-clean
+      - name: 阶段2 分类拆分成两个链接（全部 / 部分）
         run: python3 scripts/qwjs_classify.py
       - uses: actions/upload-artifact@v4
         with:
@@ -87,11 +107,36 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: stage2
-      - name: 阶段2.5 自审闸门（不过审则拦截推送）
+      - name: 阶段2.5 自审闸门（不过审则拦截后续发布）
         run: python3 scripts/audit.py 全部.json 部分.json
 
+  probe:
+    needs: audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      # 读取上一轮已提交的探活历史（跨日防抖状态），再覆盖为本次 freshly 分类的产物
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          name: stage2
+      - name: 阶段3 接口探活（验证层 100% 可用 + 防抖；引擎源与连续失效源直接丢弃）
+        run: python3 scripts/probe.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stage2-probed
+          path: |
+            全部.json
+            部分.json
+            probe_history.json
+
   output:
-    needs: [classify, audit]
+    needs: [probe]
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -101,76 +146,20 @@ jobs:
           python-version: "3.11"
       - uses: actions/download-artifact@v4
         with:
-          name: stage1
-          path: .
-      - uses: actions/download-artifact@v4
-        with:
-          name: stage2
-          path: .
-      - name: 阶段3 出链
+          name: stage2-probed
+      - name: 阶段4 出链
         run: python3 scripts/cs_build.py
       - name: 提交并推送
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # 清理上一版遗留的 4 份 + 接口合集 + 候选.json（候选层已废弃）
+          # 清理上一版遗留的 4 份 + 接口合集（候选层已废弃）
           git rm -f --ignore-unmatch 1直连-全部.json 1直连-部分.json 2爬虫-全部.json 2爬虫-部分.json 接口合集.json 候选.json 2>/dev/null || true
-          git add 全部.json 部分.json
-          if git diff --cached --quiet; then
-            echo "无变化，跳过提交"
-          else
-            git commit -m "auto: 更新 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            git pull --rebase origin main || true
-            git push
-          fi
-
-  cleanup:
-    needs: output
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: 阶段3.5 清理（删纯音频 / 同站马甲去重 / 统一命名）
-        run: python3 scripts/cleanup.py
-      - name: 提交清理结果
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add 全部.json 部分.json
-          if git diff --cached --quiet; then
-            echo "无变化，跳过提交"
-          else
-            git commit -m "cleanup: 删音频/同站去重 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            git pull --rebase origin main || true
-            git push
-          fi
-
-  probe:
-    needs: cleanup
-    runs-on: ubuntu-latest
-    timeout-minutes: 25
-    steps:
-      # output 阶段已 push 过，这里显式 checkout main 才能拿到上一阶段的最新产物
-      - uses: actions/checkout@v4
-        with:
-          ref: main
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: 阶段4 接口探活（验证层 100% 可用 + 防抖；引擎源与连续失效源直接丢弃，候选层已废弃）
-        run: python3 scripts/probe.py
-      - name: 提交探活结果
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add 全部.json 部分.json probe_history.json
           if git diff --cached --quiet; then
             echo "无变化，跳过提交"
           else
-            git commit -m "probe: 健康标记 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git commit -m "auto: 更新 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
             git pull --rebase origin main || true
             git push
           fi
