@@ -28,6 +28,89 @@ QWJS 分类脚本（部署到 dearloyal/CS → scripts/qwjs_classify.py）
 """
 import json, os, re, sys, time, subprocess, datetime
 
+# ── Phase 0 策略外置：音频 / 用户指定删除 / 藤谐音 过滤（在分类拆分前执行 = 蓝图 1.5 位置）──
+# 规则来自 policy.yaml（单一真相源），改规则无需改代码。
+_HERE = os.path.dirname(os.path.abspath(__file__))
+for _p in (_HERE, os.path.join(_HERE, "scripts"), os.getcwd()):
+    if os.path.isdir(_p) and _p not in sys.path:
+        sys.path.insert(0, _p)
+
+try:
+    from policy_lib import load_policy as _load_policy, get_list as _get_list
+    _POL = _load_policy()
+    AUDIO_KW = _get_list(_POL, "audio_keywords")
+    VIDEO_KW = _get_list(_POL, "video_keywords")
+    USER_REMOVE = _get_list(_POL, "user_remove")
+except Exception:
+    AUDIO_KW = ["音乐", "听书", "喜马拉雅", "广播", "电台", "相声", "评书", "漫画", "电子书"]
+    VIDEO_KW = ["直播", "戏曲", "电视", "体育", "哔哩", "动漫", "短剧", "电影", "综艺"]
+    USER_REMOVE = ["哔哩", "bilibili", "b站", "BILIBILI"]
+TENG_HOMOPHONE = list("藤腾滕疼填瑅")
+
+
+def is_audio(name):
+    """命中音频词即非影视；先剥离「影视 」前缀，遇视频词则保留（防误删直播/戏曲等）。"""
+    name = re.sub(r"^影视\s*", "", str(name))
+    if any(v in name for v in VIDEO_KW):
+        return False
+    return any(a.lower() in name.lower() for a in AUDIO_KW)
+
+
+def is_user_remove(name):
+    low = str(name).lower()
+    return any(u.lower() in low for u in USER_REMOVE)
+
+
+def has_teng(name, key):
+    s = str(name) + str(key)
+    return any(ch in s for ch in TENG_HOMOPHONE)
+
+
+def is_plugin_source(s):
+    """该源是否需要 spider.jar / 引擎 才能在手机上播放（即用户说的「爬虫类不能用的」）。
+
+    真实信号不在 type 字段（上游把大量可用标准接口也标成了 type=1），
+    而在 ext / api 是否指向 spider 或引擎脚本。命中即视为手机端不可用，拆分层直接丢弃。
+    注意：标准 MacCMS 接口（ext 为空、api 为 api.php/provide/vod）不会被命中，
+          故用户置顶的「❤闪电资源」(type=1, ext='') 会被保留。
+    """
+    ext = str(s.get("ext", "") or "").lower()
+    api = str(s.get("api", "") or "").lower()
+    blob = ext + " " + api
+    if ext.startswith("jar:") or ext.startswith("py:") or ext.startswith("js:") or "js:" in blob:
+        return True
+    if "spider" in blob:
+        return True
+    if "csp_" in api:                      # 引擎标识
+        return True
+    if "engine" in blob or "drpy" in blob or "dr_py" in blob:
+        return True
+    if ext and (ext.endswith(".js") or "/js/" in ext or "github" in ext and ext.endswith(".js")):
+        return True
+    return False
+
+
+def pre_filter(sites):
+    """拆分前预处理：移除音频 / 用户指定删除 / 藤谐音 / 需插件的爬虫·引擎源，返回 (保留列表, 计数)。"""
+    rm = {"audio": 0, "user_remove": 0, "teng": 0, "plugin": 0}
+    kept = []
+    for s in sites:
+        nm = str(s.get("name", "") or "")
+        if is_user_remove(nm):
+            rm["user_remove"] += 1
+            continue
+        if has_teng(nm, s.get("key", "")):
+            rm["teng"] += 1
+            continue
+        if is_audio(nm):
+            rm["audio"] += 1
+            continue
+        if is_plugin_source(s):          # 手机端需 spider.jar/引擎，直接丢弃
+            rm["plugin"] += 1
+            continue
+        kept.append(s)
+    return kept, rm
+
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 YSC_URL = os.environ.get(
     "YSC_JSON",
@@ -55,6 +138,15 @@ PIN_ALL_FIRST = "❤闪电资源"   # 全部.json 红线：首位固定闪电资
 FLAG_NORMAL = "影视 "
 FLAG_ADULT = "18 "
 
+# ── 候选层（2026-10-13 分层改造）──
+# 结构性无法外部验证的引擎源（api 非 http：csp_/相对路径/jar:/js:/py:）在这里
+# 单独成层，probe 阶段会把连续失败的失效源也追加进来。
+CAND_FILE = "候选.json"
+CAND_META = {
+    "name": "候选源（未验证 / 失效）",
+    "subset_meaning": "候选 = 结构上无法外部验证的引擎源，或连续探活失败的失效源；"
+                      "导入后如不可用可单独删除，不影响验证层",
+}
 
 # ── 分类缓存（离线抓取生成，防止每日流水线把真实分类打回空壳）──
 # categories_cache.json: { norm_api(url): [分类名, ...] }，与上游分类做并集合并，
@@ -234,6 +326,11 @@ def main():
     # 0.5) 统一补齐 filterable/searchable/quickSearch=1（否则 App 不显示分类筛选栏）
     sites = ensure_flags(sites)
 
+    # 0.6) 预处理过滤（Phase 0 策略外置，蓝图 1.5 位置）：音频 / 用户删除 / 藤谐音，必须在成人分流前
+    sites, frem = pre_filter(sites)
+    if any(frem.values()):
+        print(f"  预处理过滤：音频 {frem['audio']} | 用户删除 {frem['user_remove']} | 藤谐音 {frem['teng']}")
+
     # ① 剔除酷我 等
     kept = [s for s in sites if not block(s)]
     removed = len(sites) - len(kept)
@@ -258,12 +355,16 @@ def main():
     # ② 按成人/正常分流（直连 + 爬虫 合并，不再区分）
     normal = [s for s in kept if not adult_of(s)]
     adult = [s for s in kept if adult_of(s)]
+    cand_normal = [s for s in cand_structural if not adult_of(s)]
+    cand_adult = [s for s in cand_structural if adult_of(s)]
     print(f"  全部（正常） {len(normal)} | 部分（成人） {len(adult)}"
-          f" | 引擎源（已丢弃） {len(cand_structural)}")
+          f" | 引擎源（已丢弃） {len(cand_normal) + len(cand_adult)}")
 
     # ③ 打标志
     normal = [apply_flag(s, False) for s in normal]
     adult = [apply_flag(s, True) for s in adult]
+    cand_normal = [apply_flag(s, False) for s in cand_normal]
+    cand_adult = [apply_flag(s, True) for s in cand_adult]
 
     # ④ 置顶规则（仅全部.json 保留红线；部分.json 已取消置顶，见下）
     normal = pin_first(normal, PIN_ALL_FIRST)
@@ -281,8 +382,26 @@ def main():
 
     normal = sort_by_real_cat(normal, keep_first=True)
     adult = sort_by_real_cat(adult, keep_first=False)
+    # 候选层：正常引擎源按「有可显示分类」排前，成人引擎源排尾
+    for s in cand_normal + cand_adult:
+        s["_cand_reason"] = "engine"   # 供 probe 阶段统计与分层管理
+    cand_all = (sort_by_real_cat(cand_normal, keep_first=False)
+                + sort_by_real_cat(cand_adult, keep_first=False))
 
     def write(fname, subset, lst):
+        # 写盘前去重：同一 (归一化 api + key) 视为同一源，只保留首次出现，
+        # 消除上游多份配置重复收录导致的真重复（审计闸门据此拦截）。
+        seen, uniq = set(), []
+        for s in lst:
+            k = (norm_api(s.get("api", "")), str(s.get("key", "") or "").strip())
+            if k in seen:
+                continue
+            seen.add(k)
+            uniq.append(s)
+        if len(uniq) != len(lst):
+            print(f"  去重：{subset} 移除 {len(lst) - len(uniq)} 个真重复")
+        lst = uniq
+
         # 红线①：对外显示名严格只用「全部 / 部分 / 候选」，
         # 绝不出现"正常/成人/未验证/失效"等字样，也不外泄 subset_meaning/adult 等内部语义。
         meta = {

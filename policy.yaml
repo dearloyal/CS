@@ -1,0 +1,83 @@
+# 影视仓订阅清理流水线 · 策略外置（单一真相源 / Single Source of Truth）
+# 由 scripts/audit.py 与各阶段脚本读取，取代散落在 cleanup.py / qwjs_classify.py 的硬编码规则。
+# 改规则 = 改本文件，无需改代码、无需找 AI。
+# 注意：成人判定的核心正则仍在 adult_filter.py（is_adult），本文件只外置「可调清单与阈值」。
+
+audit:
+  # 全部.json 源数健康区间；越界即判定流水线异常，拦截推送（fail-closed）。
+  all_min: 800        # 当前常态 ~1994；低于此疑似解密端点挂掉 / 上游被清空
+  all_max: 3500       # 高于此疑似污染（如引擎源误入，620→1994 那一类的事故）
+  # 部分.json 健康区间
+  part_min: 50
+  part_max: 800
+
+# 音频 / 非影视关键词（命中即非影视，删除；先剥离「影视 」前缀，遇视频词则保留）
+audio_keywords:
+  - 音乐
+  - 听歌
+  - ktv
+  - KTV
+  - 听书
+  - 有声
+  - 广播
+  - 电台
+  - 相声
+  - 评书
+  - radio
+  - music
+  - 音频
+  - 爱听
+  - 千千音乐
+  - 网易云
+  - 枫叶音乐
+  - 悦听
+  - 音乐聚合
+  - 音乐网
+  - 听书网
+  - DJ
+  - 听小说
+  - 漫画
+  - 绘本
+  - 书城
+  - 电子书
+  - 喜马拉雅
+
+# 视频关键词（命中则保留，优先级高于音频，防误删直播/戏曲/动漫等）
+video_keywords:
+  - 直播
+  - 戏曲
+  - 电视
+  - 体育
+  - 猫TV
+  - JRKAN
+  - 油管
+  - 熊猫
+  - 虎牙
+  - 哔哩
+  - 网红
+  - 动漫
+  - 短剧
+  - 电影
+  - 综艺
+  - 剧场
+
+# 用户指定整站删除（绕过视频保护，最高优先级）
+user_remove:
+  - 哔哩
+  - bilibili
+  - b站
+  - BILIBILI
+
+# 镜像候选（供 Phase 3 mirror-health 使用；audit 不依赖）
+mirrors:
+  - https://ghproxy.net
+  - https://ghproxy.cn
+  - https://raw.githubusercontent.com
+
+# 成人源处置策略：move_to_part（移入部分.json，不删）| delete（直接删除）
+divert_adult: move_to_part
+
+# 真分类器（type-3 规则扫描，消灭打地鼠）
+real_classifier:
+  enabled: false        # 默认关：避免每日增加耗时与失败面
+  scope: new_only       # new_only=仅新发现源启用；all=全量启用

@@ -75,8 +75,23 @@ jobs:
             全部.json
             部分.json
 
-  output:
+  audit:
     needs: classify
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          name: stage2
+      - name: 阶段2.5 自审闸门（不过审则拦截推送）
+        run: python3 scripts/audit.py 全部.json 部分.json
+
+  output:
+    needs: [classify, audit]
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:

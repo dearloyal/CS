@@ -43,6 +43,7 @@ UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 FILES = [
     "全部.json", "部分.json",
 ]
+CAND_FILE = "候选.json"            # 候选层输出（classify 预分流 + 本阶段追加失效源）
 HISTORY_FILE = "probe_history.json"  # 连续失败计数（跨日防抖状态）
 CONCURRENCY = 24       # 并发验证数（严格模式请求更重，略降）
 TIMEOUT = 8            # 单请求超时（秒）
@@ -60,6 +61,11 @@ SCRIPT_RE = re.compile(r"\.(js|py|min\.js|json)(\?|$|&)", re.I)
 # 剥掉代理前缀才能从 CI 网络直达底层文件，避免把可达的脚本误判死。
 PROXY_RE = re.compile(r"^https?://[^/]+/(https?://.+)$")
 
+CAND_META = {
+    "name": "候选",
+    "subset": "候选",
+    "source": "dearloyal/YSC",
+}
 
 
 def probe_key(s):
@@ -87,6 +93,12 @@ def norm_api(api):
         return api.lower()
 
 
+def cand_key(s):
+    """候选层去重键：U 类按归一化 api，E 类按 (key, api)。"""
+    k = probe_key(s)
+    if k[0] == "U":
+        return ("U", norm_api(k[1]))
+    return k
 
 
 def candidates(url):
@@ -374,7 +386,7 @@ def main():
     # 3) 分层判定写回
     #    验证层 = _alive=True（确认可用）+ _alive=None（防抖暂留/未测/引擎提级）
     #    引擎源（结构性不可验证）与连续失败 ≥ 阈值的失效源：直接丢弃（候选层已废弃）
-    # 候选层已废弃（2026-10-13）：引擎源与失效源不再单独保留，直接丢弃。
+    cand_sites = []   # 候选层已废弃（2026-10-13）：引擎源与失效源不再单独保留
     n_from_classify = 0
     new_history = {}
     for f, d in docs.items():
@@ -428,12 +440,18 @@ def main():
                 s["_alive"] = None
                 n_engine += 1
 
-        # 3.5) 验证层最终化：http 按归一化 api 去重；引擎源按 (key,api) 身份去重
-        #      （同一 api 的多个 csp_ 引擎靠 key/ext 区分，不能按 api 并掉，否则只留 1 个）
+        # 3.5) 验证层最终化去重：http 源必须按 (归一化 api, key) 去重；引擎源按 (key,api) 身份去重。
+        #      ⚠️ 关键修正：绝不能只按地址去重！影视仓里「同一 CMS 后端(api) + 不同 key」是
+        #      不同的源（一个后端挂多个站点），若按地址并掉会误删大量合法源
+        #      （实测一次探针把全部.json 从 2159 误砍到 1405，丢约 751 个合法源）。
+        #      只有「(api, key) 完全一致」才是真·重复（同一条源被列两次），才应合并。
         seen_norm, final = set(), []
         for s in kept:
             k = probe_key(s)
-            na = norm_api(k[1]) if k[0] == "U" else k
+            if k[0] == "U":
+                na = ("U", norm_api(k[1]), str(s.get("key", "") or ""))
+            else:
+                na = k
             if na in seen_norm:
                 continue
             seen_norm.add(na)

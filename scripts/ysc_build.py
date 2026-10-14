@@ -75,12 +75,14 @@ def _is_engine_api(api):
     l = api.lower()
     return l.endswith(".js") or l.endswith(".py") or l.startswith("./") or l.startswith("../")
 
-# 去重键：引擎类保留 (key,api)；真实接口地址（http/csp 等）按归一化地址去重
+# 去重键：引擎类保留 (key,api)；真实接口地址（http/csp 等）按 (归一化地址, key) 去重。
+# ⚠️ 真实接口必须带上 key：影视仓里「同一 CMS 后端(api) + 不同 key」是不同的源
+# （一个后端挂多个站点），只按地址去重会把合法源误并成一个（与 probe 最终化同一类修正）。
 def dedup_key(s):
     api = str(s.get("api", "")).strip()
     if _is_engine_api(api):
         return ("K", s.get("key", ""), api)
-    return ("A", norm_api(api))
+    return ("A", norm_api(api), str(s.get("key", "") or ""))
 
 
 def run_curl(url, timeout=25):
