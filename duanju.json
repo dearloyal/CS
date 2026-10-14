@@ -1,0 +1,112 @@
+{
+  "spider": "",
+  "wallpaper": "https://picsum.photos/1280/720/?blur",
+  "sites": [
+    {
+      "key": "apibdzy_ai",
+      "name": "apibdy·AI短剧",
+      "type": 1,
+      "api": "https://api.apibdzy.com/api.php/provide/vod",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "playerType": 2
+    },
+    {
+      "key": "ffzy_cj",
+      "name": "非凡影视",
+      "type": 1,
+      "api": "http://cj.ffzyapi.com/api.php/provide/vod",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "playerType": 2
+    },
+    {
+      "key": "jyzy",
+      "name": "金鹰影视",
+      "type": 1,
+      "api": "https://jyzyapi.com/provide/vod",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "playerType": 2
+    }
+  ],
+  "parses": [
+    {
+      "name": "Json聚合",
+      "type": 3,
+      "url": "Demo"
+    }
+  ],
+  "flags": [
+    "youku",
+    "qq",
+    "iqiyi",
+    "qiyi",
+    "letv",
+    "sohu",
+    "tudou",
+    "pptv",
+    "m1905",
+    "mgtv",
+    "wasu",
+    "bilibili",
+    "le",
+    "cntv",
+    "renrenmi"
+  ],
+  "ijk": [
+    {
+      "group": "软解码",
+      "options": [
+        { "category": 4, "name": "opensles", "value": "0" },
+        { "category": 4, "name": "overlay-format", "value": "842225234" },
+        { "category": 4, "name": "framedrop", "value": "1" },
+        { "category": 4, "name": "start-on-prepared", "value": "1" },
+        { "category": 1, "name": "http-detect-range", "value": "0" },
+        { "category": 1, "name": "fflags", "value": "fastseek" },
+        { "category": 2, "name": "skip_loop_filter", "value": "48" },
+        { "category": 4, "name": "reconnect", "value": "1" },
+        { "category": 4, "name": "enable-accurate-seek", "value": "0" },
+        { "category": 4, "name": "mediacodec", "value": "0" },
+        { "category": 4, "name": "mediacodec-auto-rotate", "value": "1" },
+        { "category": 4, "name": "mediacodec-handle-resolution-change", "value": "1" },
+        { "category": 4, "name": "mediacodec-hevc", "value": "1" },
+        { "category": 1, "name": "dns_cache_timeout", "value": "600000000" }
+      ]
+    },
+    {
+      "group": "硬解码",
+      "options": [
+        { "category": 4, "name": "opensles", "value": "0" },
+        { "category": 4, "name": "overlay-format", "value": "842225234" },
+        { "category": 4, "name": "framedrop", "value": "1" },
+        { "category": 4, "name": "start-on-prepared", "value": "1" },
+        { "category": 1, "name": "http-detect-range", "value": "0" },
+        { "category": 1, "name": "fflags", "value": "fastseek" },
+        { "category": 2, "name": "skip_loop_filter", "value": "48" },
+        { "category": 4, "name": "reconnect", "value": "1" },
+        { "category": 4, "name": "enable-accurate-seek", "value": "0" },
+        { "category": 4, "name": "mediacodec", "value": "1" },
+        { "category": 4, "name": "mediacodec-auto-rotate", "value": "1" },
+        { "category": 4, "name": "mediacodec-handle-resolution-change", "value": "1" },
+        { "category": 4, "name": "mediacodec-hevc", "value": "1" },
+        { "category": 1, "name": "dns_cache_timeout", "value": "600000000" }
+      ]
+    }
+  ],
+  "ads": [
+    "mimg.0c1q0l.cn",
+    "www.googletagmanager.com",
+    "www.googleadservices.com",
+    "mobile.qiyi.com",
+    "upos-sz-mirrorali.bilivideo.com",
+    "cup.iqiyi.com",
+    "wa.gtimg.com",
+    "beacon.qq.com",
+    "sclick.taobao.com",
+    "static.cdn.qiyi.com"
+  ]
+}
