@@ -27,6 +27,17 @@
       ?ac=videolist&pg=1  →  ?ac=list&pg=1  →  原始地址
   任一能返回有效数据即通过。全部失败后再整体复测 RETRY_ON_FAIL 轮，
   仍失败才判定为死源（防网络抖动误删）。
+
+UA 双探测（2026-10-15 新增，修复「App 内打开无分类/主页视图」类问题）：
+  · 背景：影视仓等 TVBox 系 App 默认以 okhttp/x.x.x 为 UA 请求；
+    部分源站只放行浏览器 UA（对 okhttp UA 返 403 甚至直接断连），
+    仅用浏览器 UA 探测会误判为活源，用户导入后 App 内打不开、
+    分类栏不显示（表现为 App 内置主页视图）。
+  · 机制：浏览器 UA 探活通过后，再用 App 实际 UA(okhttp) 复核；
+    复核不通 → 自动给该源注入 headers {"User-Agent": 浏览器UA}。
+    App 请求时 Request.Builder().headers(站点headers) 会覆盖默认
+    okhttp UA，源站放行 → 首页/分类/详情全链路恢复可用。
+  · 已注入的 headers 不因复核通过而移除（无害保留，避免每日抖动）。
 """
 import json, os, re, subprocess, time, datetime, argparse
 from concurrent.futures import ThreadPoolExecutor
@@ -40,6 +51,10 @@ except Exception:
     PROMOTE_SUBSTR = ()
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+# App 实际请求 UA（影视仓/TVBox 系 OkHttp 默认）与 UA 被墙时注入的浏览器 UA
+APP_UA = "okhttp/4.9.2"
+FIX_UA = ("Mozilla/5.0 (Linux; Android 12; SM-G991B) AppleWebKit/537.36 "
+          "(KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36")
 FILES = [
     "全部.json", "部分.json",
 ]
@@ -113,11 +128,11 @@ def candidates(url):
     ]
 
 
-def fetch(url):
+def fetch(url, ua=UA):
     """取回响应，返回 (code, ms, body)。失败返回 (0, 0, "")）。"""
     try:
         r = subprocess.run(
-            ["curl", "-s", "-L", "-m", str(TIMEOUT), "-A", UA,
+            ["curl", "-s", "-L", "-m", str(TIMEOUT), "-A", ua,
              "-w", "\n__META__ %{http_code} %{time_total}", url],
             capture_output=True, text=True, timeout=TIMEOUT + 6)
         out = r.stdout or ""
@@ -159,12 +174,12 @@ def has_payload(text):
     return bool(DATA_MARK.search(s))
 
 
-def probe_strict(url):
+def probe_strict(url, ua=UA):
     """严格验证：必须返回有效数据才算通过。返回 (alive, code, ms)。"""
     code, ms = 0, 0
     for attempt in range(RETRY_ON_FAIL + 1):
         for u in candidates(url):
-            c, m, body = fetch(u)
+            c, m, body = fetch(u, ua=ua)
             code, ms = c, m
             if has_payload(body):
                 return True, c, m
@@ -194,6 +209,37 @@ def probe_script(url):
         if attempt < RETRY_ON_FAIL:
             time.sleep(0.8)
     return True, code, ms
+
+
+def probe_app_ua(url):
+    """用 App 实际 UA(okhttp) 复核 CMS 接口：通 → True，不通 → False。"""
+    for u in candidates(url):
+        c, m, body = fetch(u, ua=APP_UA)
+        if c == 200 and has_payload(body):
+            return True
+    return False
+
+
+def probe_script_app_ua(url):
+    """用 App 实际 UA(okhttp) 复核引擎脚本文件是否可下载。"""
+    real = PROXY_RE.sub(r"\1", url)
+    code, ms, _ = fetch(real, ua=APP_UA)
+    return bool(code and 200 <= code < 400)
+
+
+def apply_ua_fix(site):
+    """UA 被墙源修复：把浏览器 UA 注入站点 headers。
+
+    App（OkHttp）发起请求时 Request.Builder().headers(站点headers) 会
+    覆盖默认 okhttp UA，源站放行 → 首页/分类/详情全链路恢复。
+    已有显式 User-Agent 的源不覆盖。返回是否本次注入。
+    """
+    h = dict(site.get("headers") or {})
+    if h.get("User-Agent"):
+        return False
+    h["User-Agent"] = FIX_UA
+    site["headers"] = h
+    return True
 
 
 def load_json(path, default):
@@ -238,17 +284,23 @@ def run_recheck(docs, history, sample=0):
 
     def verify(t):
         url, kind = t
-        return probe_script(url) if kind == "script" else probe_strict(url)
+        if kind == "script":
+            alive, code, ms = probe_script(url)
+            ua_fix = bool(alive) and not probe_script_app_ua(url)
+        else:
+            alive, code, ms = probe_strict(url)
+            ua_fix = bool(alive) and not probe_app_ua(url)
+        return alive, code, ms, ua_fix
 
     result = {}
     if tasks:
         with ThreadPoolExecutor(max_workers=CONCURRENCY) as ex:
-            for t, (alive, code, ms) in zip(tasks, ex.map(verify, tasks)):
-                result[t[0]] = (alive, code, ms)
+            for t, r in zip(tasks, ex.map(verify, tasks)):
+                result[t[0]] = r
 
     # 逐文件：确认源不动；暂留源复测后定夺（转正 / 丢弃）
     new_history = dict(history)
-    tot_recovered = tot_dropped = tot_kept = 0
+    tot_recovered = tot_dropped = tot_kept = tot_ua_fix = 0
     for f, d in docs.items():
         recovered = dropped = kept_pending = 0
         pending_file = sum(1 for s in d.get("sites", []) if s.get("_alive") is None)
@@ -260,13 +312,15 @@ def run_recheck(docs, history, sample=0):
             k = probe_key(s)
             s["_probe_at"] = ts
             if k[0] == "U" and k[1] in result:
-                alive, code, ms = result[k[1]]
+                alive, code, ms, ua_fix = result[k[1]]
                 na = norm_api(k[1])
                 if alive:
                     s["_alive"] = True
                     s["_code"] = code
                     s["_ms"] = ms
                     new_history.pop(na, None)         # 复活：清零计数
+                    if ua_fix and apply_ua_fix(s):
+                        tot_ua_fix += 1
                     recovered += 1
                     final.append(s)
                 else:
@@ -294,6 +348,7 @@ def run_recheck(docs, history, sample=0):
             "recovered": recovered,
             "dropped": dropped,
             "kept_pending": kept_pending,
+            "ua_fix": tot_ua_fix,
             "sites_before": before,
             "sites_after": len(final),
         }
@@ -303,7 +358,8 @@ def run_recheck(docs, history, sample=0):
         with open(f, "w", encoding="utf-8") as fp:
             json.dump(d, fp, ensure_ascii=False, indent=2)
         print(f"[recheck] {f:16s} 复测通过转正 {recovered:5d}  丢弃 {dropped:5d}  "
-              f"仍暂留 {kept_pending:5d}  站点 {before}→{len(final)}", flush=True)
+              f"仍暂留 {kept_pending:5d}  UA修复 {tot_ua_fix:4d}  "
+              f"站点 {before}→{len(final)}", flush=True)
         tot_recovered += recovered
         tot_dropped += dropped
         tot_kept += kept_pending
@@ -373,13 +429,19 @@ def main():
     # 2) 并发验证（CMS 验数据；引擎脚本验文件存在性）
     def verify(t):
         url, kind = t
-        return probe_script(url) if kind == "script" else probe_strict(url)
+        if kind == "script":
+            alive, code, ms = probe_script(url)
+            ua_fix = bool(alive) and not probe_script_app_ua(url)
+        else:
+            alive, code, ms = probe_strict(url)
+            ua_fix = bool(alive) and not probe_app_ua(url)
+        return alive, code, ms, ua_fix
 
     result = {}
     if tasks:
         with ThreadPoolExecutor(max_workers=CONCURRENCY) as ex:
-            for t, (alive, code, ms) in zip(tasks, ex.map(verify, tasks)):
-                result[t[0]] = (alive, code, ms)
+            for t, r in zip(tasks, ex.map(verify, tasks)):
+                result[t[0]] = r
 
     ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -393,12 +455,13 @@ def main():
         n_alive = n_dead = n_engine = n_skip = 0
         n_bounce = 0          # 防抖暂留（单日失败）
         n_demote = 0          # 本次丢弃（连续失败达阈值）
+        n_ua_fix = 0          # UA 被墙自动注入 headers 的源数
         kept, demoted = [], []
         for s in d.get("sites", []):
             k = probe_key(s)
             s["_probe_at"] = ts
             if k[0] == "U" and k[1] in result:
-                alive, code, ms = result[k[1]]
+                alive, code, ms, ua_fix = result[k[1]]
                 s["_alive"] = bool(alive)
                 s["_code"] = code
                 s["_ms"] = ms
@@ -406,6 +469,8 @@ def main():
                 if alive:
                     n_alive += 1
                     new_history.pop(na, None)   # 复活：清零计数
+                    if ua_fix and apply_ua_fix(s):
+                        n_ua_fix += 1
                     kept.append(s)
                 else:
                     n_dead += 1
@@ -472,6 +537,7 @@ def main():
             "demoted": n_demote,
             "engine_dropped": n_engine,
             "not_checked": n_skip,
+            "ua_fix": n_ua_fix,
             "dedup_removed": dedup_removed,
             "alive_rate": f"{(n_alive / total * 100):.1f}%" if total else "-",
             "sites_before": before,
@@ -487,6 +553,7 @@ def main():
         print(f"[probe] {f:16s} 验证 {total:5d}  通过 {n_alive:5d}  "
               f"死链 {n_dead:5d}（防抖留 {n_bounce:3d}/降级 {n_demote:3d}）  "
               f"引擎丢弃 {n_engine:4d}  去重 {dedup_removed:5d}  "
+              f"UA修复 {n_ua_fix:4d}  "
               f"通过率 {summary['alive_rate']}  站点 {before}→{len(final)}", flush=True)
         pass  # 降级源不再收集（候选层已废弃）
 

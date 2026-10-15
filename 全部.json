@@ -1478,7 +1478,10 @@
       "_probe_at": "2026-10-14T07:59:02Z",
       "_alive": true,
       "_code": 200,
-      "_ms": 1380
+      "_ms": 1380,
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 12; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36"
+      }
     },
     {
       "key": "niuniu",
@@ -5107,7 +5110,10 @@
       "_probe_at": "2026-10-14T07:59:02Z",
       "_alive": true,
       "_code": 200,
-      "_ms": 1309
+      "_ms": 1309,
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 12; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36"
+      }
     },
     {
       "key": "小苹果",
@@ -9193,7 +9199,10 @@
       "_probe_at": "2026-10-14T07:59:02Z",
       "_alive": true,
       "_code": 200,
-      "_ms": 291
+      "_ms": 291,
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 12; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36"
+      }
     },
     {
       "key": "直播转点播",

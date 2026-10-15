@@ -18,7 +18,6 @@
       "_adult": true,
       "_crawler": false,
       "categories": [
-        "综艺",
         "动作片",
         "喜剧片",
         "爱情片",
@@ -49,7 +48,10 @@
       "_probe_at": "2026-10-14T07:59:02Z",
       "_alive": true,
       "_code": 200,
-      "_ms": 397
+      "_ms": 397,
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 12; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36"
+      }
     },
     {
       "key": "fhapi9.com",
@@ -1144,7 +1146,10 @@
       "_probe_at": "2026-10-14T07:59:02Z",
       "_alive": true,
       "_code": 200,
-      "_ms": 495
+      "_ms": 495,
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 12; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36"
+      }
     },
     {
       "key": "fqzy资源",
