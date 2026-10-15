@@ -1573,10 +1573,10 @@
       "_src": "老三源",
       "_adult": true,
       "_crawler": false,
-      "_probe_at": "2026-10-15T20:17:35Z",
-      "_alive": null,
-      "_code": 0,
-      "_ms": 8002
+      "_probe_at": "2026-10-15T20:37:36Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 1864
     },
     {
       "key": "www.msnii.com",
@@ -2059,10 +2059,10 @@
       "_crawler": false,
       "_line": "全网发现",
       "_src": "全网发现",
-      "_probe_at": "2026-10-15T20:17:35Z",
-      "_alive": null,
-      "_code": 0,
-      "_ms": 8000
+      "_probe_at": "2026-10-15T20:37:36Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 1371
     },
     {
       "key": "py_4KAV",
@@ -2181,7 +2181,19 @@
     "dedup_removed": 0,
     "alive_rate": "39.9%",
     "sites_before": 148,
-    "sites_after": 61
+    "sites_after": 61,
+    "_recheck": {
+      "at": "2026-10-15T20:37:36Z",
+      "mode": "复测：仅对首轮暂留(_alive=None)源复测，通过转正、再失败丢弃",
+      "pending_before": 2,
+      "probed": 10,
+      "recovered": 2,
+      "dropped": 0,
+      "kept_pending": 0,
+      "ua_fix": 0,
+      "sites_before": 61,
+      "sites_after": 61
+    }
   },
   "_from": "https://raw.githubusercontent.com/dearloyal/CS/main/部分.json"
 }

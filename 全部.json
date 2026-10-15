@@ -2,7 +2,7 @@
   "name": "全部",
   "subset": "全部",
   "source": "dearloyal/YSC",
-  "count": 500,
+  "count": 498,
   "sites": [
     {
       "key": "csp_xml_闪电资源",
@@ -1418,33 +1418,6 @@
       "_ms": 924
     },
     {
-      "key": "官采",
-      "name": "影视 ☀官原🔹采集",
-      "type": 1,
-      "api": "https://cj.jusj.top/api.php/provide/vod/?ac=list",
-      "searchable": 1,
-      "changeable": 1,
-      "_adult": false,
-      "_crawler": false,
-      "_line": "星微Vip",
-      "_src": "网页线路",
-      "categories": [
-        "电影",
-        "剧集",
-        "综艺",
-        "动漫",
-        "短剧",
-        "少儿",
-        "纪录片"
-      ],
-      "filterable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-15T20:17:35Z",
-      "_alive": null,
-      "_code": 200,
-      "_ms": 862
-    },
-    {
       "key": "bubugao",
       "name": "影视 🍀步步高资源",
       "type": 1,
@@ -1958,87 +1931,6 @@
       "_alive": true,
       "_code": 200,
       "_ms": 597
-    },
-    {
-      "searchable": 1,
-      "search": 1,
-      "quickSearch": 1,
-      "api": "https://www.ysxq.cc/api.php/provide/vod",
-      "key": "星球",
-      "type": 1,
-      "name": "影视 [167ms|zy] 🍏星球🪜",
-      "_cfg": "https://raw.githubusercontent.com/25175/tvyuan/master/tvbox_full.json",
-      "_adult": false,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "categories": [
-        "电影",
-        "连续剧",
-        "综艺",
-        "动漫",
-        "动作片",
-        "喜剧片",
-        "爱情片",
-        "科幻片",
-        "恐怖片",
-        "剧情片",
-        "战争片",
-        "国产剧",
-        "港台剧",
-        "日韩剧",
-        "欧美剧",
-        "惊悚片",
-        "奇幻片",
-        "悬疑片",
-        "纪录片",
-        "犯罪片",
-        "动画片",
-        "伦理片",
-        "其他片",
-        "泰国剧",
-        "国内综艺",
-        "日韩综艺",
-        "欧美综艺",
-        "大陆动漫",
-        "日韩动漫",
-        "欧美动漫",
-        "BiLiBiLi",
-        "港台综艺",
-        "演唱会",
-        "冒险片",
-        "其他动漫",
-        "其他剧",
-        "港台动漫",
-        "足球",
-        "篮球",
-        "网球",
-        "海外剧",
-        "短剧",
-        "斯诺克",
-        "预告片",
-        "电影解说",
-        "重生民国",
-        "穿越年代",
-        "现代都市",
-        "反转爽文",
-        "女恋总裁",
-        "闪婚离婚",
-        "脑洞悬疑",
-        "古装仙侠",
-        "4K电影",
-        "邵氏电影",
-        "Netflix电影",
-        "Netflix自制剧",
-        "有声动漫",
-        "擦边短剧",
-        "漫剧"
-      ],
-      "filterable": 1,
-      "_probe_at": "2026-10-15T20:17:35Z",
-      "_alive": null,
-      "_code": 521,
-      "_ms": 555
     },
     {
       "key": "暴风资源2",
@@ -10700,10 +10592,10 @@
       "filterable": 1,
       "searchable": 1,
       "quickSearch": 1,
-      "_probe_at": "2026-10-15T20:17:35Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 2339
+      "_probe_at": "2026-10-15T20:37:36Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 206
     },
     {
       "key": "cat_剧迷网",
@@ -10742,10 +10634,10 @@
       "_crawler": true,
       "_line": "全网发现",
       "_src": "全网发现",
-      "_probe_at": "2026-10-15T20:17:35Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 2696
+      "_probe_at": "2026-10-15T20:37:36Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 208
     },
     {
       "key": "七星短剧",
@@ -10800,10 +10692,10 @@
       "filterable": 1,
       "searchable": 1,
       "quickSearch": 1,
-      "_probe_at": "2026-10-15T20:17:35Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 2129
+      "_probe_at": "2026-10-15T20:37:36Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 222
     },
     {
       "key": "猎手",
@@ -10818,10 +10710,10 @@
       "filterable": 1,
       "searchable": 1,
       "quickSearch": 1,
-      "_probe_at": "2026-10-15T20:17:35Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 2339
+      "_probe_at": "2026-10-15T20:37:36Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 212
     },
     {
       "key": "枫叶",
@@ -10857,10 +10749,10 @@
       "_crawler": true,
       "_line": "全网发现",
       "_src": "全网发现",
-      "_probe_at": "2026-10-15T20:17:35Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 4116
+      "_probe_at": "2026-10-15T20:37:36Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 215
     },
     {
       "key": "py_yunduo",
@@ -10917,10 +10809,10 @@
       "filterable": 1,
       "searchable": 1,
       "quickSearch": 1,
-      "_probe_at": "2026-10-15T20:17:35Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 2976
+      "_probe_at": "2026-10-15T20:37:36Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 197
     },
     {
       "key": "直播转点播",
@@ -12363,7 +12255,19 @@
     "dedup_removed": 0,
     "alive_rate": "49.3%",
     "sites_before": 997,
-    "sites_after": 500
+    "sites_after": 500,
+    "_recheck": {
+      "at": "2026-10-15T20:37:36Z",
+      "mode": "复测：仅对首轮暂留(_alive=None)源复测，通过转正、再失败丢弃",
+      "pending_before": 8,
+      "probed": 10,
+      "recovered": 6,
+      "dropped": 2,
+      "kept_pending": 0,
+      "ua_fix": 0,
+      "sites_before": 500,
+      "sites_after": 498
+    }
   },
   "_from": "https://raw.githubusercontent.com/dearloyal/CS/main/全部.json"
 }
