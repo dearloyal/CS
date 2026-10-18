@@ -2,7 +2,7 @@
   "name": "全部",
   "subset": "全部",
   "source": "dearloyal/YSC",
-  "count": 859,
+  "count": 850,
   "sites": [
     {
       "key": "csp_xml_闪电资源",
@@ -2926,31 +2926,6 @@
       "_ms": 737
     },
     {
-      "api": "https://hong.hgyx.vip/api.php/provide/vod/",
-      "key": "fbfa5eed414e1f6137f2496a68005ef5",
-      "name": "影视 43-HG",
-      "type": 1,
-      "_cfg": "https://raw.githubusercontent.com/hkuc/tvbox-config/main/tv/1/anaer_meow.json",
-      "_adult": false,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "categories": [
-        "影视片",
-        "影视剧",
-        "综艺",
-        "动漫",
-        "短剧"
-      ],
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-18T19:18:32Z",
-      "_alive": null,
-      "_code": 500,
-      "_ms": 189
-    },
-    {
       "api": "http://rise.eu.org/api.php/provide/vod/",
       "key": "b954276569fe5d54ca57cf5cd6358465",
       "name": "影视 57-飞马",
@@ -5138,24 +5113,6 @@
       "_ms": 1844
     },
     {
-      "key": "afasu",
-      "name": "影视 [83ms|apple] 小湿妹资源(已修复)",
-      "type": 0,
-      "api": "https://www.afasu.com/api/xml.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "_cfg": "https://raw.githubusercontent.com/25175/tvyuan/master/tvbox_full.json",
-      "_adult": false,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "_probe_at": "2026-10-18T19:18:32Z",
-      "_alive": null,
-      "_code": 0,
-      "_ms": 124
-    },
-    {
       "key": "雷子",
       "name": "影视 [433ms|直播] ️​雷子",
       "type": 3,
@@ -5272,10 +5229,10 @@
       "_line": "全网发现",
       "_src": "全网发现",
       "quickSearch": 1,
-      "_probe_at": "2026-10-18T19:18:32Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 2391
+      "_probe_at": "2026-10-18T19:47:03Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 540
     },
     {
       "key": "zhuanxiang",
@@ -5547,24 +5504,6 @@
       }
     },
     {
-      "key": "t4直播转点播",
-      "name": "影视 教育┃教育",
-      "type": 4,
-      "api": "http://120.53.102.254/dsp16",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "_cfg": "https://raw.githubusercontent.com/adminouyang/231006/main/tvbox/%E7%82%B9%E6%92%AD%E6%BA%90/%E6%98%9F%E8%BE%B0.txt",
-      "_adult": false,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "_probe_at": "2026-10-18T19:18:32Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 481
-    },
-    {
       "key": "小苹果",
       "name": "影视 小苹果",
       "type": 4,
@@ -5586,25 +5525,6 @@
       "_alive": true,
       "_code": 200,
       "_ms": 1072
-    },
-    {
-      "key": "耀协影视",
-      "name": "影视 🔥耀协",
-      "type": 1,
-      "api": "http://zyz.yxys.top/api.php/provide/vod/",
-      "playUrl": "",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/aa999ok/CK/18006/box18.json",
-      "_adult": false,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "_probe_at": "2026-10-18T19:18:32Z",
-      "_alive": null,
-      "_code": 0,
-      "_ms": 7
     },
     {
       "key": "官方聚合1.py",
@@ -16798,25 +16718,6 @@
       "_ms": 1274
     },
     {
-      "key": "采集┃大头影视",
-      "name": "影视 采集┃🎬大头影视",
-      "type": 1,
-      "api": "https://90sr.com/api.php/provide/vod/?ac=list",
-      "searchable": 1,
-      "quickSearch": 1,
-      "playurl": "https://jsjiexi.com/play/?url=",
-      "_cfg": "https://raw.githubusercontent.com/dwj20011206/wen/main/yang/cai.json",
-      "_adult": false,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "_probe_at": "2026-10-18T19:18:32Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 476
-    },
-    {
       "key": "dr_乐猪TV",
       "name": "影视 乐猪TV(道长)",
       "type": 1,
@@ -17597,10 +17498,10 @@
       "filterable": 1,
       "searchable": 1,
       "quickSearch": 1,
-      "_probe_at": "2026-10-18T19:18:32Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 2644
+      "_probe_at": "2026-10-18T19:47:03Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 535
     },
     {
       "key": "金牌123",
@@ -17615,10 +17516,13 @@
       "filterable": 1,
       "searchable": 1,
       "quickSearch": 1,
-      "_probe_at": "2026-10-18T19:18:32Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 2434
+      "_probe_at": "2026-10-18T19:47:03Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 528,
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 12; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36"
+      }
     },
     {
       "key": "独播库",
@@ -17633,10 +17537,10 @@
       "filterable": 1,
       "searchable": 1,
       "quickSearch": 1,
-      "_probe_at": "2026-10-18T19:18:32Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 2466
+      "_probe_at": "2026-10-18T19:47:03Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 550
     },
     {
       "key": "cat_剧迷网",
@@ -17675,10 +17579,13 @@
       "_crawler": true,
       "_line": "全网发现",
       "_src": "全网发现",
-      "_probe_at": "2026-10-18T19:18:32Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 2421
+      "_probe_at": "2026-10-18T19:47:03Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 573,
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 12; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36"
+      }
     },
     {
       "key": "七星短剧",
@@ -17732,10 +17639,13 @@
       "filterable": 1,
       "searchable": 1,
       "quickSearch": 1,
-      "_probe_at": "2026-10-18T19:18:32Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 1982
+      "_probe_at": "2026-10-18T19:47:03Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 521,
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 12; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36"
+      }
     },
     {
       "key": "枫叶",
@@ -17771,10 +17681,10 @@
       "_crawler": true,
       "_line": "全网发现",
       "_src": "全网发现",
-      "_probe_at": "2026-10-18T19:18:32Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 2220
+      "_probe_at": "2026-10-18T19:47:03Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 517
     },
     {
       "key": "py_yunduo",
@@ -17848,10 +17758,13 @@
       "_crawler": true,
       "_line": "全网发现",
       "_src": "全网发现",
-      "_probe_at": "2026-10-18T19:18:32Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 2051
+      "_probe_at": "2026-10-18T19:47:03Z",
+      "_alive": true,
+      "_code": 200,
+      "_ms": 522,
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 12; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36"
+      }
     },
     {
       "key": "裤佬荐片JS",
@@ -18990,85 +18903,6 @@
       "_alive": true,
       "_code": 200,
       "_ms": 565
-    },
-    {
-      "key": "种子短剧",
-      "name": "影视 💮┃短剧┃视频",
-      "type": 1,
-      "api": "http://zzdj.cc/api.php/provide/vod",
-      "_cfg": "https://raw.githubusercontent.com/adminouyang/231006/main/tvbox/FM/%E8%82%A5%E7%8C%AB/%E8%82%A5%E7%8C%AB.json",
-      "_adult": false,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-18T19:18:32Z",
-      "_alive": null,
-      "_code": 200,
-      "_ms": 133
-    },
-    {
-      "key": "蚂蚁资源",
-      "name": "影视 蚂蚁｜采集",
-      "type": 1,
-      "api": "http://dsakf23665.com/api.php/provide/vod/from/NBY",
-      "searchable": 1,
-      "changeable": 1,
-      "playUrl": "json:http://121.62.61.51:6888//api//?key=qMdg1EDXPe9NH3bG0z&url=",
-      "_cfg": "https://raw.githubusercontent.com/adminouyang/231006/main/tvbox/PizazzGY/%E5%BD%B1%E8%A7%86_api.json",
-      "_adult": false,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-18T19:18:32Z",
-      "_alive": null,
-      "_code": 0,
-      "_ms": 3
-    },
-    {
-      "key": "cms_json_demo",
-      "name": "影视 示例 CMS(JSON) 源",
-      "type": 1,
-      "api": "https://your-cms.example.com/api.php/provide/vod",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 1,
-      "playUrl": "",
-      "ext": "",
-      "jar": "",
-      "timeout": 15,
-      "_cfg": "https://raw.githubusercontent.com/yagami-hue/Win-box/main/resources/config.example.json",
-      "_adult": false,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "_probe_at": "2026-10-18T19:18:32Z",
-      "_alive": null,
-      "_code": 0,
-      "_ms": 7
-    },
-    {
-      "key": "sample-cms",
-      "name": "影视 Free New Desk 示例 CMS（请替换）",
-      "type": 1,
-      "api": "https://example.invalid/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "_cfg": "https://raw.githubusercontent.com/cwe88108/free-new-desk-public/main/examples/tvbox-sample.json",
-      "_adult": false,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "_probe_at": "2026-10-18T19:18:32Z",
-      "_alive": null,
-      "_code": 0,
-      "_ms": 3
     }
   ],
   "_probe": {
@@ -19086,7 +18920,19 @@
     "dedup_removed": 0,
     "alive_rate": "63.1%",
     "sites_before": 1335,
-    "sites_after": 859
+    "sites_after": 859,
+    "_recheck": {
+      "at": "2026-10-18T19:47:03Z",
+      "mode": "复测：仅对首轮暂留(_alive=None)源复测，通过转正、再失败丢弃",
+      "pending_before": 17,
+      "probed": 23,
+      "recovered": 8,
+      "dropped": 9,
+      "kept_pending": 0,
+      "ua_fix": 4,
+      "sites_before": 859,
+      "sites_after": 850
+    }
   },
   "_from": "https://raw.githubusercontent.com/dearloyal/CS/main/全部.json"
 }
