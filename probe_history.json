@@ -305,9 +305,10 @@
     "code": 200
   },
   "https://www.afasu.com/api/xml.php": {
-    "fail": 1,
-    "at": "2026-10-20T20:22:55Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-20T20:57:51Z",
+    "code": 0,
+    "final": true
   },
   "https://vs.okcdn100.top/api.php/provide/vod": {
     "fail": 11,
@@ -325,9 +326,10 @@
     "code": 200
   },
   "https://523zyw.me/inc/apijson_vod.php": {
-    "fail": 1,
-    "at": "2026-10-20T20:22:55Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-20T20:57:51Z",
+    "code": 0,
+    "final": true
   },
   "https://zjuba.vip/api.php/provide/vod": {
     "fail": 11,
@@ -760,9 +762,10 @@
     "code": 200
   },
   "http://120.53.102.254/dsp16": {
-    "fail": 1,
-    "at": "2026-10-20T20:22:55Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-20T20:57:51Z",
+    "code": 404,
+    "final": true
   },
   "http://127.0.0.1:1988/lb": {
     "fail": 8,
@@ -785,9 +788,10 @@
     "code": 0
   },
   "http://zyz.yxys.top/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-20T20:22:55Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-20T20:57:51Z",
+    "code": 0,
+    "final": true
   },
   "http://cj.bajiecaiji.com/inc/apijson_vod.php": {
     "fail": 11,
@@ -1825,9 +1829,10 @@
     "code": 200
   },
   "https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/js/毒舌影视.js": {
-    "fail": 1,
-    "at": "2026-10-20T20:22:55Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-20T20:57:51Z",
+    "code": 404,
+    "final": true
   },
   "https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/js/4Kvm.js": {
     "fail": 8,
@@ -1840,9 +1845,10 @@
     "code": 404
   },
   "https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/py/猎手.py": {
-    "fail": 1,
-    "at": "2026-10-20T20:22:55Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-20T20:57:51Z",
+    "code": 404,
+    "final": true
   },
   "https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/py/文才影视.py": {
     "fail": 3,
@@ -2290,19 +2296,22 @@
     "code": 404
   },
   "http://zzdj.cc/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-20T20:22:55Z",
-    "code": 200
+    "fail": 2,
+    "at": "2026-10-20T20:57:51Z",
+    "code": 200,
+    "final": true
   },
   "http://dsakf23665.com/api.php/provide/vod/from/NBY": {
-    "fail": 1,
-    "at": "2026-10-20T20:22:55Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-20T20:57:51Z",
+    "code": 0,
+    "final": true
   },
   "https://example.invalid/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-20T20:22:55Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-20T20:57:51Z",
+    "code": 0,
+    "final": true
   },
   "https://caiji.semaozy.net/inc/apiext_vod.php": {
     "fail": 8,
@@ -2321,11 +2330,6 @@
   },
   "https://kuaiyun-api.com/api.php/provide/vod": {
     "fail": 8,
-    "at": "2026-10-20T20:22:55Z",
-    "code": 0
-  },
-  "https://shayuapi.com/api.php/provide/vod": {
-    "fail": 1,
     "at": "2026-10-20T20:22:55Z",
     "code": 0
   },
@@ -2440,24 +2444,28 @@
     "code": 200
   },
   "https://seajav.com/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-20T20:22:55Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-20T20:57:51Z",
+    "code": 404,
+    "final": true
   },
   "https://api.998zy.com/api.php/provide/vod/at/json": {
-    "fail": 1,
-    "at": "2026-10-20T20:22:55Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-20T20:57:51Z",
+    "code": 0,
+    "final": true
   },
   "https://xiuren.site/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-20T20:22:55Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-20T20:57:51Z",
+    "code": 0,
+    "final": true
   },
   "https://www.avre06.com/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-20T20:22:55Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-20T20:57:51Z",
+    "code": 0,
+    "final": true
   },
   "http://wmcj8.com/inc/sapi.php": {
     "fail": 11,
@@ -2625,9 +2633,10 @@
     "code": 0
   },
   "http://m.7777688.com/inc/apijson.php": {
-    "fail": 1,
-    "at": "2026-10-20T20:22:55Z",
-    "code": 200
+    "fail": 2,
+    "at": "2026-10-20T20:57:51Z",
+    "code": 200,
+    "final": true
   },
   "https://apittzy.com/api.php/provide/vod": {
     "fail": 11,
@@ -2688,11 +2697,6 @@
     "fail": 8,
     "at": "2026-10-20T20:22:55Z",
     "code": 404
-  },
-  "https://shayuzy.com/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-20T20:22:55Z",
-    "code": 0
   },
   "http://api.leduosj.com/inc/api.php": {
     "fail": 8,

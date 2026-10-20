@@ -2,7 +2,7 @@
   "name": "全部",
   "subset": "全部",
   "source": "dearloyal/YSC",
-  "count": 858,
+  "count": 849,
   "sites": [
     {
       "key": "csp_xml_闪电资源",
@@ -5420,24 +5420,6 @@
       "_ms": 1365
     },
     {
-      "key": "afasu",
-      "name": "影视 [42ms|apple] 小湿妹资源(已修复)",
-      "type": 0,
-      "api": "https://www.afasu.com/api/xml.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "_cfg": "https://raw.githubusercontent.com/25175/tvyuan/master/tvbox_full.json",
-      "_adult": false,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "_probe_at": "2026-10-20T20:22:55Z",
-      "_alive": null,
-      "_code": 0,
-      "_ms": 86
-    },
-    {
       "searchable": 1,
       "search": 1,
       "quickSearch": 1,
@@ -5455,26 +5437,6 @@
       "_alive": true,
       "_code": 200,
       "_ms": 1046
-    },
-    {
-      "key": "523专场",
-      "name": "影视 [221ms|https://clun.top/fun.json] 523 | 采集",
-      "type": 1,
-      "api": "https://523zyw.me/inc/apijson_vod.php",
-      "playUrl": "",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "ext": "proxy",
-      "_cfg": "https://raw.githubusercontent.com/25175/tvyuan/master/tvbox_full.json",
-      "_adult": false,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "_probe_at": "2026-10-20T20:22:55Z",
-      "_alive": null,
-      "_code": 0,
-      "_ms": 196
     },
     {
       "key": "雷子",
@@ -5849,24 +5811,6 @@
       }
     },
     {
-      "key": "t4直播转点播",
-      "name": "影视 教育┃教育",
-      "type": 4,
-      "api": "http://120.53.102.254/dsp16",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "_cfg": "https://raw.githubusercontent.com/adminouyang/231006/main/tvbox/%E7%82%B9%E6%92%AD%E6%BA%90/%E6%98%9F%E8%BE%B0.txt",
-      "_adult": false,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "_probe_at": "2026-10-20T20:22:55Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 390
-    },
-    {
       "key": "小苹果",
       "name": "影视 小苹果",
       "type": 4,
@@ -5888,25 +5832,6 @@
       "_alive": true,
       "_code": 200,
       "_ms": 1260
-    },
-    {
-      "key": "耀协影视",
-      "name": "影视 🔥耀协",
-      "type": 1,
-      "api": "http://zyz.yxys.top/api.php/provide/vod/",
-      "playUrl": "",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/aa999ok/CK/18006/box18.json",
-      "_adult": false,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "_probe_at": "2026-10-20T20:22:55Z",
-      "_alive": null,
-      "_code": 0,
-      "_ms": 516
     },
     {
       "key": "官方聚合1.py",
@@ -17489,24 +17414,6 @@
       "_ms": 1604
     },
     {
-      "key": "毒舌影视",
-      "name": "影视 🥇毒舌｜影视",
-      "type": 3,
-      "api": "https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/js/毒舌影视.js",
-      "_cfg": "https://raw.githubusercontent.com/hy5528/tvbox/main/sub/pd.json",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-20T20:22:55Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 2104
-    },
-    {
       "key": "瓜子影视",
       "name": "影视 🥇瓜子｜影视",
       "type": 3,
@@ -17659,24 +17566,6 @@
       "_alive": true,
       "_code": 200,
       "_ms": 461
-    },
-    {
-      "key": "猎手",
-      "name": "影视 🥇猎手丨影视",
-      "type": 3,
-      "api": "https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/py/猎手.py",
-      "_cfg": "https://raw.githubusercontent.com/hy5528/tvbox/main/sub/pd.json",
-      "_adult": false,
-      "_crawler": true,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-20T20:22:55Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 1676
     },
     {
       "key": "枫叶",
@@ -18910,62 +18799,6 @@
       "_alive": true,
       "_code": 200,
       "_ms": 609
-    },
-    {
-      "key": "种子短剧",
-      "name": "影视 💮┃短剧┃视频",
-      "type": 1,
-      "api": "http://zzdj.cc/api.php/provide/vod",
-      "_cfg": "https://raw.githubusercontent.com/adminouyang/231006/main/tvbox/FM/%E8%82%A5%E7%8C%AB/%E8%82%A5%E7%8C%AB.json",
-      "_adult": false,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-20T20:22:55Z",
-      "_alive": null,
-      "_code": 200,
-      "_ms": 274
-    },
-    {
-      "key": "蚂蚁资源",
-      "name": "影视 蚂蚁｜采集",
-      "type": 1,
-      "api": "http://dsakf23665.com/api.php/provide/vod/from/NBY",
-      "searchable": 1,
-      "changeable": 1,
-      "playUrl": "json:http://121.62.61.51:6888//api//?key=qMdg1EDXPe9NH3bG0z&url=",
-      "_cfg": "https://raw.githubusercontent.com/adminouyang/231006/main/tvbox/PizazzGY/%E5%BD%B1%E8%A7%86_api.json",
-      "_adult": false,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-20T20:22:55Z",
-      "_alive": null,
-      "_code": 0,
-      "_ms": 31
-    },
-    {
-      "key": "sample-cms",
-      "name": "影视 Free New Desk 示例 CMS（请替换）",
-      "type": 1,
-      "api": "https://example.invalid/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "_cfg": "https://raw.githubusercontent.com/cwe88108/free-new-desk-public/main/examples/tvbox-sample.json",
-      "_adult": false,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "_probe_at": "2026-10-20T20:22:55Z",
-      "_alive": null,
-      "_code": 0,
-      "_ms": 7
     }
   ],
   "_probe": {
@@ -18983,7 +18816,19 @@
     "dedup_removed": 0,
     "alive_rate": "63.6%",
     "sites_before": 1334,
-    "sites_after": 858
+    "sites_after": 858,
+    "_recheck": {
+      "at": "2026-10-20T20:57:51Z",
+      "mode": "复测：仅对首轮暂留(_alive=None)源复测，通过转正、再失败丢弃",
+      "pending_before": 9,
+      "probed": 16,
+      "recovered": 0,
+      "dropped": 9,
+      "kept_pending": 0,
+      "ua_fix": 0,
+      "sites_before": 858,
+      "sites_after": 849
+    }
   },
   "_from": "https://raw.githubusercontent.com/dearloyal/CS/main/全部.json"
 }
