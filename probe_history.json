@@ -55,14 +55,16 @@
     "code": 0
   },
   "https://kuaikan-api.com/api.php/provide/vod/from/kuaikan": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 0,
+    "final": true
   },
   "https://collect.wolongzy.cc/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 0,
+    "final": true
   },
   "https://damozy.com/api.php/provide/vod": {
     "fail": 10,
@@ -450,9 +452,10 @@
     "code": 200
   },
   "http://我不是.摸鱼儿.top/py/金牌影视.py": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 404,
+    "final": true
   },
   "http://我不是.摸鱼儿.top/py/河马短剧.py": {
     "fail": 13,
@@ -540,9 +543,10 @@
     "code": 0
   },
   "https://www.afasu.com/api/xml.php": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 0,
+    "final": true
   },
   "https://hd7000.com/api.php/provide/vod": {
     "fail": 10,
@@ -630,9 +634,10 @@
     "code": 200
   },
   "http://120.53.102.254/dsp16": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 404,
+    "final": true
   },
   "http://127.0.0.1:1988/lb": {
     "fail": 10,
@@ -660,9 +665,10 @@
     "code": 0
   },
   "http://zyz.yxys.top/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 0,
+    "final": true
   },
   "http://cj.bajiecaiji.com/inc/apijson_vod.php": {
     "fail": 13,
@@ -1200,9 +1206,10 @@
     "code": 404
   },
   "http://y.ds05.cn/zyapi.php": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 0,
+    "final": true
   },
   "http://zhangqun66.com/klhj.php": {
     "fail": 10,
@@ -1700,9 +1707,10 @@
     "code": 0
   },
   "http://cmsyun2.qijiyun.vip/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 200
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 200,
+    "final": true
   },
   "https://iduo.us.ci/gt/leevi0709/one/main/py/韩小圈.py": {
     "fail": 10,
@@ -1715,9 +1723,10 @@
     "code": 200
   },
   "http://js.xn--z7x900a.com/js/ng_open.js": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 404,
+    "final": true
   },
   "https://www.139ys.com/vodsearch/-------------.html": {
     "fail": 10,
@@ -1740,24 +1749,28 @@
     "code": 200
   },
   "https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/js/毒舌影视.js": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 404,
+    "final": true
   },
   "https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/py/GZYS.py": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 404,
+    "final": true
   },
   "https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/js/永乐视频.js": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 404,
+    "final": true
   },
   "https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/js/金牌影院.js": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 404,
+    "final": true
   },
   "https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/js/VmOlRys8_vip.js": {
     "fail": 3,
@@ -1770,9 +1783,10 @@
     "code": 404
   },
   "https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/js/高清剧迷.js": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 404,
+    "final": true
   },
   "https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/js/jys.js": {
     "fail": 3,
@@ -1810,9 +1824,10 @@
     "code": 404
   },
   "https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/py/央视.py": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 404,
+    "final": true
   },
   "https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/js/liyuan_xi.js": {
     "fail": 5,
@@ -2240,14 +2255,16 @@
     "code": 404
   },
   "http://zzdj.cc/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 200
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 200,
+    "final": true
   },
   "http://dsakf23665.com/api.php/provide/vod/from/NBY": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 0,
+    "final": true
   },
   "https://api.kuaifan.tv/api.php/provide/vod": {
     "fail": 13,
@@ -2255,9 +2272,10 @@
     "code": 0
   },
   "https://example.invalid/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 0,
+    "final": true
   },
   "https://newtv.ggff.net/douban": {
     "fail": 13,
@@ -2420,24 +2438,28 @@
     "code": 200
   },
   "https://seajav.com/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 404
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 404,
+    "final": true
   },
   "https://api.998zy.com/api.php/provide/vod/at/json": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 0,
+    "final": true
   },
   "https://xiuren.site/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 0,
+    "final": true
   },
   "https://www.avre06.com/api.php/provide/vod": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 0
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 0,
+    "final": true
   },
   "http://wmcj8.com/inc/sapi.php": {
     "fail": 13,
@@ -2615,9 +2637,10 @@
     "code": 0
   },
   "http://m.7777688.com/inc/apijson.php": {
-    "fail": 1,
-    "at": "2026-10-22T20:37:41Z",
-    "code": 200
+    "fail": 2,
+    "at": "2026-10-22T20:56:01Z",
+    "code": 200,
+    "final": true
   },
   "https://apittzy.com/api.php/provide/vod": {
     "fail": 13,

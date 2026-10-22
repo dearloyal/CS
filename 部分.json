@@ -2,7 +2,7 @@
   "name": "部分",
   "subset": "部分",
   "source": "dearloyal/YSC",
-  "count": 158,
+  "count": 153,
   "sites": [
     {
       "key": "yhzy.cc",
@@ -1667,29 +1667,6 @@
       "_ms": 280
     },
     {
-      "key": "seajav",
-      "name": "18 🔞SeaJAV",
-      "type": 1,
-      "api": "https://seajav.com/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "categories": [],
-      "style": {
-        "type": "rect",
-        "ratio": 1.8
-      },
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/aa999ok/CK/18003/tvbox18.json",
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "_probe_at": "2026-10-22T20:37:41Z",
-      "_alive": null,
-      "_code": 404,
-      "_ms": 406
-    },
-    {
       "key": "fhapiby",
       "name": "18 🔞番号by🌈",
       "type": 1,
@@ -1734,71 +1711,6 @@
       "_alive": true,
       "_code": 200,
       "_ms": 441
-    },
-    {
-      "key": "998资源🌈🔞",
-      "name": "18 🔞998资源🌈💯",
-      "type": 1,
-      "api": "https://api.998zy.com/api.php/provide/vod/at/json/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "categories": [],
-      "style": {
-        "type": "rect",
-        "ratio": 1.6
-      },
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/aa999ok/CK/18003/tvbox18.json",
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "_probe_at": "2026-10-22T20:37:41Z",
-      "_alive": null,
-      "_code": 0,
-      "_ms": 811
-    },
-    {
-      "key": "秀人",
-      "name": "18 🔞秀人🌈",
-      "type": 1,
-      "api": "https://xiuren.site/api.php/provide/vod/",
-      "searchable": 1,
-      "changeable": 1,
-      "categories": [],
-      "style": {
-        "type": "rect",
-        "ratio": 1.6
-      },
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/aa999ok/CK/18003/tvbox18.json",
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "quickSearch": 1,
-      "_probe_at": "2026-10-22T20:37:41Z",
-      "_alive": null,
-      "_code": 0,
-      "_ms": 4207
-    },
-    {
-      "key": "黄瓜资源",
-      "name": "18 🔞黄瓜🥒资源🌈",
-      "type": 1,
-      "api": "https://www.avre06.com/api.php/provide/vod/?ac=list",
-      "searchable": 1,
-      "quickSearch": 1,
-      "_cfg": "https://raw.githubusercontent.com/woshishiq1/hipy-drpy2/main/aa999ok/CK/18003/tvbox18.json",
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "_probe_at": "2026-10-22T20:37:41Z",
-      "_alive": null,
-      "_code": 0,
-      "_ms": 892
     },
     {
       "key": "*麻豆视频🔞",
@@ -3638,24 +3550,6 @@
       "_ms": 4356
     },
     {
-      "key": "*AVZY6888资源",
-      "name": "18 *AVZY6888资源",
-      "type": 1,
-      "api": "http://m.7777688.com/inc/apijson.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "_cfg": "https://raw.githubusercontent.com/13174771/tvboxlist/main/18+.json",
-      "_adult": true,
-      "_crawler": false,
-      "_line": "全网发现",
-      "_src": "全网发现",
-      "filterable": 1,
-      "_probe_at": "2026-10-22T20:37:41Z",
-      "_alive": null,
-      "_code": 200,
-      "_ms": 115
-    },
-    {
       "key": "18av",
       "name": "18 🔞18av[cat]",
       "type": 3,
@@ -3940,7 +3834,19 @@
     "dedup_removed": 0,
     "alive_rate": "65.4%",
     "sites_before": 234,
-    "sites_after": 158
+    "sites_after": 158,
+    "_recheck": {
+      "at": "2026-10-22T20:56:01Z",
+      "mode": "复测：仅对首轮暂留(_alive=None)源复测，通过转正、再失败丢弃",
+      "pending_before": 5,
+      "probed": 23,
+      "recovered": 0,
+      "dropped": 5,
+      "kept_pending": 0,
+      "ua_fix": 0,
+      "sites_before": 158,
+      "sites_after": 153
+    }
   },
   "_from": "https://raw.githubusercontent.com/dearloyal/CS/main/部分.json"
 }
