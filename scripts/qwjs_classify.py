@@ -17,7 +17,7 @@ QWJS 分类脚本（部署到 dearloyal/CS → scripts/qwjs_classify.py）
 
 附加处理：
   ① 删除「酷我」系列（用户指定从全部中移除）；
-  ② 给每个源打标志：正常源不再加前缀，成人 → 名字前缀「18 」；
+  ② 不再给源名加任何标志前缀（正常源、成人源均不加）；
   ③ 剔除「验证为空」的分类（empty_cats_cache.json，由 probe_empty_cats.py 逐源探测
      ?ac=videolist&t=<type_id> 的 total 生成；苹果CMS 筛选参数是 t 不是 type）；
   ④ 排序：全部.json 把「❤闪电资源」（心型闪电，有分类）置顶；部分.json 不强制置顶，纯按「分类【能显示】在前、不能显示在后」排序。
@@ -55,7 +55,7 @@ PIN_ALL_FIRST = "❤闪电资源"   # 全部.json 红线：首位固定闪电资
 
 # 标志前缀
 FLAG_NORMAL = ""  # 正常源不加前缀（用户要求去掉“影视 ”）
-FLAG_ADULT = "18 "
+FLAG_ADULT = ""   # 成人源也不加前缀（用户要求去掉“18 ”）
 
 # ── 候选层（2026-10-13 分层改造）──
 # 结构性无法外部验证的引擎源（api 非 http：csp_/相对路径/jar:/js:/py:）在这里
